@@ -1,5 +1,5 @@
-import home from '../pages/home';
-import dummy from '../pages/dummy';
+import Home from '../pages/Home';
+import Dummy from '../pages/Dummy';
 
 const routes = [
 
@@ -12,8 +12,8 @@ const routes = [
     // { path: '/dashboard', component: Dashboard},
     // { path: '/sign-up', component: SellerSignUp},
     // { path: '/unauthorized', component: Unauthorized},
-    { path: '/', component: home, ispublic: true },
-    { path: '/dummy', component: dummy, ispublic: true },
+    { path: '/', component: Home, ispublic: true },
+    { path: '/dummy', component: Dummy, ispublic: true },
 ];
 
 export default routes;

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function dummy() {
+function Dummy() {
     console.log("Dummy");
     return (
         <div>
@@ -9,4 +9,4 @@ function dummy() {
     )
 }
 
-export default dummy
+export default Dummy
