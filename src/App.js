@@ -38,7 +38,6 @@ const App = (props) => {
 console.log("Here", routes);
   return (
     <React.Fragment>
-
       <Router>
       <TopHeader></TopHeader>
       <Navbar></Navbar>
