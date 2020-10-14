@@ -1,10 +1,12 @@
 import React from 'react';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
-
 // import { loginUserSuccessful } from './store/actions';
 import routes from './routes/routes';
+import 'normalize.css';
+import TopHeader from './parts/Header/Top-Header/TopHeader'
+import Navbar from './parts/Header/Navbar/Navbar';
 
-import './App.css';
+// import './App.css';
 
 const App = (props) => {
 
@@ -36,7 +38,10 @@ const App = (props) => {
 console.log("Here", routes);
   return (
     <React.Fragment>
+
       <Router>
+      <TopHeader></TopHeader>
+      <Navbar></Navbar>
         <Switch>
           {routes.map((route, idx) =>
             route.ispublic ? route.path === "/" ? <Route path={route.path} exact component={route.component}/> :

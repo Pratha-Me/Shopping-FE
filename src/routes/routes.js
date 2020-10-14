@@ -1,5 +1,6 @@
-import Home from '../pages/Home';
-import Dummy from '../pages/Dummy';
+import Home from '../pages/home';
+// import Dummy from '../pages/Dummy';
+import Dummy from '../pages/dummy'
 
 const routes = [
 
