@@ -1,25 +1,53 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
+
+// import { loginUserSuccessful } from './store/actions';
+import routes from './routes/routes';
+
 import './App.css';
 
-function App() {
+const App = (props) => {
+
+  // const user = getAuthUser();
+  // props.loginUserSuccessful(user);
+
+  /*
+  const PrivateRoute = ({ component: Component, role: Role, ...rest }) => (
+    <Route {...rest} render={(props) => {
+      if (isUserAuthenticated() !== true) {
+        return <Redirect to='/logout' />
+      }
+      
+      if (Role) {
+        const user = getAuthUser();
+        if (Role.includes(user.authorities[0])) {
+          return <Component {...props} />
+        } else {
+          return <Redirect to='/unauthorized' />
+        }
+      }
+      else {
+        return <Component {...props} />
+      }
+    }} />
+  )
+*/
+
+console.log("Here", routes);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <Router>
+        <Switch>
+          {routes.map((route, idx) =>
+            route.ispublic ? route.path === "/" ? <Route path={route.path} exact component={route.component}/> :
+              <Route path={route.path} component={route.component} key={idx} />
+              :
+              null
+              // <PrivateRoute path={route.path} component={withLayout(route.component)} role={route.role} key={idx} />
+          )}
+        </Switch>
+      </Router>
+    </React.Fragment>
   );
 }
 
