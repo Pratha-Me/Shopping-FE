@@ -4,7 +4,6 @@ import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 // import { loginUserSuccessful } from './store/actions';
 import routes from './routes/routes';
 
-import './App.css';
 
 const App = (props) => {
 

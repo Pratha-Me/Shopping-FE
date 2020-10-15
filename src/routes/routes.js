@@ -1,5 +1,8 @@
 import Home from '../pages/Home';
 import Dummy from '../pages/Dummy';
+import Login from '../pages/Login';
+import Register from '../pages/Register';
+import Seller from '../pages/Seller';
 
 const routes = [
 
@@ -14,6 +17,9 @@ const routes = [
     // { path: '/unauthorized', component: Unauthorized},
     { path: '/', component: Home, ispublic: true },
     { path: '/dummy', component: Dummy, ispublic: true },
+    { path: '/login', component:Login, ispublic:true},
+    { path: '/register', component:Register, ispublic:true},
+    { path: '/seller', component:Seller, ispublic:true},
 ];
 
 export default routes;

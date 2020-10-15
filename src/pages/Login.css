@@ -1,0 +1,104 @@
+@media all and (min-width: 480px) {
+    .login {
+      padding: 60px 0;
+      background-color: rgb(224, 219, 219);
+      height:100vh;
+      box-sizing: border-box;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      
+    }
+
+    .title-wrapper {
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .title-wrapper h3 {
+      font-size: 25px;
+      font-weight: 500;
+    }
+
+    .login-with {
+      font-size:11px;
+      margin:15px 0 5px 0;
+      color:rgb(104, 102, 102);
+      text-transform: uppercase;
+    }
+
+
+    .facebook-login {
+      font-size: 16px;
+      border: 1px solid grey;
+      padding:5px 12px;
+      margin:7px 0 10px 0;
+      transition:all 0.6s ease-in-out;
+    }
+
+    .facebook-login:hover {
+      background-color: rgb(38, 42, 255);
+      color:#fff !important;
+      border: 1px solid blue;
+    }
+  
+    .login form {
+      margin: 0 auto;
+      max-width:30vw;
+      background-color: rgb(253, 252, 252);
+      padding:30px;
+      border-radius: 2px;
+      box-shadow: 0 0 4px 4px rgb(211, 209, 209);
+    }
+
+
+    input {
+      font-size: 14px !important;
+      padding-left:10px !important;
+      margin-top: 20px !important;
+    }
+
+    #btn-login {
+      background-color: rgb(18, 133, 18);
+      color:#fff;
+      font-size: 16px !important;
+      transition: all 0.4s ease-in-out;
+      margin-top: 25px !important;
+      margin-bottom: 20px !important;
+    }
+
+    #btn-login:hover {
+      background-color: rgb(18, 100, 18) ;
+    }
+   
+
+    .forgot-pw-wrapper {
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-bottom: 20px !important;
+    }
+
+    .forgot-pw-wrapper a {
+      color:rgb(27, 27, 27) !important;
+    }
+
+    .register {
+      display:flex;
+      justify-content: center;
+    }
+    .create-account {
+      text-align:center;
+      font-size: 20px;
+      text-decoration: none;
+      color:rgb(66, 66, 66);
+
+    }
+
+    .create-account:hover {
+      color:rgb(6, 82, 247);
+      text-decoration: none;
+      
+    }
+  }
