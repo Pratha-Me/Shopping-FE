@@ -1,0 +1,108 @@
+@media all and (min-width: 480px) {
+    .signup {
+      padding: 30px 0;
+      background-color: rgb(224, 219, 219);
+      height:100vh;
+      box-sizing: border-box;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      
+    }
+
+    .title-wrapper {
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .title-wrapper h3 {
+      font-size: 25px;
+      font-weight: 500;
+    }
+
+    .signup-with {
+      font-size:11px;
+      margin:15px 0 5px 0;
+      color:rgb(104, 102, 102);
+      text-transform: uppercase;
+    }
+
+
+    .facebook-login {
+      font-size: 16px;
+      border: 1px solid grey;
+      padding:5px 12px;
+      margin:7px 0 10px 0;
+      transition:all 0.6s ease-in-out;
+    }
+
+    .facebook-login:hover {
+      background-color: rgb(38, 42, 255);
+      color:#fff !important;
+      border: 1px solid blue;
+    }
+  
+    .signup form {
+      margin: 0 auto;
+      bottom: 20px;
+      max-width:33vw;
+      background-color: rgb(253, 252, 252);
+      padding:30px;
+      border-radius: 2px;
+      box-shadow: 0 0 4px 4px rgb(211, 209, 209);
+    }
+
+
+    input {
+      font-size: 14px !important;
+      padding-left:10px !important;
+      margin-top: 20px !important;
+    }
+
+    #btn-signup {
+      background-color: rgb(18, 133, 18);
+      color:#fff;
+      font-size: 16px !important;
+      transition: all 0.4s ease-in-out;
+      margin-top: 25px !important;
+    }
+
+    #btn-signup:hover {
+      background-color: rgb(18, 100, 18) ;
+    }
+    
+    .facebook-login {
+        font-size:13px;
+        margin:3px auto;
+        transition: all 0.4s ease-in-out;
+        color:rgb(51, 50, 50) !important;
+      }
+  
+    .facebook-login:hover {
+        
+        text-decoration: none !important;
+        color:green;
+  
+      }
+
+    .login-wrapper {
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      font-size:12px;
+      padding-top: 10px;
+    }
+
+    .login-link {
+        margin:0;
+        padding:0;
+        color:rgb(63, 63, 189) !important;
+        font-size: 14px !important;
+    }
+ 
+
+    .login-link:hover {
+        color:rgb(45, 45, 134) !important;
+    }
+}

@@ -1,0 +1,94 @@
+@media all and (min-width: 480px) {
+    .seller {
+      padding: 60px 0;
+      background-color: rgb(224, 219, 219);
+      height:100vh;
+      box-sizing: border-box;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      
+    }
+
+    .title-wrapper {
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-bottom: 45px;
+      
+    }
+
+    .title-wrapper h3 {
+      font-size: 23px;
+      font-weight: 500;
+    }
+
+    .seller form {
+      margin: 0 auto;
+      max-width:27vw;
+      background-color: rgb(253, 252, 252);
+      padding:30px 30px 15vh 30px;
+      border-radius: 2px;
+      box-shadow: 0 0 4px 4px rgb(211, 209, 209);
+    }
+
+
+    input {
+      font-size: 14px !important;
+      padding-left:10px !important;
+      margin-top: 25px !important;
+    }
+
+    .forgot-pw-wrapper {
+        position: relative;
+
+    }
+
+    .forgot-pw-wrapper a {
+        position: absolute;
+        font-size:11px !important;
+        color:red !important;
+        right:0;
+        transition: all 0.5s ease-in-out;
+
+
+    }
+
+    .forgot-pw-wrapper a:hover {
+        text-decoration: underline !important;
+    }
+
+
+    #btn-login {
+      background-color: rgb(18, 133, 18);
+      color:#fff;
+      font-size: 16px !important;
+      transition: all 0.4s ease-in-out;
+      margin-top: 25px !important;
+    }
+
+    #btn-login:hover {
+      background-color: rgb(18, 100, 18) ;
+    }
+   
+
+    .register-wrapper {
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      font-size:12px !important;
+      padding-top: 10px !important;
+      
+    }
+
+    .register-wrapper a {
+        margin:0;
+        padding:0;
+        transition: all 0.4s ease-in-out;
+    }
+
+    .register-wrapper a:hover {
+        color:blue !important;
+    }
+
+  }
