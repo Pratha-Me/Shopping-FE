@@ -1,14 +1,9 @@
-<<<<<<< HEAD
 import Home from '../pages/home';
 // import Dummy from '../pages/Dummy';
 import Dummy from '../pages/dummy'
-=======
-import Home from '../pages/Home';
-import Dummy from '../pages/Dummy';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
 import Seller from '../pages/Seller';
->>>>>>> ed868be58cd655814464ab34f489409423c240b8
 
 const routes = [
 

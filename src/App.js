@@ -6,10 +6,7 @@ import 'normalize.css';
 import TopHeader from './parts/Header/Top-Header/TopHeader'
 import Navbar from './parts/Header/Navbar/Navbar';
 
-<<<<<<< HEAD
 // import './App.css';
-=======
->>>>>>> ed868be58cd655814464ab34f489409423c240b8
 
 const App = (props) => {
 

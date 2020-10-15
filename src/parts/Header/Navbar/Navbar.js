@@ -1,16 +1,16 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Link } from 'react-router-dom'
 import './Navbar.css'
 
 function Navbar() {
     return (
       <>
-       <div className="fixed navbar navbar-light bg-light navbar-expand-md">
+       <div className="fixed navbar navbar-light navbar-expand-md">
     <div className="container">
         <button type="button" className="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse">☰</button>
         <div className="navbar-collapse collapse">
-            <ul className="nav navbar-nav">
-                <li className="dropdown menu-large nav-item"> <Link to="/" className="dropdown-toggle nav-link" data-toggle="dropdown">Categories </Link>
+            <ul className="nav navbar-nav mx-auto">
+                <li className="dropdown menu-large nav-item px-3"> <Link to="/" className="dropdown-toggle nav-link" data-toggle="dropdown" >Categories </Link>
                     <ul className="dropdown-menu megamenu">
                         <div className="row">
                             <li className="col-md-3 dropdown-item">
@@ -98,7 +98,7 @@ function Navbar() {
                         </div>
                     </ul>
                 </li>
-                <li className="dropdown menu-large nav-item"> <Link to="/" className="dropdown-toggle nav-link" data-toggle="dropdown">Categories </Link>
+                <li className="dropdown menu-large nav-item px-3"> <Link to="/" className="dropdown-toggle nav-link" data-toggle="dropdown">Categories </Link>
                     <ul className="dropdown-menu megamenu">
                         <div className="row">
                             <li className="col-md-3 dropdown-item">
@@ -186,7 +186,7 @@ function Navbar() {
                         </div>
                     </ul>
                 </li>
-                <li className="dropdown menu-large nav-item"> <Link to="/" className="dropdown-toggle nav-link" data-toggle="dropdown">Categories </Link>
+                <li className="dropdown menu-large nav-item px-3"> <Link to="/" className="dropdown-toggle nav-link" data-toggle="dropdown">Categories </Link>
                     <ul className="dropdown-menu megamenu">
                         <div className="row">
                             <li className="col-md-3 dropdown-item">
@@ -274,7 +274,7 @@ function Navbar() {
                         </div>
                     </ul>
                 </li>
-                <li className="dropdown menu-large nav-item"> <Link to="/" className="dropdown-toggle nav-link" data-toggle="dropdown">Categories </Link>
+                <li className="dropdown menu-large nav-item px-3"> <Link to="/" className="dropdown-toggle nav-link" data-toggle="dropdown">Categories </Link>
                     <ul className="dropdown-menu megamenu">
                         <div className="row">
                             <li className="col-md-3 dropdown-item">
@@ -362,7 +362,7 @@ function Navbar() {
                         </div>
                     </ul>
                 </li>
-                <li className="dropdown menu-large nav-item"> <Link to="/" className="dropdown-toggle nav-link" data-toggle="dropdown">Categories </Link>
+                <li className="dropdown menu-large nav-item px-3"> <Link to="/" className="dropdown-toggle nav-link" data-toggle="dropdown">Categories </Link>
                     <ul className="dropdown-menu megamenu">
                         <div className="row">
                             <li className="col-md-3 dropdown-item">
@@ -450,7 +450,7 @@ function Navbar() {
                         </div>
                     </ul>
                 </li>
-                <li className="dropdown menu-large nav-item"> <Link to="/" className="dropdown-toggle nav-link" data-toggle="dropdown">Categories </Link>
+                <li className="dropdown menu-large nav-item px-3"> <Link to="/" className="dropdown-toggle nav-link" data-toggle="dropdown">Categories </Link>
                     <ul className="dropdown-menu megamenu">
                         <div className="row">
                             <li className="col-md-3 dropdown-item">

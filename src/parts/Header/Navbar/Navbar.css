@@ -1,4 +1,12 @@
-/* @import-normalize; */
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block !important;
+}
+.navbar{
+  background-color: #32CC99 !important;
+}
+.navbar-light .navbar-nav .nav-link{
+  color: #090500 !important;
+}
 .menu-large {
     position: static !important;
   }
