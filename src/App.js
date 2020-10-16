@@ -1,4 +1,5 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import routes from './routes/routes';
 import 'normalize.css';

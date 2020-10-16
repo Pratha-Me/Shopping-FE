@@ -1,12 +1,15 @@
 import React from 'react'
+// import MainCarousel from '../component/Carousel/CarouselHome'
+import HomeCarousel from '../component/Carousel/HomeCarousel'
+
 
 const Home = () => {
     console.log("me");
     return (
         <div>
-            <h1>Hello Nice to meet you</h1>
+            <HomeCarousel></HomeCarousel>
+            {/* <MainCarousel></MainCarousel> */}
         </div>
     )
 }
-
 export default Home
