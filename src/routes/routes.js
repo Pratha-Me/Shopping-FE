@@ -1,9 +1,8 @@
-import Home from '../pages/home';
-// import Dummy from '../pages/Dummy';
-import Dummy from '../pages/dummy'
-import Login from '../pages/Login';
-import Register from '../pages/Register';
-import Seller from '../pages/Seller';
+import Home from '../pages/Home';
+import Dummy from '../pages/Dummy';
+import Login from '../pages/Login/Login';
+import Register from '../pages/Login/Register';
+import Seller from '../pages/Login/Seller';
 
 const routes = [
 

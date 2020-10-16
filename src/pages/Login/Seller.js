@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import {FormGroup, FormControl} from 'react-bootstrap';
-import './Seller.css';
+import '../../styles/css/Seller.css';
 
 function Seller() {
 

@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import {FormGroup, FormControl, ControlLabel} from 'react-bootstrap';
-import './Login.css';
+import '../../styles/css/Login.css';
 
 function Login() {
 

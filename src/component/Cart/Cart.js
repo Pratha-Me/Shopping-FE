@@ -1,5 +1,5 @@
 import React from 'react'
-import './Cart.scss'
+import '../../styles/scss/Cart.scss'
 
 function Cart() {
     return (

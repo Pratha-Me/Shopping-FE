@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Cart from '../../../component/Cart/Cart';
-import SearchBar from '../../../component/Search-Bar/SearchBar';
-import './TopHeader.scss'
+import Cart from '../../component/Cart/Cart';
+import SearchBar from '../../component/Search-Bar/SearchBar';
+import '../../styles/scss/TopHeader.scss'
 // import { Link } from 'react-router-dom';
 // import './Navbar.css';
 // import Button from 'react-bootstrap/Button'

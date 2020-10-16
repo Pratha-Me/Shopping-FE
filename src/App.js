@@ -1,12 +1,9 @@
 import React from 'react';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
-// import { loginUserSuccessful } from './store/actions';
 import routes from './routes/routes';
 import 'normalize.css';
-import TopHeader from './parts/Header/Top-Header/TopHeader'
-import Navbar from './parts/Header/Navbar/Navbar';
-
-// import './App.css';
+import TopHeader from './pages/Header/TopHeader'
+import Navbar from './pages/Header/Navbar';
 
 const App = (props) => {
 
