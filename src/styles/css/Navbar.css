@@ -3,6 +3,8 @@
 }
 .navbar{
   background-color: #32CC99 !important;
+  z-index: 99999;
+  width: 100%;
 }
 .navbar-light .navbar-nav .nav-link{
   color: #090500 !important;

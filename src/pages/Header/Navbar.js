@@ -5,7 +5,7 @@ import '../../styles/css/Navbar.css'
 function Navbar() {
     return (
       <>
-       <div className="fixed navbar navbar-light navbar-expand-md">
+    <div className="fixed navbar navbar-light navbar-expand-md">
     <div className="container">
         <button type="button" className="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse">☰</button>
         <div className="navbar-collapse collapse">
