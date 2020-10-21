@@ -5,10 +5,10 @@ function Cart() {
     return (
       <>
       <div className="btn-container">
-        <div class="btn-cart">
-            <i class="fas fa-shopping-cart"></i>
+        <div className="btn-cart">
+            <i className="fas fa-shopping-cart"></i>
             <div>
-              <span className="cart">Cart</span><span id="total" class="btn-cart__total"> 5</span>
+              <span className="cart">Cart</span><span id="total" className="btn-cart__total"> 5</span>
             </div>
         </div>
         </div>

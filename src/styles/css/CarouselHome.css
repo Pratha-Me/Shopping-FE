@@ -1,6 +1,6 @@
 /*slider*/
 #carouselExampleIndicators{
-	position: absolute;
+	position: relative;
 	height: 50vh;
 	width: 100%;
 }
