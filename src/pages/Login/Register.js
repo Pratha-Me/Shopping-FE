@@ -1,92 +1,156 @@
-import React,{useState} from 'react';
-import {FormGroup, FormControl, ControlLabel} from 'react-bootstrap';
+import React, {useState} from "react";
+import {useForm} from "react-hook-form";
 import '../../styles/css/Register.css';
 
-function Login() {
 
+function Register() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [cnPassword, setCNPassword] = useState("");
     const [fullname, setFullName] = useState("");
     const [phoneNo, setPhoneNo] = useState("");
 
-    function validateForm() {
-        return email.length > 6 && setPassword.length>6;
+    const { register, handleSubmit, errors } = useForm();
+    const validatePassword = () => {
+        console.log("hello");
     }
 
-    function handleSubmit(event) {
-        event.preventDefault();
-    }
+    
+
     return (
-        <div className="signup">
-            <form onSubmit={handleSubmit}>
-            <div className="title-wrapper">
-                <h3 class="signup-title">Signup with Shopping Store</h3>
-                <p class="login-with">Login with </p>
-                <a href="#" class="facebook-login">Facebook</a>
-                <p class="signup-with"> - Or signup with Email - </p>
+        <div class="jumbotron">
+            <div className="row">
+                <div className="col-md-4 col-xl-4 signup">
+                     <div className="row form-container">
+                        <div className="col-md-12 col-xl-12 text-center">
+                            <h4 className="mt-5 mb-5"> Signup with Shopping Store </h4>
+                        </div>
+                        <form  method="POST" onSubmit={handleSubmit()} className="col-md-12 col-xl-12 mb-1">
+                        <div className="row mb-4">
+                            <input
+                                type="text"
+                                value={fullname}
+                                placeholder="Full Name"
+                                name="fullname"
+                                className="form-control mb-4"
+                                tabIndex="1"
+                                onChange={e=>setFullName(e.target.value)}
+                                autofocus
+                                ref={register({
+                                    required:true, 
+                                    minLength:10, 
+                                    maxlength:254,
+                                    message:"Invalid Username!",
+                                    pattern: /^[A-Za-z]+$/i
+
+                                 })}
+                              
+                            />
+                        </div>
+
+                        <div className="row mb-4">
+                            <input
+                                type="email"
+                                name="email"
+                                value={email}
+                                placeholder="Email"
+                                className="form-control mb-4"
+                                onChange={e=>setEmail(e.target.value)}
+                                tabIndex="2"
+                                ref={register({
+                                    required:true, 
+                                    minLength:8, 
+                                    maxLength:254,
+                                    message:"Invalid eamil address!",
+                                    pattern:/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/ ,
+                                    
+                                 })}
+                            />
+
+                        </div>
+
+                        <div className="row mb-4">
+                            <input
+                                type="password"
+                                name="password"
+                                value={password}
+                                placeholder="Password"
+                                className="form-control mb-4"
+                                onChange={e=>setPassword(e.target.value)}
+                                tabIndex="3"
+                                ref={register({
+                                    required:true,
+                                    minLength:8,
+                                    maxLength:20,
+                                    message:"Invalid password",
+                                    pattern:/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8, 20}+$/,
+                                })}
+                                
+                            />
+                        </div>
+                        
+                        <div className="row" >
+                            <input
+                                type="password"
+                                name="cnpassword"
+                                value={cnPassword}
+                                placeholder="Confirm Password"
+                                className="form-control mb-4"
+                                onChange={e=>setCNPassword(e.target.value)}
+                                onBlur={e=>validatePassword()}
+                                tabIndex="4"
+                                ref={register({
+                                    required:true,
+                                    minLength:8,
+                                    maxLength:20,
+                                    message:"Invalid password",
+                                    pattern:/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8, 20}+$/,
+                                })}
+                                
+                            />
+                        </div>
+
+                        <div className="row">
+                            <input
+                                type="number"
+                                name="phoneNo"
+                                value={phoneNo}
+                                placeholder="Phone Number"
+                                className="form-control"
+                                onChange={e=>setPhoneNo(e.target.value)}
+                                tabIndex="5"
+                                ref={register({
+                                    required:true, 
+                                    minLength:10, 
+                                    maxLength:16,
+                                    message:"Invalid phone number!",                                    
+                                 })}
+                            />
+
+                        </div>
+                        {errors.email && errors.password  && <div className="row mt-3 errors" > * Please fill all the fields! </div>}
+                        <div className="row">
+                            <input 
+                                type="submit"  
+                                className="mt-5 mb-4 btn btn-primary form-control" 
+                                value="Register" 
+                            />
+                        </div>
+
+                        <div className="row login-wrapper">
+                            <span className="mb-5">Already have account ? </span>  &nbsp;   
+                            <a href="/login" className="login-link mb-5">Login</a>
+                        </div>
+                        
+
+                        </form>
+
+                     </div>
+                </div>
+
             </div>
-                <FormGroup controlId="fullname">
-                    <FormControl
-                        type="text"
-                        value={fullname}
-                        placeholder="Full Name"
-                        onChange={e=>setFullName(e.target.value)}
-                    />
-
-                </FormGroup>
-
-                <FormGroup controlId="email" bsSize="large">
-                    <FormControl
-                        type="email"
-                        value={email}
-                        placeholder="Email"
-                        onChange={e=>setEmail(e.target.value)}
-                    />
-
-                </FormGroup>
-                <FormGroup controlId="password" bsSize="large">
-                    <FormControl
-                        value={password}
-                        onChange={e=>setPassword(e.target.value)}
-                        type="password"
-                        placeholder="Password"
-                    /> 
-                </FormGroup>
-                <FormGroup controlId="cnPassword" bsSize="large">
-                    <FormControl
-                        value={cnPassword}
-                        onChange={e=>setCNPassword(e.target.value)}
-                        type="password"
-                        placeholder="Confirm Password"
-                    /> 
-                </FormGroup>
-                <FormGroup controlId="phoneNo" bsSize="large">
-                    <FormControl
-                        value={phoneNo}
-                        onChange={e=>setPhoneNo(e.target.value)}
-                        type="text"
-                        placeholder="Phone Number"
-                    /> 
-                </FormGroup>
-
-
-                <FormGroup controlId="btn-signup" bsSize="large">
-                    <FormControl
-                        value="Register"
-                        type="submit"
-                    />
-                </FormGroup>
-
-                <div className="login-wrapper">
-                        <span>Already have account ? </span>     
-                        <a href="/login" className="login-link">Login</a>
-                </div>  
-
-            </form>
-            
         </div>
-    )
+    );
 }
 
-export default Login
+export default Register;
