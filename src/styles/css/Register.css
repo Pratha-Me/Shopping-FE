@@ -1,89 +1,60 @@
-@media all and (min-width: 480px) {
-    .signup {
-      padding: 30px 0;
-      background-color: rgb(224, 219, 219);
-      height:100vh;
-      box-sizing: border-box;
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
-      
-    }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
-    .title-wrapper {
-      display:flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
+input[type=number] {
+  -moz-appearance: textfield;
+}
+  .jumbotron {
+    width:100% !important;
+    padding:0 !important;
+    margin:0 !important;
+    background: #6c757d;
+    box-sizing: border-box !important;
+  }
 
-    .title-wrapper h3 {
-      font-size: 25px;
-      font-weight: 500;
-    }
+  .row, .col {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
 
-    .signup-with {
-      font-size:11px;
-      margin:15px 0 5px 0;
-      color:rgb(104, 102, 102);
-      text-transform: uppercase;
-    }
+  .signup {
+    width:100% !important;
+    margin: 0 auto !important;
+    height: 100vh;
 
+  }
 
-    .facebook-login {
-      font-size: 16px;
-      border: 1px solid grey;
-      padding:5px 12px;
-      margin:7px 0 10px 0;
-      transition:all 0.6s ease-in-out;
-    }
+  .signup .form-container {
+    width:100%;
+    margin-top: 8vh !important;
+    background: #fff;
+    padding: 0 25px !important;
+    border-radius: 2px;
+    box-shadow: 0 0 4px 4px rgb(211, 209, 209);
 
-    .facebook-login:hover {
-      background-color: rgb(38, 42, 255);
-      color:#fff !important;
-      border: 1px solid blue;
-    }
-  
-    .signup form {
-      margin: 0 auto;
-      bottom: 20px;
-      max-width:33vw;
-      background-color: rgb(253, 252, 252);
-      padding:30px;
-      border-radius: 2px;
-      box-shadow: 0 0 4px 4px rgb(211, 209, 209);
-    }
+}
 
+.errors {
+  color:red !important;
+}
 
-    input {
-      font-size: 14px !important;
-      padding-left:10px !important;
-      margin-top: 20px !important;
-    }
+h4 {
+  font-weight: 500;
+  text-shadow: 1px 1px 2px #000000aa;
+}
 
-    #btn-signup {
-      background-color: rgb(18, 133, 18);
-      color:#fff;
-      font-size: 16px !important;
-      transition: all 0.4s ease-in-out;
-      margin-top: 25px !important;
-    }
+#forgot-pw {
+  color:red;
+  transition: all 0.7 ease-in-out;
+  font-size: 14px;
+  text-decoration: none;
+  padding-bottom: 4px;
 
-    #btn-signup:hover {
-      background-color: rgb(18, 100, 18) ;
-    }
-    
-    .facebook-login {
-        font-size:13px;
-        margin:3px auto;
-        transition: all 0.4s ease-in-out;
-        color:rgb(51, 50, 50) !important;
-      }
-  
-    .facebook-login:hover {
-        
-        text-decoration: none !important;
-        color:green;
-  
-      }
+}
+
 
     .login-wrapper {
       display:flex;
@@ -105,4 +76,19 @@
     .login-link:hover {
         color:rgb(45, 45, 134) !important;
     }
+#forgot-pw:hover {
+  border-bottom: 1px solid red;
+}
+
+#register {
+  color:#000000bb !important;
+  font-size: 17px;
+  font-weight: 500;
+  transition: all .4s ease-in-out;
+  text-decoration: none;
+}
+
+#register:hover {
+  color:#000000ee !important;
+
 }

@@ -1,94 +1,65 @@
-@media all and (min-width: 480px) {
-    .seller {
-      padding: 60px 0;
-      background-color: rgb(224, 219, 219);
-      height:100vh;
-      box-sizing: border-box;
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
-      
-    }
+.jumbotron {
+  width:100% !important;
+  padding:0 !important;
+  margin:0 !important;
+  background: #6c757d;
+  box-sizing: border-box !important;
+}
 
-    .title-wrapper {
-      display:flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      margin-bottom: 45px;
-      
-    }
+.row, .col {
+  margin: 0 !important;
+  padding: 0 !important;
+}
 
-    .title-wrapper h3 {
-      font-size: 23px;
-      font-weight: 500;
-    }
+.seller {
+  width:100% !important;
+  margin: 0 auto !important;
+  height: 100vh;
 
-    .seller form {
-      margin: 0 auto;
-      max-width:27vw;
-      background-color: rgb(253, 252, 252);
-      padding:30px 30px 15vh 30px;
-      border-radius: 2px;
-      box-shadow: 0 0 4px 4px rgb(211, 209, 209);
-    }
+}
+
+.seller .form-container {
+  width:100%;
+  margin-top: 14vh !important;
+  background: #fff;
+  padding: 0 25px !important;
+  border-radius: 2px;
+  box-shadow: 0 0 4px 4px rgb(211, 209, 209);
+
+}
 
 
-    input {
-      font-size: 14px !important;
-      padding-left:10px !important;
-      margin-top: 25px !important;
-    }
+.errors {
+  color:red !important;
+}
 
-    .forgot-pw-wrapper {
-        position: relative;
+h4 {
+  font-weight: 500;
+  text-shadow: 1px 1px 2px #000000aa;
+}
 
-    }
+#forgot-pw {
+  color:red;
+  transition: all 0.7 ease-in-out;
+  font-size: 14px;
+  text-decoration: none;
+  padding-bottom: 4px;
 
-    .forgot-pw-wrapper a {
-        position: absolute;
-        font-size:11px !important;
-        color:red !important;
-        right:0;
-        transition: all 0.5s ease-in-out;
+}
 
+#forgot-pw:hover {
+  border-bottom: 1px solid red;
+}
 
-    }
+#register {
+  color:#000000bb !important;
+  font-size: 17px;
+  font-weight: 500;
+  transition: all .4s ease-in-out;
+  text-decoration: none;
+}
 
-    .forgot-pw-wrapper a:hover {
-        text-decoration: underline !important;
-    }
+#register:hover {
+  color:#000000ee !important;
 
-
-    #btn-login {
-      background-color: rgb(18, 133, 18);
-      color:#fff;
-      font-size: 16px !important;
-      transition: all 0.4s ease-in-out;
-      margin-top: 25px !important;
-    }
-
-    #btn-login:hover {
-      background-color: rgb(18, 100, 18) ;
-    }
-   
-
-    .register-wrapper {
-      display:flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: row;
-      font-size:12px !important;
-      padding-top: 10px !important;
-      
-    }
-
-    .register-wrapper a {
-        margin:0;
-        padding:0;
-        transition: all 0.4s ease-in-out;
-    }
-
-    .register-wrapper a:hover {
-        color:blue !important;
-    }
-
-  }
+}
