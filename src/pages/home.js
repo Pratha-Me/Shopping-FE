@@ -1,7 +1,7 @@
 import React from 'react'
 import AdsDirectory from '../component/Ads-Directory/AdsDirectory';
 import CarouselHome from '../component/Carousel/CarouselHome'
-// import HomeCarousel from '../component/Carousel/HomeCarousel'
+import ProductCardDirectory from '../component/Product-Card-Directory/ProductCardDirectory';
 import '../styles/scss/Home.scss'
 
 const photos =[
@@ -30,13 +30,11 @@ const Home = () => {
     console.log("me");
     return (
         <>
-        <div className="Homepage">
-            {/* <HomeCarousel></HomeCarousel> */}
+        <div>
             <CarouselHome itemList={photos}></CarouselHome>
         </div>
-        {/* <div className="container-fluid"> */}
         <AdsDirectory></AdsDirectory>
-        {/* </div> */}
+        <ProductCardDirectory></ProductCardDirectory>
         </>
     )
 }
