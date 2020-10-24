@@ -1,4 +1,5 @@
 import axios from 'axios';
+import AxiosService from './AxiosService';
 import jwt from 'jwt-decode';
 
 //Set the logged in user data in local session 
@@ -51,8 +52,8 @@ const getHeaders = ()=>{
 }
 
 // Register Method
-const postRegister = (url, data) => {
-    return axios.post(url, data).then(response => {
+const postRegister = (data) => {
+    return AxiosService.login.post('/auth/register', data).then(response => {
         if (response.status >= 200 || response.status <= 299)
             return response.data;
         throw response.data;
@@ -72,8 +73,8 @@ const postRegister = (url, data) => {
 }
 
 // Login Method
-const postLogin = (url, data) => {
-    return axios.post(url, data).then(response => {
+const postLogin = (data) => {
+    return AxiosService.login.post('/auth/login', data).then(response => {
         if(!response.headers.authorization){
             throw 'No Authorization Header Found';
         }
@@ -97,8 +98,8 @@ const postLogin = (url, data) => {
 }
 
 // postForgetPwd 
-const postForgetPwd = (url, data) => {
-    return axios.post(url, data).then(response => {
+const postForgetPwd = (data) => {
+    return axios.post('Look at the postman or the backend code and put an url here', data).then(response => {
         if (response.status >= 200 || response.status <= 299)
             return response.data;
         throw response.data;
@@ -114,7 +115,7 @@ const postForgetPwd = (url, data) => {
     });
 }
 
-// postForgetPwd 
+/*
 const postVerifyCode = (url, data) => {
     return axios.post(url, data).then(response => {
         if (response.status >= 200 || response.status <= 299)
@@ -134,7 +135,6 @@ const postVerifyCode = (url, data) => {
     });
 }
 
-// postForgetPwd 
 const postChangePassword = (url, data) => {
     return axios.post(url, data).then(response => {
         if (response.status >= 200 || response.status <= 299)
@@ -153,5 +153,6 @@ const postChangePassword = (url, data) => {
         throw message;
     });
 }
+*/
 
-export { setLoggedInUser, getLoggedInUser, getAuthUser, isUserAuthenticated, getHeaders, postRegister, postLogin, postForgetPwd, postVerifyCode, postChangePassword }
+export { setLoggedInUser, getLoggedInUser, getAuthUser, isUserAuthenticated, getHeaders, postRegister, postLogin, postForgetPwd }

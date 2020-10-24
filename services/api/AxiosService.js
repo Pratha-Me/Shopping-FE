@@ -4,7 +4,7 @@ import { getHeaders } from "./AuthUtils";
 const AxiosService = {
   // The instance used to consume the Login API.
   login: axios.create({
-    baseURL: process.env.APP_API_URL,
+    baseURL: process.env.REACT_APP_API_URL,
     headers: {
       "Content-Type": "application/json",
     },
@@ -12,7 +12,7 @@ const AxiosService = {
 
   // The instance used to consume the protected API services
   app: axios.create({
-    baseURL: process.env.APP_API_URL,
+    baseURL: process.env.REACT_APP_API_URL,
     headers: {
       "Content-Type": "application/json",
     },
