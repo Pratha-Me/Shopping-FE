@@ -1,10 +1,11 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
+import { Route, Switch, BrowserRouter as Router, Redirect } from 'react-router-dom';
 import routes from './routes/routes';
 // import 'normalize.css';
 import TopHeader from './pages/Header/TopHeader'
 import Navbar from './pages/Header/Navbar';
+import UnAuthorised from './pages/UnAuthorised';
 
 const App = (props) => {
 
@@ -33,19 +34,19 @@ const App = (props) => {
   )
 */
 
-console.log("Here", routes);
+  console.log("Here", routes);
   return (
     <React.Fragment>
       <Router>
-      <TopHeader></TopHeader>
-      <Navbar></Navbar>
+        <TopHeader></TopHeader>
+        <Navbar></Navbar>
         <Switch>
           {routes.map((route, idx) =>
-            route.ispublic ? route.path === "/" ? <Route path={route.path} exact component={route.component}/> :
-              <Route path={route.path} component={route.component} key={idx} />
-              :
-              null
+            route.isPrivate ? <Redirect to={"/unauthorised"} component={UnAuthorised} />
               // <PrivateRoute path={route.path} component={withLayout(route.component)} role={route.role} key={idx} />
+              :
+              route.path === "/" ? <Route path={route.path} exact component={route.component} /> :
+                <Route path={route.path} component={route.component} key={idx} />
           )}
         </Switch>
       </Router>
