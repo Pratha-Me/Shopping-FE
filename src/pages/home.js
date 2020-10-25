@@ -31,7 +31,10 @@ const Home = () => {
     return (
         <>
         <div>
+<<<<<<< Updated upstream
             <CarouselHome itemList={photos}></CarouselHome>
+=======
+>>>>>>> Stashed changes
         </div>
         <AdsDirectory></AdsDirectory>
         <ProductCardDirectory></ProductCardDirectory>

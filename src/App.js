@@ -5,7 +5,11 @@ import routes from './routes/routes';
 // import 'normalize.css';
 import TopHeader from './pages/Header/TopHeader'
 import Navbar from './pages/Header/Navbar';
+<<<<<<< Updated upstream
 import UnAuthorised from './pages/UnAuthorised';
+=======
+import NavbarCategory from './pages/Header/NavBarCategory';
+>>>>>>> Stashed changes
 
 const App = (props) => {
 
@@ -37,8 +41,14 @@ const App = (props) => {
   return (
     <React.Fragment>
       <Router>
+<<<<<<< Updated upstream
         <TopHeader></TopHeader>
         <Navbar></Navbar>
+=======
+      <TopHeader></TopHeader>
+      {/* <Navbar></Navbar> */}
+      <NavbarCategory></NavbarCategory>
+>>>>>>> Stashed changes
         <Switch>
           {routes.map((route, idx) =>
             route.isPrivate ? <Redirect to={"/unauthorised"} component={UnAuthorised} />
