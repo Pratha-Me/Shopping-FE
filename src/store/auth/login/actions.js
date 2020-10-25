@@ -1,5 +1,6 @@
 import { CHECK_LOGIN, LOGIN_USER_SUCCESSFUL, LOGOUT_USER_SUCCESSFUL, API_FAILED } from './actionTypes';
 import * as AuthUtils from '../../../services/api/AuthUtils'
+import jwt from 'jwt-decode';
 
 const checkLogin = (username, password, history) => {
     return {
@@ -29,22 +30,37 @@ const apiError = (error) => {
 }
 
 const postLogin = (data, history) => (dispatch) => {
-    try {
-        console.log("Check", data);
-        console.log("Check", data.username, data.password);
-        dispatch(checkLogin(data.username, data.password, history));
+    console.log("Check", data);
+    console.log("Check", data.username, data.password);
 
-        const responseData = AuthUtils.postLogin(data);
-        AuthUtils.setLoggedInUser(responseData);
-        
-        console.log("Response after login", responseData);
+    dispatch(checkLogin(data.username, data.password, history));
+    AuthUtils.postLogin(data).then(response => {
+        if (!response.headers.authorization) {
+            throw 'No Authorization Header Found';
+        }
+        let token = response.headers.authorization.replace("Bearer ", "");
+        let user = jwt(token)
+        user.token = token;
 
-        dispatch(loginUserSuccessful(responseData));
+        console.log("Response after login", user);
+
+        AuthUtils.setLoggedInUser(user);
+        dispatch(loginUserSuccessful(user));
         history.push('/');
-    } catch (error) {
-        dispatch(apiError(error))
-        console.log(error);
-    }
+
+    }).catch(err => {
+        let message;
+        if (err.response && err.response.status) {
+            switch (err.response.status) {
+                case 404: message = "Sorry! the page you are looking for could not be found"; break;
+                case 500: message = "Sorry! something went wrong, please contact our support team"; break;
+                case 401: message = "Username or Password is incorrect"; break;
+                default: message = err[1]; break;
+            }
+        }
+        dispatch(apiError(err))
+        throw message;
+    });
 }
 
-export {postLogin};
+export { postLogin };
