@@ -34,7 +34,6 @@ const App = (props) => {
   )
 */
 
-  console.log("Here", routes);
   return (
     <React.Fragment>
       <Router>
@@ -45,7 +44,7 @@ const App = (props) => {
             route.isPrivate ? <Redirect to={"/unauthorised"} component={UnAuthorised} />
               // <PrivateRoute path={route.path} component={withLayout(route.component)} role={route.role} key={idx} />
               :
-              route.path === "/" ? <Route path={route.path} exact component={route.component} /> :
+              route.path === "/" ? <Route path={route.path} exact component={route.component} key={idx} /> :
                 <Route path={route.path} component={route.component} key={idx} />
           )}
         </Switch>

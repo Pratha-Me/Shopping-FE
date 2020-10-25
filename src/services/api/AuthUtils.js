@@ -74,7 +74,7 @@ const postRegister = (data) => {
 
 // Login Method
 const postLogin = (data) => {
-    return AxiosService.login.post('/auth/login', data).then(response => {
+    return AxiosService.login.post('/user/login', data).then(response => {
         if(!response.headers.authorization){
             throw 'No Authorization Header Found';
         }
