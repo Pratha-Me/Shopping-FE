@@ -1,56 +1,12 @@
-import axios from 'axios';
 import AxiosService from './AxiosService';
-import jwt from 'jwt-decode';
 
-//Set the logged in user data in local session 
-const setLoggedInUser = (user) => {
-    localStorage.setItem('user', JSON.stringify(user));
+// Login Method
+const postLogin = (data) => {
+    return AxiosService.login.post('/user/login', data);
 }
 
-// Gets the logged in user data from local session 
-const getLoggedInUser = () => {
-    const user = localStorage.getItem('user');
-    if (user)
-        return JSON.parse(user);
-    return null;
-}
 
-const getAuthUser = () => {
-    let user = localStorage.getItem('user');
-    if (user){
-        user = JSON.parse(user);
-        user = jwt(user.token);
-        return user;
-    }
-    return null;
-}
-
-//is user is logged in
-const isUserAuthenticated = () => {
-    let user = getLoggedInUser();
-    if(!user || !user.token)
-        return false;
-
-    user = jwt(user.token);
-
-    if(user && user.exp){
-        if (Date.now() >= user.exp * 1000) {
-            return false;
-        }
-        return true;
-    }
-    return false;
-}
-
-const getHeaders = ()=>{
-    const user = getLoggedInUser();
-    let headers = {};
-    if(user && user.token){
-        headers.Authorization = 'Bearer '+ user.token
-    }
-    return headers;
-}
-
+/*
 // Register Method
 const postRegister = (data) => {
     return AxiosService.login.post('/auth/register', data).then(response => {
@@ -72,11 +28,6 @@ const postRegister = (data) => {
 
 }
 
-// Login Method
-const postLogin = (data) => {
-    return AxiosService.login.post('/user/login', data);
-}
-
 // postForgetPwd 
 const postForgetPwd = (data) => {
     return axios.post('Look at the postman or the backend code and put an url here', data).then(response => {
@@ -95,7 +46,6 @@ const postForgetPwd = (data) => {
     });
 }
 
-/*
 const postVerifyCode = (url, data) => {
     return axios.post(url, data).then(response => {
         if (response.status >= 200 || response.status <= 299)
@@ -135,4 +85,4 @@ const postChangePassword = (url, data) => {
 }
 */
 
-export { setLoggedInUser, getLoggedInUser, getAuthUser, isUserAuthenticated, getHeaders, postRegister, postLogin, postForgetPwd }
+export { postLogin }

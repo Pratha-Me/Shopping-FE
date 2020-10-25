@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getHeaders } from "./AuthUtils";
+import { getHeaders } from "../helpers/AuthHelpers";
 
 const AxiosService = {
   // The instance used to consume the Login API.

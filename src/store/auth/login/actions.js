@@ -1,5 +1,6 @@
 import { CHECK_LOGIN, LOGIN_USER_SUCCESSFUL, LOGOUT_USER_SUCCESSFUL, API_FAILED } from './actionTypes';
-import * as AuthUtils from '../../../services/api/AuthUtils'
+import * as AuthHelpers from '../../../services/helpers/AuthHelpers'
+import * as AuthService from '../../../services/api/AuthService'
 import jwt from 'jwt-decode';
 
 const checkLogin = (username, password, history) => {
@@ -34,7 +35,7 @@ const postLogin = (data, history) => (dispatch) => {
     console.log("Check", data.username, data.password);
 
     dispatch(checkLogin(data.username, data.password, history));
-    AuthUtils.postLogin(data).then(response => {
+    AuthService.postLogin(data).then(response => {
         if (!response.headers.authorization) {
             throw 'No Authorization Header Found';
         }
@@ -44,7 +45,7 @@ const postLogin = (data, history) => (dispatch) => {
 
         console.log("Response after login", user);
 
-        AuthUtils.setLoggedInUser(user);
+        AuthHelpers.setLoggedInUser(user);
         dispatch(loginUserSuccessful(user));
         history.push('/');
 
