@@ -32,7 +32,8 @@ const login = (state = initialState, action) => {
             state = {
                 ...state,
                 loading: false,
-                loginError: action.payload
+                loginError: null,
+                message: action.payload
             }
             break;
         default:

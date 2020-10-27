@@ -4,17 +4,19 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import '../../styles/css/Login.css';
-import { postLogin } from "../../store/actions";
+import { postLogin } from "../../redux/actions";
+import { data } from "jquery";
 
 
 function Login(props) {
     const { register, handleSubmit, errors } = useForm();
 
-    const handleSubmitForm = (formData) => {
+    const handleSubmitForm = async (formData) => {
         console.log("Login Form", formData);
         console.log("history", props.history);
 
-        props.postLogin(formData, props.history);
+        await props.postLogin(formData, props.history);
+        if(data.login) console.log(data.login);
     };
 
     return (
