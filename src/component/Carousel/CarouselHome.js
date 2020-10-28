@@ -6,10 +6,10 @@ function CarouselHome(props) {
     <>
       <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
 			  <ol className="carousel-indicators">
-          {props.itemList.map((index)=>{
+          {props.itemList.map((item, index)=>{
             let activeClass = (index === 0) ? 'active' : ''
             return(
-              <li data-target="#carouselExampleIndicators" data-slide-to={index} className={activeClass}></li>
+              <li key={item.id} data-target="#carouselExampleIndicators" data-slide-to={index} className={activeClass}></li>
             )
           })}
 			  </ol>
