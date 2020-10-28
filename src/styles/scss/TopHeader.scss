@@ -1,20 +1,20 @@
-@import "../../index.scss";
+@import '../../index.scss';
 
-.top-header{
-    text-decoration: none;
-    >div{
-    border-left: 1px solid $base-color;
-    border-right: 1px solid $base-color;
-    padding: 0;
-    color: $hover-color;
-       a{
-           text-decoration: none;
-           color: $base-font-color;
-           padding: 0;
-            cursor: pointer;
-           &:hover{
-            color: $hover-color;
-        } 
-       }
+.top-header {
+  text-decoration: none !important;
+  > div {
+    border-left: 1px solid $base-color !important;
+    border-right: 1px solid $base-color !important;
+    padding: 0 !important;
+    color: $hover-color !important;
+    a {
+      text-decoration: none !important;
+      color: $base-font-color !important;
+      padding: 0 !important;
+      cursor: pointer !important;
+      &:hover {
+        color: $hover-color !important;
+      }
     }
+  }
 }

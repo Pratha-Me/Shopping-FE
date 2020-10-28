@@ -5,7 +5,9 @@ import routes from './routes/routes';
 // import 'normalize.css';
 import TopHeader from './pages/Header/TopHeader'
 import Navbar from './pages/Header/Navbar';
+import NavbarCategory from './pages/Header/NavBarCategory'
 import UnAuthorised from './pages/UnAuthorised';
+import NavbarMenu from './pages/Header/NavbarMenu';
 
 const App = (props) => {
 
@@ -37,8 +39,10 @@ const App = (props) => {
   return (
     <React.Fragment>
       <Router>
-        <TopHeader></TopHeader>
-        <Navbar></Navbar>
+      <TopHeader></TopHeader>
+      <NavbarMenu></NavbarMenu>
+      {/* <Navbar></Navbar> */}
+      {/* <NavbarCategory></NavbarCategory> */}
         <Switch>
           {routes.map((route, idx) =>
             route.isPrivate ? <Redirect to={"/unauthorised"} component={UnAuthorised} />

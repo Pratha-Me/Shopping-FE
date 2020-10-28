@@ -27,7 +27,6 @@ const photos =[
     }
 ]
 const Home = () => {
-    console.log("me");
     return (
         <>
         <div>
