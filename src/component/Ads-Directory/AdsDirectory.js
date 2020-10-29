@@ -13,7 +13,6 @@ export default class AdsDirectory extends Component {
           linkUrl: '',
         },
         {
-          title: 'jackets',
           imageUrl: 'https://i.ibb.co/px2tCc3/jackets.png',
           id: 2,
           linkUrl: '',
