@@ -2,6 +2,8 @@ import Home from '../pages/Home';
 import Login from '../pages/Login/Login';
 import Register from '../pages/Login/Register';
 import Seller from '../pages/Login/Seller';
+import ResetPassword from '../pages/Login/ResetPassword';
+import VerifyMail from '../pages/Login/VerifyMail';
 
 const routes = [
 
@@ -14,6 +16,9 @@ const routes = [
     { path: '/login', component: Login },
     { path: '/register', component: Register },
     { path: '/seller', component: Seller },
+    { path: '/reset-password', component: ResetPassword },
+    { path: '/verify-email', component: VerifyMail },
+
 
     // Authenticated Routes
     // { path: '/dashboard', component: Dashboard},
