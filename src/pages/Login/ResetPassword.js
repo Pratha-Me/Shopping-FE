@@ -1,13 +1,18 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { forgetPwd } from "../../redux/actions";
 import '../../styles/css/ResetPassword.css';
 
 function ResetPassword(props) {
     const { register, handleSubmit, errors } = useForm();
 
-    const handleSubmitForm = event => {
-        event.preventDefault();
+    const handleSubmitForm = async (formData) => {
+        console.log("Form Comp", formData);
+        await props.forgetPwd(formData);
     };
+
 
     return (
         <div className="jumbotron">
@@ -60,8 +65,16 @@ function ResetPassword(props) {
             </div>
         </div>
     );
-
 }
 
+const mapStateToProps = (state) => {
+    return { 
+        data : state.Forget
+    }
+}
 
-export default ResetPassword;
+const mapActionsToProps = {
+    forgetPwd
+}
+
+export default withRouter(connect(mapStateToProps, mapActionsToProps)(ResetPassword));

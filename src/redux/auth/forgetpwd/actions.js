@@ -1,19 +1,20 @@
 import { ENTER_EMAIL, ENTER_EMAIL_SUCCESS, ENTER_EMAIL_ERROR, VERIFY_CODE, VERIFY_CODE_ERROR, CHANGE_PASSWORD, CHANGE_PASSWORD_SUCCESS, CHANGE_PASSWORD_ERROR, VERIFY_CODE_SUCCESS, GENERAL_ERROR } from './actionTypes';
+import * as AuthService from "../../../services/AuthService";
 
-export const enterEmail = (email) => {
+const enterEmail = (email) => {
     return {
         type: ENTER_EMAIL,
         payload: { email }
     }
 }
 
-export const enterEmailSuccess = () => {
+const enterEmailSuccess = () => {
     return {
         type: ENTER_EMAIL_SUCCESS
     }
 }
 
-export const enterEmailError = (error) => {
+const enterEmailError = (error) => {
     return {
         type: ENTER_EMAIL_ERROR,
         payload: error
@@ -21,49 +22,63 @@ export const enterEmailError = (error) => {
 }
 
 
-export const verifyCode = (email, code) => {
+const verifyCode = (email, code) => {
     return {
         type: VERIFY_CODE,
         payload: { email, code }
     }
 }
 
-export const verifyCodeSuccess = () => {
+const verifyCodeSuccess = () => {
     return {
         type: VERIFY_CODE_SUCCESS
     }
 }
 
-export const verifyCodeError = (error) => {
+const verifyCodeError = (error) => {
     return {
         type: VERIFY_CODE_ERROR,
         payload: error
     }
 }
 
-export const changePassword = (email, code, newPassword, history) => {
+const changePassword = (email, code, newPassword, history) => {
     return {
         type: CHANGE_PASSWORD,
         payload: { email, code, newPassword, history }
     }
 }
 
-export const changePasswordSuccess = () => {
+const changePasswordSuccess = () => {
     return {
         type: CHANGE_PASSWORD_SUCCESS
     }
 }
 
-export const changePasswordError = (error) => {
+const changePasswordError = (error) => {
     return {
         type: CHANGE_PASSWORD_ERROR,
         payload: error
     }
 }
 
-export const putGeneralError = (message) => {
+const putGeneralError = (message) => {
     return {
         type : GENERAL_ERROR,
         payload: message
     }
+}
+
+export const forgetPwd = (data) => async (dispatch) => {
+    try {
+        console.log("Check Actions", data);
+        dispatch(enterEmail(data.email));
+        const responseData = await AuthService.postForgetPwd(data);
+
+        console.log("Response after login", responseData.status);
+
+        dispatch(enterEmailSuccess());
+    } catch(message) {
+        dispatch(enterEmailError(message))
+    };
 }

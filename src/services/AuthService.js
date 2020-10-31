@@ -1,3 +1,4 @@
+import Axios from 'axios';
 import AxiosService from '../api/AxiosService';
 
 // Login Method
@@ -16,6 +17,20 @@ const postLogin = (data) => {
     });
 }
 
+const postForgetPwd= (data) => {
+    // TODO change the url
+    return AxiosService.login.post('/dummy', data).catch(err => {
+        let message;
+        if (err.response && err.response.status) {
+            switch (err.response.status) {
+                case 404: message = "Sorry! the page you are looking for could not be found"; break;
+                case 500: message = "Sorry! something went wrong, please contact our support team"; break;
+                default: message = err[1]; break;
+            }
+        }
+        throw message;
+    })
+}
 
 /*
 // Register Method
@@ -37,24 +52,6 @@ const postRegister = (data) => {
         throw message;
     });
 
-}
-
-// postForgetPwd 
-const postForgetPwd = (data) => {
-    return axios.post('Look at the postman or the backend code and put an url here', data).then(response => {
-        if (response.status >= 200 || response.status <= 299)
-            return response.data;
-        throw response.data;
-    }).catch(err => {
-        let message;
-        if (err.response && err.response.status ) {
-            switch (err.response.status) {
-                case 400: message = "Unable to send verification code in that email"; break;
-                default: message = err[1]; break;
-            }
-        }
-        throw message;
-    });
 }
 
 const postVerifyCode = (url, data) => {
@@ -96,4 +93,4 @@ const postChangePassword = (url, data) => {
 }
 */
 
-export { postLogin }
+export { postLogin, postForgetPwd }

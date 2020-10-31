@@ -1,11 +1,10 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import '../../styles/css/Login.css';
 import { postLogin } from "../../redux/actions";
-import { data } from "jquery";
 
 
 function Login(props) {
@@ -16,7 +15,6 @@ function Login(props) {
         console.log("history", props.history);
 
         await props.postLogin(formData, props.history);
-        if(data.login) console.log(data.login);
     };
 
     return (
@@ -65,7 +63,7 @@ function Login(props) {
 
                             <div className="row mt-1 ">
                                 <div className="col-md-12 col-xl-12 text-right">
-                                    <a href="/forgotpassword" id="forgot-pw">Forgot Password ?</a>
+                                    <Link to="/reset-password">Forgot Password ?</Link>
                                 </div>
                             </div>
 
@@ -92,7 +90,7 @@ function Login(props) {
 
 const mapStateToProps = (state) => {
     return {
-        data: state.Login.login
+        data: state.Login
     }
 }
 
