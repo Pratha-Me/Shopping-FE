@@ -1,8 +1,11 @@
-$base-color: grey;
-$focus-color: lightgreen;
-$hover-color: #32CC99;
+$base-color: #039be5;
+$focus-color: lightblue;
+$hover-color: #039be5;
 $base-font-color: #090500;
-a{
-    text-decoration: none !important;
-    color: $base-font-color !important;
+body {
+  background-color: #eceff1;
+}
+a {
+  text-decoration: none !important;
+  color: $base-font-color !important;
 }

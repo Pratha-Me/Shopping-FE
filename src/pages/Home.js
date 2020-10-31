@@ -27,12 +27,20 @@ const photos =[
     }
 ]
 const Home = () => {
-    console.log("me");
     return (
         <>
         <div>
             <CarouselHome itemList={photos}></CarouselHome>
         </div>
+        <AdsDirectory></AdsDirectory>
+        <ProductCardDirectory></ProductCardDirectory>
+        <ProductCardDirectory></ProductCardDirectory>
+        <ProductCardDirectory></ProductCardDirectory>
+        <AdsDirectory></AdsDirectory>
+        <ProductCardDirectory></ProductCardDirectory>
+        <AdsDirectory></AdsDirectory>
+        <ProductCardDirectory></ProductCardDirectory>
+        <ProductCardDirectory></ProductCardDirectory>
         <AdsDirectory></AdsDirectory>
         <ProductCardDirectory></ProductCardDirectory>
         </>

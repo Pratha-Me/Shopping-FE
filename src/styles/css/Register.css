@@ -4,41 +4,40 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input[type=number] {
+input[type='number'] {
   -moz-appearance: textfield;
 }
-  .jumbotron {
-    width:100% !important;
-    padding:0 !important;
-    margin:0 !important;
-    background: #6c757d;
-    box-sizing: border-box !important;
-  }
+.jumbotron {
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: #6c757d;
+  box-sizing: border-box !important;
+}
 
-  .row, .col {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
+.jumbotron .row,
+.col {
+  margin: 0 !important;
+  padding: 0 !important;
+}
 
-  .signup {
-    width:100% !important;
-    margin: 0 auto !important;
-    height: 100vh;
+.signup {
+  width: 100% !important;
+  margin: 0 auto !important;
+  height: 100vh;
+}
 
-  }
-
-  .signup .form-container {
-    width:100%;
-    margin-top: 8vh !important;
-    background: #fff;
-    padding: 0 25px !important;
-    border-radius: 2px;
-    box-shadow: 0 0 4px 4px rgb(211, 209, 209);
-
+.signup .form-container {
+  width: 100%;
+  margin-top: 8vh !important;
+  background: #fff;
+  padding: 0 25px !important;
+  border-radius: 2px;
+  box-shadow: 0 0 4px 4px rgb(211, 209, 209);
 }
 
 .errors {
-  color:red !important;
+  color: red !important;
 }
 
 h4 {
@@ -47,48 +46,44 @@ h4 {
 }
 
 #forgot-pw {
-  color:red;
+  color: red;
   transition: all 0.7 ease-in-out;
   font-size: 14px;
   text-decoration: none;
   padding-bottom: 4px;
-
 }
 
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  font-size: 12px;
+  padding-top: 10px;
+}
 
-    .login-wrapper {
-      display:flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: row;
-      font-size:12px;
-      padding-top: 10px;
-    }
+.login-link {
+  margin: 0;
+  padding: 0;
+  color: rgb(63, 63, 189) !important;
+  font-size: 14px !important;
+}
 
-    .login-link {
-        margin:0;
-        padding:0;
-        color:rgb(63, 63, 189) !important;
-        font-size: 14px !important;
-    }
- 
-
-    .login-link:hover {
-        color:rgb(45, 45, 134) !important;
-    }
+.login-link:hover {
+  color: rgb(45, 45, 134) !important;
+}
 #forgot-pw:hover {
   border-bottom: 1px solid red;
 }
 
 #register {
-  color:#000000bb !important;
+  color: #000000bb !important;
   font-size: 17px;
   font-weight: 500;
-  transition: all .4s ease-in-out;
+  transition: all 0.4s ease-in-out;
   text-decoration: none;
 }
 
 #register:hover {
-  color:#000000ee !important;
-
+  color: #000000ee !important;
 }

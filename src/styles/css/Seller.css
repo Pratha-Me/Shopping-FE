@@ -1,36 +1,34 @@
 .jumbotron {
-  width:100% !important;
-  padding:0 !important;
-  margin:0 !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
   background: #6c757d;
   box-sizing: border-box !important;
 }
 
-.row, .col {
+.jumbotron .row,
+.col {
   margin: 0 !important;
   padding: 0 !important;
 }
 
 .seller {
-  width:100% !important;
+  width: 100% !important;
   margin: 0 auto !important;
   height: 100vh;
-
 }
 
 .seller .form-container {
-  width:100%;
+  width: 100%;
   margin-top: 14vh !important;
   background: #fff;
   padding: 0 25px !important;
   border-radius: 2px;
   box-shadow: 0 0 4px 4px rgb(211, 209, 209);
-
 }
 
-
 .errors {
-  color:red !important;
+  color: red !important;
 }
 
 h4 {
@@ -39,12 +37,11 @@ h4 {
 }
 
 #forgot-pw {
-  color:red;
+  color: red;
   transition: all 0.7 ease-in-out;
   font-size: 14px;
   text-decoration: none;
   padding-bottom: 4px;
-
 }
 
 #forgot-pw:hover {
@@ -52,14 +49,13 @@ h4 {
 }
 
 #register {
-  color:#000000bb !important;
+  color: #000000bb !important;
   font-size: 17px;
   font-weight: 500;
-  transition: all .4s ease-in-out;
+  transition: all 0.4s ease-in-out;
   text-decoration: none;
 }
 
 #register:hover {
-  color:#000000ee !important;
-
+  color: #000000ee !important;
 }

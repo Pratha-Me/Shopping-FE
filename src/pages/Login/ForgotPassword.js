@@ -15,8 +15,8 @@ function Login(props) {
         console.log("Login Form", formData);
         console.log("history", props.history);
 
-        await props.postLogin(formData, props.history);
-        if(data.login) console.log(data.login);
+        // await props.postLogin(formData, props.history);
+        // if(data.login) console.log(data.login);
     };
 
     return (
@@ -25,7 +25,7 @@ function Login(props) {
                 <div className="col-md-4 col-xl-4 login">
                     <div className="row form-container">
                         <div className="col-md-12 col-xl-12 text-center pt-3">
-                            <h4 className="mt-5 mb-4 pb-4"> Login to Shopping Store </h4>
+                            <h4 className="mt-5 mb-3 pb-4"> Enter Your Email Address </h4>
                         </div>
                         <form onSubmit={handleSubmit(handleSubmitForm)} className="col-md-12 col-xl-12 mb-3">
                             <div className="row mb-4">
@@ -33,7 +33,7 @@ function Login(props) {
                                 <input
                                     type="email"
                                     className="form-control"
-                                    name="username"
+                                    name="email"
                                     placeholder="Email"
                                     tabIndex="1"
                                     ref={register({
@@ -47,7 +47,7 @@ function Login(props) {
                                 />
                             </div>
 
-                            <div className="row ">
+                            {/* <div className="row ">
                                 <input
                                     type="password"
                                     name="password"
@@ -61,27 +61,17 @@ function Login(props) {
                                     })}
                                 />
 
-                            </div>
-
-                            <div className="row mt-1 ">
-                                <div className="col-md-12 col-xl-12 text-right">
-                                    <a href="/forgotpassword" id="forgot-pw">Forgot Password ?</a>
-                                </div>
-                            </div>
+                            </div> */}
 
                             {errors.email && errors.password && <div className="row mt-3 errors" > * Please fill all the fields! </div>}
 
                             <div className="row ">
                                 <button
                                     type="submit"
-                                    className="btn btn-primary form-control mt-5"
-                                >Login</button>
+                                    className="btn btn-primary form-control mt-4"
+                                >Submit</button>
                             </div>
-
                         </form>
-                        <div className="col-md-12 col-xl-12 text-center mb-5">
-                            <a href="/register" id="register">Create New Account</a>
-                        </div>
                     </div>
                 </div>
 
@@ -99,6 +89,5 @@ const mapStateToProps = (state) => {
 const mapActionsToProps = {
     postLogin
 }
-
 
 export default withRouter(connect(mapStateToProps, mapActionsToProps)(Login));

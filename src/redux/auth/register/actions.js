@@ -47,3 +47,30 @@ export const confirmError = (error) => {
         payload: error
     }
 }
+
+const postRegister = (data, history) => async (dispatch) => {
+    try {
+        console.log("Check", data);
+        console.log("Check", data.username, data.password);
+        dispatch(registerUser(data.username, data.password, history));
+
+        // const responseData = await AuthService.postLogin(data);
+
+        // let token = responseData.headers.authorization.replace("Bearer ","");
+        // let user = jwt(token)
+        // user.token = token;
+        
+        // AuthHelpers.setLoggedInUser(user);
+        
+        // console.log("Response after login", user);
+
+        // AuthHelpers.setLoggedInUser(user);
+        // dispatch(loginUserSuccessful(user));
+        // history.push('/');
+
+    } catch(message) {
+        dispatch(apiError(message))
+    };
+}
+
+export { postRegister };
