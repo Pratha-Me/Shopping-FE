@@ -11,14 +11,13 @@ function TopHeader() {
   // const [click, setClick] = useState(false);
   // const handleClick = () => setClick(!click);
   // const closeMobileMenu = () => setClick(false);
-  const [isLoggedIn, setlogin] = useState(true);
+  const [isLoggedIn, setlogin] = useState(false);
   return (
     <>
       <div className="container fluid pt-4">
       <div className="row">
       {isLoggedIn ? <div className="col-8 ml-auto">
                       <div className="row text-center top-header">
-                        <div className="col-2 "><Link to="/register">Register Now</Link></div>
                         <div className="col-3"><Link to="/seller"> Sell on Shopping.com</Link></div>
                         <div className="col-2"><Link to="/"> <i className="fas fa-user-alt mr-2"></i>
                         My Account</Link></div>
@@ -27,7 +26,7 @@ function TopHeader() {
                       </div>
                     </div>: <div className="col-6 ml-auto">
                       <div className="row text-center top-header">
-                        <div className="col-2 "><Link to="/register">Register</Link></div>
+                        <div className="col-3 "><Link to="/register">Register Now</Link></div>
                         <div className="col-4"><Link to="/seller"> Sell on Shopping.com</Link></div>
                         <div className="col-2"><Link to="/login"> Login</Link></div>
                       </div>

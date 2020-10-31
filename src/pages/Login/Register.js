@@ -15,8 +15,6 @@ function Register() {
         console.log("hello");
     }
 
-    
-
     return (
         <div class="jumbotron">
             <div className="row">

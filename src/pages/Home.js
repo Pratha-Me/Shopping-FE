@@ -34,6 +34,15 @@ const Home = () => {
         </div>
         <AdsDirectory></AdsDirectory>
         <ProductCardDirectory></ProductCardDirectory>
+        <ProductCardDirectory></ProductCardDirectory>
+        <ProductCardDirectory></ProductCardDirectory>
+        <AdsDirectory></AdsDirectory>
+        <ProductCardDirectory></ProductCardDirectory>
+        <AdsDirectory></AdsDirectory>
+        <ProductCardDirectory></ProductCardDirectory>
+        <ProductCardDirectory></ProductCardDirectory>
+        <AdsDirectory></AdsDirectory>
+        <ProductCardDirectory></ProductCardDirectory>
         </>
     )
 }
