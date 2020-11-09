@@ -1,0 +1,25 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.subcategory {
+    width:100% !important;
+    padding:0 !important;
+    margin:0 !important;
+    background: #f3f3f3;
+    box-sizing: border-box !important;
+    height:100vh;
+  }
+
+
+.subCat-breadcrumb,.subCat-breadcrumb li {
+  margin:0 !important;
+  padding:0 !important;
+}
+

@@ -11,7 +11,7 @@ function TopHeader() {
   // const [click, setClick] = useState(false);
   // const handleClick = () => setClick(!click);
   // const closeMobileMenu = () => setClick(false);
-  const [isLoggedIn, setlogin] = useState(false);
+  const [isLoggedIn, setlogin] = useState(true);
   return (
     <>
       <div className="container fluid pt-4">

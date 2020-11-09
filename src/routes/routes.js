@@ -4,6 +4,10 @@ import Register from '../pages/Login/Register';
 import Seller from '../pages/Login/Seller';
 import ResetPassword from '../pages/Login/ResetPassword';
 import VerifyMail from '../pages/Login/VerifyMail';
+import SubCategory from '../pages/Category/SubCategory';
+import Profile from '../pages/account/Profile';
+
+
 
 const routes = [
 
@@ -18,6 +22,8 @@ const routes = [
     { path: '/seller', component: Seller },
     { path: '/reset-password', component: ResetPassword },
     { path: '/verify-email', component: VerifyMail },
+    { path: '/subcategory', component: SubCategory },
+    { path: '/home/account/profile', component: Profile },
 
 
     // Authenticated Routes
