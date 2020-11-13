@@ -14,8 +14,11 @@ import { connect } from 'react-redux';
 
 const App = (props) => {
 
-  const user = getAuthUser();
-  props.loginUserSuccessful(user);
+  if (getAuthUser()){
+    console.log("HERE LOGGED IN");
+    const user = getAuthUser();
+    props.loginUserSuccessful(user);
+  }
 
   const PrivateRoute = ({ component: Component, role: Role, ...rest }) => (
     <Route {...rest} render={(props) => {
