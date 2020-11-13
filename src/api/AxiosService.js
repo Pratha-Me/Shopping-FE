@@ -31,6 +31,7 @@ AxiosService.app.interceptors.request.use((config) => {
   //   }
   
   config.headers = getHeaders();
+  return config;
 });
 
 export default AxiosService;

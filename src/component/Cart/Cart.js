@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../../styles/scss/Cart.scss'
+import { getAuthUser } from '../../helpers/AuthHelpers';
 
 function Cart() {
+
+useEffect(() => {
+  console.log("USER", getAuthUser());
+}, [])
+
     return (
       <>
       <div className="btn-container">

@@ -8,13 +8,15 @@ import NavbarCategory from './pages/Header/NavBarCategory'
 import UnAuthorised from './pages/UnAuthorised';
 import NavbarMenu from './pages/Header/NavbarMenu';
 import Footer from './pages/Footer/Footer'
+import { getAuthUser, isUserAuthenticated } from './helpers/AuthHelpers'
+import { loginUserSuccessful } from './redux/auth/login/actions'
+import { connect } from 'react-redux';
 
 const App = (props) => {
 
-  // const user = getAuthUser();
-  // props.loginUserSuccessful(user);
+  const user = getAuthUser();
+  props.loginUserSuccessful(user);
 
-  /*
   const PrivateRoute = ({ component: Component, role: Role, ...rest }) => (
     <Route {...rest} render={(props) => {
       if (isUserAuthenticated() !== true) {
@@ -34,19 +36,16 @@ const App = (props) => {
       }
     }} />
   )
-*/
 
   return (
     <React.Fragment>
       <Router>
-      <TopHeader></TopHeader>
-      <NavbarMenu></NavbarMenu>
       {/* <Navbar></Navbar> */}
       {/* <NavbarCategory></NavbarCategory> */}
         <Switch>
           {routes.map((route, idx) =>
-            route.isPrivate ? <Redirect to={"/unauthorised"} component={UnAuthorised} />
-              // <PrivateRoute path={route.path} component={withLayout(route.component)} role={route.role} key={idx} />
+            route.isPrivate ? 
+              <PrivateRoute path={route.path} component={route.component} role={route.role} key={idx} />
               :
               route.path === "/" ? <Route path={route.path} exact component={route.component} key={idx} /> :
                 <Route path={route.path} component={route.component} key={idx} />
@@ -58,4 +57,4 @@ const App = (props) => {
   );
 }
 
-export default App;
+export default connect(null, {loginUserSuccessful})(App);

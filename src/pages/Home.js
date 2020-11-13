@@ -3,6 +3,8 @@ import AdsDirectory from '../component/Ads-Directory/AdsDirectory';
 import CarouselHome from '../component/Carousel/CarouselHome'
 import ProductCardDirectory from '../component/Product-Card-Directory/ProductCardDirectory';
 import '../styles/scss/Home.scss'
+import TopHeader from '../pages/Header/TopHeader'
+import NavbarMenu from '../pages/Header/NavbarMenu'
 
 const photos =[
     {
@@ -29,6 +31,9 @@ const photos =[
 const Home = () => {
     return (
         <>
+
+      <TopHeader></TopHeader>
+      <NavbarMenu></NavbarMenu>
         <div>
             <CarouselHome itemList={photos}></CarouselHome>
         </div>
