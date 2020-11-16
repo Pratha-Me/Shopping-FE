@@ -2,17 +2,22 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Route, Switch, BrowserRouter as Router, Redirect } from 'react-router-dom';
 import routes from './routes/routes';
-// import TopHeader from './pages/Header/TopHeader'
+import TopHeader from './pages/Header/TopHeader'
 import UnAuthorised from './pages/UnAuthorised';
-// import NavbarMenu from './pages/Header/NavbarMenu';
-// import Footer from './pages/Footer/Footer'
+import NavbarMenu from './pages/Header/NavbarMenu';
+import Footer from './pages/Footer/Footer'
+import { getAuthUser, isUserAuthenticated } from './helpers/AuthHelpers'
+import { loginUserSuccessful } from './redux/auth/login/actions'
+import { connect } from 'react-redux';
 
 const App = (props) => {
 
-  // const user = getAuthUser();
-  // props.loginUserSuccessful(user);
+  if (getAuthUser()){
+    console.log("HERE LOGGED IN");
+    const user = getAuthUser();
+    props.loginUserSuccessful(user);
+  }
 
-  /*
   const PrivateRoute = ({ component: Component, role: Role, ...rest }) => (
     <Route {...rest} render={(props) => {
       if (isUserAuthenticated() !== true) {
@@ -32,28 +37,25 @@ const App = (props) => {
       }
     }} />
   )
-*/
 
   return (
     <React.Fragment>
       <Router>
-      {/* <TopHeader></TopHeader>
-      <NavbarMenu></NavbarMenu> */}
       {/* <Navbar></Navbar> */}
       {/* <NavbarCategory></NavbarCategory> */}
         <Switch>
           {routes.map((route, idx) =>
-            route.isPrivate ? <Redirect to={"/unauthorised"} component={UnAuthorised} />
-              // <PrivateRoute path={route.path} component={withLayout(route.component)} role={route.role} key={idx} />
+            route.isPrivate ? 
+              <PrivateRoute path={route.path} component={route.component} role={route.role} key={idx} />
               :
               route.path === "/" ? <Route path={route.path} exact component={route.component} key={idx} /> :
                 <Route path={route.path} component={route.component} key={idx} />
           )}
         </Switch>
-        {/* <Footer></Footer> */}
+        <Footer></Footer>
       </Router>
     </React.Fragment>
   );
 }
 
-export default App;
+export default connect(null, {loginUserSuccessful})(App);

@@ -11,9 +11,6 @@ function Login(props) {
     const { register, handleSubmit, errors } = useForm();
 
     const handleSubmitForm = async (formData) => {
-        console.log("Login Form", formData);
-        console.log("history", props.history);
-
         await props.postLogin(formData, props.history);
     };
 

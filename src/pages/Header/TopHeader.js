@@ -1,17 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Cart from '../../component/Cart/Cart';
 import SearchBar from '../../component/Search-Bar/SearchBar';
 import '../../styles/scss/TopHeader.scss'
+import { getAuthUser } from '../../helpers/AuthHelpers';
+import { connect } from 'react-redux';
+import { logoutUserSuccessful } from '../../redux/auth/login/actions';
+
 // import { Link } from 'react-router-dom';
 // import './Navbar.css';
 // import Button from 'react-bootstrap/Button'
 
-function TopHeader() {
+function TopHeader(props) {
   // const [click, setClick] = useState(false);
   // const handleClick = () => setClick(!click);
   // const closeMobileMenu = () => setClick(false);
   const [isLoggedIn, setlogin] = useState(false);
+
+  useEffect(() => {
+    if (getAuthUser()) {
+      setlogin(true);
+    } else {
+      setlogin(false);
+    }
+  }, [])
+
+  const handleLogout = (event) => {
+    localStorage.removeItem('user');
+    props.logoutUserSuccessful();
+    setlogin(false);
+  };
+
   return (
     <>
       <div className="container fluid pt-4">
@@ -22,9 +41,11 @@ function TopHeader() {
                         <div className="col-2"><Link to="/"> <i className="fas fa-user-alt mr-2"></i>
                         My Account</Link></div>
                         <div className="col-2">Welcome <span>John</span></div>
-                        <div className="col-1 ml-5"><Link to="/seller"> Logout</Link></div>
+                        <div className="col-1 ml-5"><Link to="/" onClick={handleLogout}> Logout</Link></div>
                       </div>
-                    </div>: <div className="col-6 ml-auto">
+                    </div>
+                    : 
+                    <div className="col-6 ml-auto">
                       <div className="row text-center top-header">
                         <div className="col-3 "><Link to="/register">Register Now</Link></div>
                         <div className="col-4"><Link to="/seller"> Sell on Shopping.com</Link></div>
@@ -51,4 +72,4 @@ function TopHeader() {
   );
 }
 
-export default TopHeader;
+export default connect(null, { logoutUserSuccessful })(TopHeader); ;

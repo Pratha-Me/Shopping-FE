@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import '../../styles/css/NavbarMenu.css'
 import '../../styles/css/Navbar.css';
 import DATA from './NavbarData'
+import { getCatAndSubCat } from "../../services/InventoryService";
 
 function NavbarMenu() {
   const [categoryData, setCategoryData] = useState(DATA);
