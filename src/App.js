@@ -2,12 +2,10 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Route, Switch, BrowserRouter as Router, Redirect } from 'react-router-dom';
 import routes from './routes/routes';
-import TopHeader from './pages/Header/TopHeader'
-import Navbar from './pages/Header/Navbar';
-import NavbarCategory from './pages/Header/NavBarCategory'
+// import TopHeader from './pages/Header/TopHeader'
 import UnAuthorised from './pages/UnAuthorised';
-import NavbarMenu from './pages/Header/NavbarMenu';
-import Footer from './pages/Footer/Footer'
+// import NavbarMenu from './pages/Header/NavbarMenu';
+// import Footer from './pages/Footer/Footer'
 
 const App = (props) => {
 
@@ -39,8 +37,8 @@ const App = (props) => {
   return (
     <React.Fragment>
       <Router>
-      <TopHeader></TopHeader>
-      <NavbarMenu></NavbarMenu>
+      {/* <TopHeader></TopHeader>
+      <NavbarMenu></NavbarMenu> */}
       {/* <Navbar></Navbar> */}
       {/* <NavbarCategory></NavbarCategory> */}
         <Switch>
@@ -52,7 +50,7 @@ const App = (props) => {
                 <Route path={route.path} component={route.component} key={idx} />
           )}
         </Switch>
-        <Footer></Footer>
+        {/* <Footer></Footer> */}
       </Router>
     </React.Fragment>
   );

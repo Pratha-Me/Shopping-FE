@@ -1,0 +1,53 @@
+@import '../../index.css';
+.product-details-content h5 {
+  color: grey !important;
+}
+.product-details-content button {
+  background: var(--base-color) !important;
+  color: white !important;
+  cursor: pointer;
+}
+.product-details-content button:hover {
+  /* background: var(--focus-color) !important;
+  color: var(--base-font-color) !important;
+  border: 1px solid var(--base-color) !important; */
+  color: white !important;
+}
+.btn-minus {
+  cursor: pointer !important;
+  font-size: 7px !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 5px !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  border: 1px solid red !important;
+  border-radius: 2px !important;
+  border-right: 0 !important;
+}
+.btn-plus {
+  cursor: pointer !important;
+  font-size: 7px !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 5px !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  border: 1px solid red !important;
+  border-radius: 2px;
+  border-left: 0;
+}
+
+.plus-minus-button {
+  height: 40px !important;
+}
+
+.plus-minus-button .btn {
+  height: 100% !important;
+}
+
+.plus-minus-button input {
+  height: 88%;
+  padding: 6px;
+  width: 72px;
+}

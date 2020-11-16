@@ -1,14 +1,20 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import ProductCard from '../Product-Card/ProductCard';
 import '../../styles/css/ProductCardDirectory.css'
 import ItemsCarousel from 'react-items-carousel';
 import { Link } from 'react-router-dom';
+import DATA from '../Product-Card/ProductData'
 
 export default function ProductCardDirectory() {
   const [activeItemIndex, setActiveItemIndex] = useState(0);
+  const [productsList, setProductsList] = useState(DATA);
   const chevronWidth = 50;
+  const productHeight = '270px'
+  const productWidth ='190px'
+  const productImageHeight = '65%'
+
   return (
     <div
     className='product-directory-container'
@@ -23,32 +29,16 @@ export default function ProductCardDirectory() {
         numberOfCards={6}
         slidesToScroll={2}
         gutter={20}
-        leftChevron={<i class="fas fa-chevron-left carousel-arrow-both"></i>}
-        rightChevron={<i class="fas fa-chevron-right carousel-arrow-both"></i>}
+        leftChevron={<i className="fas fa-chevron-left carousel-arrow-both"></i>}
+        rightChevron={<i className="fas fa-chevron-right carousel-arrow-both"></i>}
         outsideChevron
         chevronWidth={chevronWidth}
       >
-        <ProductCard></ProductCard>
-        <ProductCard></ProductCard>
-        <ProductCard></ProductCard>
-        <ProductCard></ProductCard>
-        <ProductCard></ProductCard>
-        <ProductCard></ProductCard>
-        <ProductCard></ProductCard>
-        <ProductCard></ProductCard>
-        <ProductCard></ProductCard>
-        <ProductCard></ProductCard>
-        <ProductCard></ProductCard>
-        <ProductCard></ProductCard>
-        <ProductCard></ProductCard>
-        <ProductCard></ProductCard>
-        <ProductCard></ProductCard>
-        <ProductCard></ProductCard>
-        <ProductCard></ProductCard>
-        <ProductCard></ProductCard>
-        <ProductCard></ProductCard>
-        <ProductCard></ProductCard>
+      {productsList.map((product) => (
+        <ProductCard key={product.id} height={productHeight} width={productWidth} imgHeight={productImageHeight} product={product}></ProductCard>
+      ))}
       </ItemsCarousel>
+
     </div>
   );
 }

@@ -15,11 +15,11 @@ input[type='number'] {
   box-sizing: border-box !important;
 }
 
-.jumbotron .row,
+/* .jumbotron .row,
 .col {
   margin: 0 !important;
   padding: 0 !important;
-}
+} */
 
 .signup {
   width: 100% !important;

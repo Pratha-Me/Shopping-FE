@@ -4,10 +4,6 @@
   box-shadow: 0 0 2px 2px #fff;
   margin: 20px 0;
 }
-
-.product-container {
-  margin: 0 !important;
-}
 .product-title {
   cursor: pointer;
   font-size: 18px !important;

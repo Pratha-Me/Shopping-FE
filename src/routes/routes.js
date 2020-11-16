@@ -4,6 +4,9 @@ import Register from '../pages/Login/Register';
 import Seller from '../pages/Login/Seller';
 import ResetPassword from '../pages/Login/ResetPassword';
 import VerifyMail from '../pages/Login/VerifyMail';
+import ProductDetails from '../pages/Product-Details/ProductDetails';
+import SubCategory from '../pages/Sub-Category/SubCategory';
+import CartDirectory from '../component/Cart/CartDirectory';
 
 const routes = [
 
@@ -18,6 +21,9 @@ const routes = [
     { path: '/seller', component: Seller },
     { path: '/reset-password', component: ResetPassword },
     { path: '/verify-email', component: VerifyMail },
+    { path: '/product-details', component: ProductDetails },
+    { path: '/sub-category', component: SubCategory },
+    { path: '/cart', component: CartDirectory },
 
 
     // Authenticated Routes
