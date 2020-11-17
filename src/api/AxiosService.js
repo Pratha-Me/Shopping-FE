@@ -20,7 +20,14 @@ const AxiosService = {
 
   // The instance used to consume cloud services
   cloud: axios.create({
-    baseURL: process.env.cloud_api_url,
+    baseURL: process.env.CLOUD_API_URL,
+  }),
+
+  // E-Sewa
+  esewa: axios.create({
+    headers: {
+      "Content-Type": "application/json",
+    },
   }),
 };
 

@@ -62,7 +62,7 @@ const ProductDetails = () => {
             </div>
         </div>
         {/* <ProductCardDirectory></ProductCardDirectory> */}
-        <RelatedProducts></RelatedProducts>
+        {/* <RelatedProducts></RelatedProducts> */}
         <UserReview></UserReview>
         </>
     )
