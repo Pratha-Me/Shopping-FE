@@ -25,8 +25,8 @@ const routes = [
     { path: '/product-details', component: ProductDetails },
     { path: '/sub-category', component: SubCategory },
     { path: '/cart', component: CartDirectory },
-    { path: '/user/profile', component: Profile }
-
+    { path: '/user/profile', component: Profile },
+    { path: '/browser/:product/:id', component: SubCategory },
     // Authenticated Routes
     // { path: '/dashboard', component: Dashboard},
     // { path: '/unauthorized', component: Unauthorized},

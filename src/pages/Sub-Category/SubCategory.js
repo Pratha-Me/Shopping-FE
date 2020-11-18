@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../../styles/css/SubCategory.css';
 import ProductCard from '../../component/Product-Card/ProductCard';
+import { getProducts } from '../../services/InventoryService';
 
-function SubCategory() {
+function SubCategory(props) {
     const productHeight = '290px'
     const productWidth ='220px'
     const productImageHeight = '72%'
+
+    useEffect(() => {
+        console.log("HERE");
+        console.log(props.match.params.id); 
+
+        getProducts(`productId=${props.match.params.id}&description=bionic`).then((response) => {
+            console.log("Check", response.data);
+        }).catch((err) => {
+            console.log(err);
+        }) ;
+    });
 
     const priceFilterStyle = {
         display:"flex",

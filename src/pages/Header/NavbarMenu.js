@@ -8,6 +8,7 @@ import { getCatAndSubCat } from "../../services/InventoryService";
 function NavbarMenu() {
   // const [categoryData, setCategoryData] = useState(DATA);
   const [categoryData, setCategoryData] = useState(null);
+  const [routeList, setRouteList] = useState([]);
 
   useEffect(() => {
     getCatAndSubCat().then((response) => {
@@ -44,7 +45,7 @@ function NavbarMenu() {
                                   {subCategoryItems.products.map((item) => {
                                     return (
                                       <li className='nav-item m-0 p-0'>
-                                        <Link to='/' className='nav-link p-0'>
+                                        <Link to={`/browser/${item.productName}/${item.id}`} className='nav-link p-0'>
                                           {item.productName}
                                         </Link>
                                       </li>
