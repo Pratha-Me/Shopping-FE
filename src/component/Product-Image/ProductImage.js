@@ -1,31 +1,3 @@
-// import React, { Component } from "react";
-
-// import ReactImageMagnify from "react-image-magnify";
-// class ProductImage extends Component {
-//   render() {
-//   let {image} = this.props;
-//     return (
-//       <ReactImageMagnify
-//         {...{
-//           smallImage: {
-//             alt: "Wristwatch by Ted Baker London",
-//             isFluidWidth: true,
-//             src: "/images/o.jpg",
-//           },
-//           largeImage: {
-//             src: "/images/1.jpg",
-//             width: 640,
-//             height: 480
-//           },
-//           enlargedImagePortalId: "myPortal"
-//         }}
-//       />
-//     );
-//   }
-// }
-
-// export default ProductImage;
-
 import React from "react";
 import SliderImage from 'react-zoom-slider';
 import '../../styles/css/ProductImage.css'
