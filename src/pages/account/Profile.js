@@ -46,10 +46,10 @@ function Profile() {
                     </div>
                 </div>
                 <div className="col-xs-12 col-sm-12 col-md-12 col-xl-12">
-                    {activeTab == 'personalInfo' && <PersonalInfo />}
-                    {activeTab == 'addressBook' && <AddressBook />}
-                    {activeTab == 'wishlist' && <Wishlist />}
-                    {activeTab == 'orderHistory' && <OrderHistory />}
+                    {activeTab === 'personalInfo' && <PersonalInfo />}
+                    {activeTab === 'addressBook' && <AddressBook />}
+                    {activeTab === 'wishlist' && <Wishlist />}
+                    {activeTab === 'orderHistory' && <OrderHistory />}
                 </div>
             </div>
     </div>
