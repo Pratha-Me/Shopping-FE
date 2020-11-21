@@ -1,8 +1,13 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import AdsDirectory from '../component/Ads-Directory/AdsDirectory';
 import CarouselHome from '../component/Carousel/CarouselHome'
 import ProductCardDirectory from '../component/Product-Card-Directory/ProductCardDirectory';
+import ProductImage from '../component/Product-Image/ProductImage';
 import '../styles/scss/Home.scss'
+import ProductDetails from './Product-Details/ProductDetails';
+import NavbarMenu from '../pages/Header/NavbarMenu';
+import TopHeader from '../pages/Header/TopHeader';
+// import DATA from '../component/Product-Card/ProductData'
 
 const photos =[
     {
@@ -27,8 +32,16 @@ const photos =[
     }
 ]
 const Home = () => {
+//  const [productsList, setproductsList] = useState([]);
+// useEffect(()=>{
+//     setproductsList({...productsList, DATA})
+// })
+// console.log("Productssssssssssssssssss :", productsList)
+
     return (
         <>
+      <TopHeader></TopHeader>
+      <NavbarMenu></NavbarMenu>
         <div>
             <CarouselHome itemList={photos}></CarouselHome>
         </div>

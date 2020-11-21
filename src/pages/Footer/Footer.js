@@ -4,106 +4,106 @@ import '../../styles/css/Footer.css';
 
 function Footer() {
   return (
-    <footer class='footer'>
-      <div class='container bottom_border'>
-        <div class='row'>
-          <div class=' col-sm-4 col-md col-sm-4  col-12 col text-center'>
-            <h5 class='headin5_amrc col_white_amrc pt2'>Find us</h5>
+    <footer className='footer'>
+      <div className='container bottom_border'>
+        <div className='row'>
+          <div className=' col-sm-4 col-md col-sm-4  col-12 col text-center'>
+            <h5 className='headin5_amrc col_white_amrc pt2'>Find us</h5>
             {/* <p className=''>
-              <i class='fa fa-location-arrow'></i> Kupandol, Lalitpur, 44600, Bagmati, Nepal{' '}
+              <i className='fa fa-location-arrow'></i> Kupandol, Lalitpur, 44600, Bagmati, Nepal{' '}
             </p> */}
             <p>
-              <i class='fa fa-phone'></i> +91-9999878398{' '}
+              <i className='fa fa-phone'></i> +91-9999878398{' '}
             </p>
             <p>
-              <i class='fa fa fa-envelope'></i> info@example.com{' '}
+              <i className='fa fa fa-envelope'></i> info@example.com{' '}
             </p>
           </div>
 
-          <div class=' col-sm-4 col-md  col-6 col text-center'>
-            <h5 class='headin5_amrc col_white_amrc pt2'>Information</h5>
-            <ul class='footer_ul_amrc'>
+          <div className=' col-sm-4 col-md  col-6 col text-center'>
+            <h5 className='headin5_amrc col_white_amrc pt2'>Information</h5>
+            <ul className='footer_ul_amrc'>
               <li>
-                <a href='http://webenlance.com'>About Us</a>
+                <Link to='/'>About Us</Link>
               </li>
               <li>
-                <a href='http://webenlance.com'>Contact Us</a>
+                <Link to='/'>Contact Us</Link>
               </li>
               <li>
-                <a href='http://webenlance.com'>FAQ</a>
+                <Link to='/'>FAQ</Link>
               </li>
             </ul>
           </div>
-          <div class=' col-sm-4 col-md  col-6 col text-center'>
-            <h5 class='headin5_amrc col_white_amrc pt2'>Policies</h5>
-            <ul class='footer_ul_amrc'>
+          <div className=' col-sm-4 col-md  col-6 col text-center'>
+            <h5 className='headin5_amrc col_white_amrc pt2'>Policies</h5>
+            <ul className='footer_ul_amrc'>
               <li>
-                <a href='http://webenlance.com'>Return & Exchange</a>
+                <Link to='/'>Return & Exchange</Link>
               </li>
               <li>
-                <a href='http://webenlance.com'>Policy</a>
+                <Link to='/'>Policy</Link>
               </li>
             </ul>
           </div>
 
-          <div class=' col-sm-4 col-md  col-6 col text-center'>
-            <h5 class='headin5_amrc col_white_amrc pt2'>Account</h5>
-            <ul class='footer_ul_amrc'>
+          <div className=' col-sm-4 col-md  col-6 col text-center'>
+            <h5 className='headin5_amrc col_white_amrc pt2'>Account</h5>
+            <ul className='footer_ul_amrc'>
               <li>
-                <a href='http://webenlance.com'>My Account</a>
+                <Link to='/'>My Account</Link>
               </li>
               <li>
-                <a href='http://webenlance.com'>Wishlist</a>
+                <Link to='/'>Wishlist</Link>
               </li>
             </ul>
           </div>
-          <div class=' col-sm-4 col-md  col-6 col text-center'>
-            <h5 class='headin5_amrc col_white_amrc pt2'>Address</h5>
+          <div className=' col-sm-4 col-md  col-6 col text-center'>
+            <h5 className='headin5_amrc col_white_amrc pt2'>Address</h5>
             <p className=''>
-              <i class='fa fa-location-arrow'></i> Kupandol, Lalitpur, 44600, Bagmati, Nepal{' '}
+              <i className='fa fa-location-arrow'></i> Kupandol, Lalitpur, 44600, Bagmati, Nepal{' '}
             </p>
           </div>
         </div>
       </div>
 
-      <div class='container'>
-        <p class='text-center mt-3'>
-          {/* Copyright @2020 | Powered By: <a href='#'>###Tech Company</a> */}
+      <div className='container'>
+        <p className='text-center mt-3'>
+          {/* Copyright @2020 | Powered By: <a href='#'>###Tech Company</Link> */}
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus dolor quisquam, voluptatem vel error, cumque nulla fuga, provident ad id suscipit ut. Suscipit eligendi consequuntur sint, commodi, ex doloremque minus quis delectus atque corrupti inventore, numquam maiores corporis vel magni!
         </p>
-        <ul class='social_footer_ul'>
+        <ul className='social_footer_ul'>
           <li>
-            <a href='http://webenlance.com'>
-              <i class='fab fa-facebook-f'></i>
-            </a>
+            <Link to='/'>
+              <i className='fab fa-facebook-f'></i>
+            </Link>
           </li>
           <li>
-            <a href='http://webenlance.com'>
-              <i class='fab fa-twitter'></i>
-            </a>
+            <Link to='/'>
+              <i className='fab fa-twitter'></i>
+            </Link>
           </li>
           <li>
-            <a href='http://webenlance.com'>
-              <i class='fab fa-linkedin'></i>
-            </a>
+            <Link to='/'>
+              <i className='fab fa-linkedin'></i>
+            </Link>
           </li>
           <li>
-            <a href='http://webenlance.com'>
-              <i class='fab fa-instagram'></i>
-            </a>
+            <Link to='/'>
+              <i className='fab fa-instagram'></i>
+            </Link>
           </li>
         </ul>
       </div>
       <div className="container-fluid bottom_border_top">
           <div className="row">
               <div className="col-sm-12 col-md-6">
-                <p class='text-center pt-3'>
+                <p className='text-center pt-3'>
                     Copyright @2020 | All Rights Reserved
                 </p>
               </div>
               <div className="col-sm-12 col-md-6">
-                <p class='text-center pt-3'>
-                    Powered By: <a href='#'>###Tech Company</a>
+                <p className='text-center pt-3'>
+                    Powered By: <Link to ='/'>###Tech Company</Link>
                 </p>
               </div>
           </div>

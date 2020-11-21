@@ -4,10 +4,10 @@ import Register from '../pages/Login/Register';
 import Seller from '../pages/Login/Seller';
 import ResetPassword from '../pages/Login/ResetPassword';
 import VerifyMail from '../pages/Login/VerifyMail';
-import SubCategory from '../pages/Category/SubCategory';
+import ProductDetails from '../pages/Product-Details/ProductDetails';
+import SubCategory from '../pages/Sub-Category/SubCategory';
+import CartDirectory from '../component/Cart/CartDirectory';
 import Profile from '../pages/account/Profile';
-
-
 
 const routes = [
 
@@ -22,10 +22,11 @@ const routes = [
     { path: '/seller', component: Seller },
     { path: '/reset-password', component: ResetPassword },
     { path: '/verify-email', component: VerifyMail },
-    { path: '/subcategory', component: SubCategory },
-    { path: '/home/account/profile', component: Profile },
-
-
+    { path: '/product-details', component: ProductDetails },
+    { path: '/sub-category', component: SubCategory },
+    { path: '/cart', component: CartDirectory },
+    { path: '/user/profile', component: Profile },
+    { path: '/browser/:product/:id', component: SubCategory },
     // Authenticated Routes
     // { path: '/dashboard', component: Dashboard},
     // { path: '/unauthorized', component: Unauthorized},
