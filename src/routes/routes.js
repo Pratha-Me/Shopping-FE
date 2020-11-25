@@ -8,6 +8,7 @@ import ProductDetails from '../pages/Product-Details/ProductDetails';
 import SubCategory from '../pages/Sub-Category/SubCategory';
 import CartDirectory from '../component/Cart/CartDirectory';
 import Profile from '../pages/account/Profile';
+import Checkout from '../pages/Checkout/Checkout';
 
 const routes = [
 
@@ -25,6 +26,7 @@ const routes = [
     { path: '/product-details', component: ProductDetails },
     { path: '/sub-category', component: SubCategory },
     { path: '/cart', component: CartDirectory },
+    { path: '/checkout/', component:Checkout },
     { path: '/user/profile', component: Profile },
     { path: '/browser/:product/:id', component: SubCategory },
     // Authenticated Routes
