@@ -10,7 +10,7 @@ export default function ProductCard({width, height, imgHeight, product}) {
     // useEffect (()=>{
     //     setProductOffer(product.offer)
     // }, [productOffer])
-    console.log('chaiyeko offer :', product)
+    // console.log('chaiyeko offer :', product)
 
     const addToCart = () => {
         addItem(product, () => {

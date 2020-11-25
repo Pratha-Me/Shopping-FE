@@ -13,7 +13,6 @@ import { connect } from 'react-redux';
 const App = (props) => {
 
   if (getAuthUser()){
-    console.log("HERE LOGGED IN");
     const user = getAuthUser();
     props.loginUserSuccessful(user);
   }
