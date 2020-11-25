@@ -1,46 +1,32 @@
-@import "../../index.scss";
+@import '../../index.scss';
 
-.btn-container {
-    height: 36px;
-    display: flex;
-    align-items: center;
-    font-size: 18px;
-    font-family: "Open Sans", sans-serif;
-  
-    .btn-cart {
-      height: 100%;
-      padding: 0 20px;
-      display: flex;
-      align-items: center;
-      border-radius: 10px;
-      background-color: $base-color;
-      position: relative;
-      color: white;
-      cursor: pointer;
-      
-      &:hover{
-          background-color: $hover-color;
-      }
+.fa-stack[data-count]:after {
+  position: absolute;
+  right: 0%;
+  top: 0%;
+  content: attr(data-count);
+  font-size: 45%;
+  padding: 0.6em;
+  border-radius: 999px;
+  line-height: 0.75em;
+  color: $base-color;
+  text-align: center;
+  min-width: 2em;
+  font-weight: bold;
+  background: white;
+  border-style: solid;
+}
+.fa-circle {
+  color: $base-color;
+}
 
-      &:before {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -5px;
-        width: 100%;
-        height: 100%;
-        border-radius: 10px;
-        z-index: -1;
-      }
-      .cart{
-        margin-right: 12px;
-      }
-      i {
-        font-size: 16px;
-        color: white;
-        margin-top: 1px;
-        margin-right: 16px;
-        z-index: 1;
-      }
-    }
+.red-cart {
+  color: $base-color;
+  background: white;
+}
+
+@media only screen and (max-width: 992px) {
+  .red-cart {
+    background: var(--base-color-second);
   }
+}

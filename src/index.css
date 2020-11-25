@@ -1,6 +1,8 @@
 :root {
-  --base-color: #039be5;
+  --base-color: #23395d;
+  --base-color-second: lightblue;
   --focus-color: lightblue;
-  --hover-color: #039be5;
+  --hover-color: #001540;
+  --font-color: #fff;
   --base-font-color: #090500;
 }

@@ -1,31 +1,25 @@
+@import '../../index.css';
 .megamenu {
   position: static !important;
+  padding: 6px 20px !important;
+  text-align: justify !important;
 }
-
-/* .megamenu .dropdown-menu {
-    position: absolute !important;
-    background: none !important;
-    border: none !important;
-    width: 100% !important;
-    margin: 0 auto !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-  } */
-
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block !important;
+}
+.navbar {
+  background-color: var(--base-color) !important;
+  z-index: 99999;
+  width: 100%;
+}
 .megamenu .dropdown-menu {
-  /* background: #32cc99 !important; */
-  background-color: #039be5 !important;
-  width: 80% !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  border-top: none !important;
+  background-color: var(--base-color-second) !important;
+  border: none !important;
 }
 
 .text-uppercase {
   letter-spacing: 0.08em !important;
-  cursor: pointer;
+  color: var(--font-color);
 }
 .list-unstyled .nav-link {
   font-size: 14px !important;
@@ -33,6 +27,34 @@
 .navbar-nav > a {
   cursor: pointer !important;
 }
+.navbar .nav-item .nav-link {
+  color: var(--font-color) !important;
+}
 .navbar .nav-item .nav-link:hover {
-  color: darkslategrey !important;
+  color: wheat !important;
+}
+
+@media only screen and (min-width: 992px) {
+  .megamenu .dropdown-menu {
+    background-color: var(--base-color) !important;
+    width: 80% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-top: none !important;
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .navbar {
+    background-color: var(--base-color-second) !important;
+    z-index: 99999;
+    width: 100%;
+  }
+  .navbar .nav-item .nav-link:hover {
+    color: rgba(0, 0, 0, 0.5) !important;
+    color: black !important;
+  }
 }

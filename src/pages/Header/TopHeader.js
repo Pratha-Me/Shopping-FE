@@ -12,9 +12,6 @@ import { logoutUserSuccessful } from '../../redux/auth/login/actions';
 // import Button from 'react-bootstrap/Button'
 
 function TopHeader(props) {
-  // const [click, setClick] = useState(false);
-  // const handleClick = () => setClick(!click);
-  // const closeMobileMenu = () => setClick(false);
   const [isLoggedIn, setlogin] = useState(false);
 
   useEffect(() => {
@@ -33,7 +30,7 @@ function TopHeader(props) {
 
   return (
     <>
-      <div className="container fluid pt-4">
+      <div className="header-top container pt-4">
       <div className="row">
       {isLoggedIn ? <div className="col-8 ml-auto">
                       <div className="row text-center top-header">
@@ -57,7 +54,7 @@ function TopHeader(props) {
         <div className="row my-3">
         <div className="col-2">
         <Link to="/"> 
-        <img src="/images/demo.png" alt="Logo" style={{ width:'100px'}}></img>
+        <img src="/images/demo.png" alt="Logo" style={{ width:'50px', height:'50px'}}></img>
         </Link>  
         </div>
         <div className="col-8">

@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../../styles/css/NavbarMenu.css'
-import '../../styles/css/Navbar.css'
-import DATA from './NavbarData'
 import { getCatAndSubCat } from "../../services/InventoryService";
+import Cart from '../../component/Cart/Cart';
 
 function NavbarMenu() {
   // const [categoryData, setCategoryData] = useState(DATA);
@@ -20,8 +19,11 @@ function NavbarMenu() {
 
   return (
     <nav className='navbar navbar-expand-lg navbar-light bg-white shadow-sm p-0'>
-      <button type='button' data-toggle='collapse' data-target='#navbarContent' aria-controls='navbars' aria-expanded='false' aria-label='Toggle navigation' className='navbar-toggler'>
+      <button style={{border:'none'}} type='button' data-toggle='collapse' data-target='#navbarContent' aria-controls='navbars' aria-expanded='false' aria-label='Toggle navigation' className='navbar-toggler'>
         <span className='navbar-toggler-icon'></span>
+      </button>
+      <button style={{border:'none'}} type='button' data-toggle='collapse' aria-controls='navbars' aria-expanded='false' aria-label='Toggle navigation' className='navbar-toggler'>
+        <Cart></Cart>
       </button>
       <div id='navbarContent' className='collapse navbar-collapse'>
         <ul className='navbar-nav mx-auto'>
@@ -51,22 +53,6 @@ function NavbarMenu() {
                                       </li>
                                     )
                                   })}
-
-                                  {/* <li className='nav-item'>
-                                            <Link to='/' className='nav-link text-small pb-0 '>
-                                              Image Responsive
-                                            </Link>
-                                          </li>
-                                          <li className='nav-item'>
-                                            <Link to='/' className='nav-link text-small pb-0 '>
-                                              Auto Carousel
-                                            </Link>
-                                          </li>
-                                          <li className='nav-item'>
-                                            <Link to='/' className='nav-link text-small pb-0 '>
-                                              Newsletter Form
-                                            </Link>
-                                          </li> */}
                                 </ul>
                               </div>
                             )

@@ -4,7 +4,7 @@ import '../../styles/scss/AdsCollection.scss';
 
 const AdsCollection = ({ title, imageUrl, size, history, linkUrl, match }) => (
   <div
-    className={`menu-item`}
+    className={`menu-item mb-4`}
     onClick={() => history.push(`${match.url}${linkUrl}`)}
   >
     <div

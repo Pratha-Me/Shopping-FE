@@ -1,27 +1,28 @@
-@import "../../index.scss";
-.wrap{
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);  
-.search {
+@import '../../index.scss';
+.wrap {
   width: 100%;
-  display: flex !important;
-  align-items: center !important;
-  .searchTerm {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  .search {
     width: 100%;
-    border: 1px solid $base-color;
-    border-right: none;
-    height: 36px;
-    margin: 0 !important;
-    border-radius: 5px 0 0 5px;
-    outline: none;
-&:focus{
-    color: black;
-    box-shadow: 0px 0px 8px 0px $focus-color;
-  }
-}
+    display: flex !important;
+    align-items: center !important;
+    .searchTerm {
+      width: 100%;
+      border: 1px solid $base-color;
+      border-right: none;
+      height: 36px;
+      margin: 0 !important;
+      border-radius: 5px 0 0 5px;
+      outline: none;
+      padding: 10px !important;
+      &:focus {
+        color: black;
+        box-shadow: 0px 0px 8px 0px $focus-color;
+      }
+    }
     .searchButton {
       width: 40px;
       height: 36px;
@@ -33,7 +34,5 @@
       cursor: pointer;
       font-size: 18px;
     }
+  }
 }
-}
-
-
