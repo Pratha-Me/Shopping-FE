@@ -18,32 +18,24 @@ function SubCategory(props) {
   const [qbrand, setQbrand] = useState(null);
 
   const handleOnFilter = () => {
-    let queryParam = '';
+    let queryParam = `productId=${props.match.params.id}`;
     if (desc) queryParam += '&description=' + desc + '&';
     if (qcolor) queryParam += '&color=' + qcolor + '&';
     if (qsize.length > 0) queryParam += '&size=' + qsize.join(',') + '&';
     // if (qbrand) queryParam += '&brand=' + qbrand + '&';
 
     (async () => {
-      const data = await getProducts(`productId=${props.match.params.id}${queryParam}`);
+      const data = await getProducts(queryParam);
       setItems(data.data.itemList);
     })();
   };
 
   const handleOnChangeDescription = (event) => {
-    if (event.target.value){
       setDesc(event.target.value);
-    } else {
-      setDesc(null);
-    }
   };
 
   const handleOnChangeColor = (event) => {
-    if (event.target.value) {
       setQcolor(event.target.value);
-    } else{
-      setQcolor(null);
-    }
   };
 
   const handleOnClickSize = (event) => {
