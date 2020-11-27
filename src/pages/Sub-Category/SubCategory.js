@@ -9,6 +9,7 @@ function SubCategory(props) {
   const productImageHeight = '72%';
   const [color, setColor] = useState(null);
   const [size, setSize] = useState(null);
+  const [brand, setBrand] = useState(null);
   const [items, setItems] = useState([]);
   const [sort, setSort] = useState([]);
 
@@ -16,12 +17,15 @@ function SubCategory(props) {
   const [qcolor, setQcolor] = useState(null);
   const [qsize, setQsize] = useState([]);
   const [qbrand, setQbrand] = useState(null);
+  const [minPrice, setMinPrice] = useState(null);
+  const [maxPrice, setMaxPrice] = useState(null);
 
   const handleOnFilter = () => {
     let queryParam = `productId=${props.match.params.id}`;
     if (desc) queryParam += '&description=' + desc + '&';
     if (qcolor) queryParam += '&color=' + qcolor + '&';
     if (qsize.length > 0) queryParam += '&size=' + qsize.join(',') + '&';
+    if (minPrice && maxPrice) queryParam += '&minPrice=' + minPrice + '&maxPrice=' + maxPrice + '&';
     // if (qbrand) queryParam += '&brand=' + qbrand + '&';
 
     (async () => {
@@ -37,6 +41,14 @@ function SubCategory(props) {
   const handleOnChangeColor = (event) => {
       setQcolor(event.target.value);
   };
+
+  const handleMinPrice = (event) => {
+    setMinPrice(event.target.value);
+  }
+
+  const handleMaxPrice = (event) => {
+    setMaxPrice(event.target.value);
+  }
 
   const handleOnClickSize = (event) => {
     if (qsize.includes(event.target.value)){
@@ -55,6 +67,7 @@ function SubCategory(props) {
         response.data.itemList.forEach((item) => {
           size.add(item.size);
           color.add(item.color);
+          // brand.add(item.brand);
         });
 
         setItems(() => response.data.itemList);
@@ -177,11 +190,11 @@ function SubCategory(props) {
                           <div className='form-row'>
                             <div className='form-group col-md-6'>
                               {' '}
-                              <label>Min</label> <input className='form-control' placeholder='$0' type='number' />{' '}
+                              <label>Min</label> <input className='form-control' placeholder='$0' type='number' onChange={handleMinPrice} />{' '}
                             </div>
                             <div className='form-group text-right col-md-6'>
                               {' '}
-                              <label>Max</label> <input className='form-control' placeholder='$1,0000' type='number' />{' '}
+                              <label>Max</label> <input className='form-control' placeholder='$1,0000' type='number' onChange={handleMaxPrice} />{' '}
                             </div>
                           </div>{' '}
                         </div>
@@ -227,32 +240,25 @@ function SubCategory(props) {
                       </article>
                       <article className='filter-group'>
                         <header className='card-header'>
-                          {' '}
                           <a href='#' data-toggle='collapse' data-target='#collapse_aside4' data-abc='true' className='collapsed' aria-expanded='false'>
-                            {' '}
                             <i className='icon-control fa fa-chevron-down' />
                             <h6 className='title'>Brands</h6>
-                          </a>{' '}
+                          </a>
                         </header>
                         <div className='card-body'>
-                          {' '}
                           <label className='custom-control'>
-                            {' '}
                             <input type='checkbox' defaultChecked className='custom-control-input' />
                             <div className='custom-control-label'>Apple </div>
-                          </label>{' '}
+                          </label>
                           <label className='custom-control'>
-                            {' '}
                             <input type='checkbox' className='custom-control-input' />
                             <div className='custom-control-label'>Samsung </div>
-                          </label>{' '}
+                          </label>
                           <label className='custom-control'>
-                            {' '}
                             <input type='checkbox' className='custom-control-input' />
                             <div className='custom-control-label'>Xiaomi</div>
-                          </label>{' '}
+                          </label>
                           <label className='custom-control'>
-                            {' '}
                             <input type='checkbox' className='custom-control-input' />
                             <div className='custom-control-label'>Hawai</div>
                           </label>{' '}
