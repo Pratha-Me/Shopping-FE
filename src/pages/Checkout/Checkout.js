@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import '../../styles/css/Checkout.css';
 
 function Checkout() {
-
+    const [isUserDetailsVerified, setIsUserDetailsVerified] = useState(true);
     const [diffShippingBilling, setDiffShippingBilling] = useState(false);
     const [isAddressVerified, setIsAddressVerified] = useState(false);
 
@@ -17,7 +17,7 @@ function Checkout() {
                             <li className="breadcrumb-item active" aria-current="page">Checkout</li>
                         </ol>
                     </nav>
-                    <h3 className="text-uppercase mb-3 text-center">
+                    <h3 className="text-uppercase mb-3 text-center text-dark">
                         Checkout
                     </h3>
   
@@ -25,10 +25,21 @@ function Checkout() {
             </div>
             <div className="row mb-5">
                 <div className="col-xs-12 col-sm-12 col-md-12 col-xl-12">
-                    <ul id="progressbar" class="text-center">
-                        <li class="active step0"></li>
-                        <li class="active step0"></li>
-                        <li class="step0"></li>
+                    <ul id="progressbar" class="text-center" >
+                        <li class="step0 active" style={{"fontWeight":"500", "fontSize":"19px"}} >User Details </li>
+                            
+                        { isAddressVerified ?
+                            <li class=" step0 active" style={{"fontWeight":"500", "fontSize":"19px"}}>Addresses</li>
+                            :
+                            <li class=" step0" style={{"fontWeight":"500", "fontSize":"19px"}}>Addresses</li>
+
+                        }
+                        
+                        { isAddressVerified ?
+                            <li class="step0 active" style={{"fontWeight":"500", "fontSize":"19px"}}>Order Summary</li>
+                            :
+                            <li class="step0" style={{"fontWeight":"500", "fontSize":"19px"}}>Order Summary</li>
+                        }
                         
                     </ul>
                 </div>
@@ -208,11 +219,11 @@ function Checkout() {
                                 <p style={{"fontSize":"18px"}}>How would you like to pay for your order? </p>
                                 <div className="list-group d-flex" style={{"justifyContent":"flex-end","flexDirection":"row-reverse","alignItems":"center"}}>
                                     <label htmlFor="cod" className="mt-2 pl-2" >COD</label>
-                                    <input type="checkbox" name="payment" id="cod" value="cod" /> 
+                                    <input type="radio" name="payment" id="cod" value="cod" /> 
                                 </div>
                                 <div className="list-group d-flex" style={{"justifyContent":"flex-end","flexDirection":"row-reverse","alignItems":"center"}}>
                                     <label htmlFor="esewa" className="mt-2 pl-2">eSewa</label>
-                                    <input type="checkbox" name="payment" id="esewa" value="esewa" /> 
+                                    <input type="radio" name="payment" id="esewa" value="esewa" /> 
                                 </div>                            
                             </div>    
                         </form>
