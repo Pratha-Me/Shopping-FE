@@ -24,9 +24,9 @@ const routes = [
     { path: '/reset-password', component: ResetPassword },
     { path: '/verify-email', component: VerifyMail },
     { path: '/product-details', component: ProductDetails },
-    { path: '/sub-category', component: SubCategory },
+    // { path: '/sub-category', component: SubCategory },
     { path: '/cart', component: CartDirectory },
-    { path: '/checkout/', component:Checkout },
+    { path: '/checkout/', component: Checkout },
     { path: '/user/profile', component: Profile },
     { path: '/browser/:product/:id', component: SubCategory },
     // Authenticated Routes
