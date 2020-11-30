@@ -2,8 +2,6 @@
 import '../../styles/css/SubCategory.css';
 import ProductCard from '../../component/Product-Card/ProductCard';
 
-
-
 function SubCategory() {
 
     const priceFilterStyle = {
@@ -102,8 +100,6 @@ function SubCategory() {
                     <div className="row">
                         
                         <div className="col-md-3 col-xl-3 col-sm-6 col-xs-12">
-                           
-
                                 <ProductCard > </ProductCard>
                         </div>
                     </div>

@@ -1,74 +1,147 @@
-import React, {useState, useEffect} from 'react'
-import { Link } from 'react-router-dom'
-import {addItem, getCart, updateItem} from '../../helpers/CartHelpers'
-import '../../styles/css/CartDirectory.css'
-import '../../styles/scss/CartDirectory.scss'
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { addItem, getCart, removeItem, updateItem, updateTotal } from '../../helpers/CartHelpers';
+import NavbarMenu from '../../pages/Header/NavbarMenu';
+import TopHeader from '../../pages/Header/TopHeader';
+import '../../styles/css/CartDirectory.css';
+import '../../styles/scss/CartDirectory.scss';
+import ProductCard from '../Product-Card/ProductCard';
+
 
 const CartDirectory = () => {
-    const [items, setItems] = useState([])
-    const [count, setCount] = useState(items.count)
+  const [items, setItems] = useState([]);
 
-    useEffect(()=> {
-        setItems(getCart())
-    }, [])
-    console.log("chaieko items",items)
+  useEffect(() => {
+    setItems(getCart());
+  }, []);
 
-    const handleChange = itemId => event => {
-        setCount(event.target.value < 1 ? 1 : event.target.value)
-        if(event.target.value >=1){
-            updateItem(itemId, event.target.value)
-        }
-    }
+  const getSingleTotal = (item) => {
+    const total = item ? item.count * item.unitPrice : '';
+    return total;
+  };
+  items.map((item) => {
+    updateTotal(item.id, getSingleTotal(item));
+  });
 
-    const showItems = items => {
-        return (
-            <div className="container">
-    <h1>Responsive Cart</h1>
-    <table className="table table-xs">
-        <tr>
-            <th></th>
-            <th>Description</th>
-            <th className="text-right">Amount</th>
-            <th className="text-right">Price</th>
-            <th className="text-right">Total</th>
-        </tr>
-        {items.map((product, i) => (
-             <tr className="item-row">
-             <td> <img src={product.imageUrl} style={{width:'80px', height:'100px'}} /></td>
-             <td>
-                 <p> <strong>{product.title}</strong></p>
-                 {/* <p>Amet et esse do nostrud id irure cupidatat labore nulla irure laboris</p> */}
-             </td>
-             <td className="text-right" title="Amount">
-                 <div className="input-group mb-3">
-                     <div className="input-group-prepend">
-                         <span className="input-group-text">Adjust Quantity</span>
-                     </div>
-                     <input type="number" className="form-control" value={count} onChange={handleChange(items.id)}/>
-                 </div>
-             </td>
-             <td className="text-right" title="Price">{product.price}</td>
-             <td className="text-right" title="Total">6.00</td>
-         </tr>
-        ))}
-        <tr className="total-row info">
-            <td className="text-right" colspan="4">Total</td>
-            <td className="text-right">18.00</td>
-        </tr>
-    </table>
-</div>
-        )
-    }
+  const getTotal = () => {
+    return items.reduce((currentValue, nextValue) => {
+      return currentValue + nextValue.count * nextValue.unitPrice;
+    }, 0);
+  };
 
-    const noItemsMessage = () => (
-        <h2>Your cart is empty. <br/> <Link to="/"></Link></h2>
-    )
+  const showItems = (items) => {
+    return (
+      <div className='container'>
+        <div className='row'>
+          <div className='col-xs-12 col-sm-12 col-md-12 col-xl-12 pl-4 pt-4 pb-2'>
+            <nav aria-label='breadcrumb' className='subCat-breadcrumb'>
+              <ol className='breadcrumb bg-transparent pl-0'>
+                <li className='breadcrumb-item'>
+                  <a href='#'>Home</a>
+                </li>
+                <li className='breadcrumb-item'>
+                  <a href='#'>Men's &nbsp;</a>
+                </li>
+                <li className='breadcrumb-item'>
+                  <a href='#'>Men's Shopping&nbsp;</a>
+                </li>
+                <li className='breadcrumb-item active' aria-current='page'>
+                  T-Shirts
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+        <h1>CART SUMMARY</h1>
+        <table className='table table-xs'>
+          <tbody>
+            <tr>
+              <th></th>
+              <th className='text-left'>Description</th>
+              <th className='text-left'>Amt</th>
+              <th className='text-right'>Remove</th>
+              <th className='text-right'>Price</th>
+              <th className='text-right'>Total</th>
+            </tr>
+            {items.map((product, i) => (
+              <tr className='item-row'>
+                <td style={{ width: '100px', height: '100px' }}>
+                  <ProductCard product={product} showButtons={false} showFooter={false} cartUpdate={true} showRemove={true}></ProductCard>
+                </td>
+                <td>
+                  <p className="mt-3">
+                    {' '}
+                    <strong>{product.title}</strong>
+                  </p>
+                </td>
+                <td className='text-right mt-3' title='Qty'>
+                </td>
+                <td className='text-right mt-3' title='Remove'>
+                  <i onClick = { () => { removeItem(product.id) && window.location.reload()}}  className="fas fa-trash-alt" style={{cursor:'pointer'}}></i>
+                </td>
+                <td className='text-right mt-3' title='Price'>
+                  {product.unitPrice}
+                </td>
+                <td className='text-right mt-3' title='Total'>
+                  {getSingleTotal(product)}
+                </td>
+              </tr>
+            ))}
+            <tr className='total-row info'>
+              <td className='text-right' colSpan='5'>
+                Total
+              </td>
+              <td className='text-right'>{getTotal()}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    );
+  };
 
-    return(
-        <>
-            {items.length > 0 ? showItems(items) : noItemsMessage()}
-        </>
-    )
-}
+  const noItemsMessage = () => (
+      <div>
+    <h2 className='p-4'>
+      Your cart is empty. <br /> <Link to='/'></Link>
+    </h2>
+        <Link to='/'>
+        {' '}
+        <button type='button' class='btn btn-info m-4'>
+            Continue Shopping
+        </button>{' '}
+        </Link>
+        </div>
+  );
+
+  return (
+    <>
+      <TopHeader />
+      <NavbarMenu />
+      <div className='container'>
+        <div className='row'>
+          {items.length > 0 ? showItems(items) : noItemsMessage()}
+          <div className='col-md-8 col-sm-0'></div>
+          <div className='col-md-4 col-sm-12 text-right'>
+            {items.length > 0 ? (
+                <div>
+                <Link to='/'>
+                {' '}
+                <button type='button' class='btn btn-info m-4'>
+                    Continue Shopping
+                </button>{' '}
+                </Link>
+              <button type='button' class='btn btn-success m-2'>
+                Place Order
+              </button>
+              </div>
+            ) : (
+              ''
+            )}
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
 
 export default CartDirectory;

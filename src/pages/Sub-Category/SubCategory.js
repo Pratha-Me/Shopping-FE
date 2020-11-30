@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import '../../styles/css/SubCategory.css';
 import ProductCard from '../../component/Product-Card/ProductCard';
-import { getProducts } from '../../services/InventoryService';
+import { getProducts} from '../../services/InventoryService';
+import TopHeader from '../Header/TopHeader';
+import NavbarMenu from '../Header/NavbarMenu';
+import { Link } from 'react-router-dom';
 
 function SubCategory(props) {
   const productHeight = '290px';
@@ -12,6 +15,8 @@ function SubCategory(props) {
   const [brand, setBrand] = useState(null);
   const [items, setItems] = useState([]);
   const [sort, setSort] = useState([]);
+  const [cat, setCat] = useState('')
+  const [subcat, setSubCat] = useState('')
 
   const [desc, setDesc] = useState(null);
   const [qcolor, setQcolor] = useState(null);
@@ -19,6 +24,7 @@ function SubCategory(props) {
   const [qbrand, setQbrand] = useState(null);
   const [minPrice, setMinPrice] = useState(null);
   const [maxPrice, setMaxPrice] = useState(null);
+
 
   const handleOnFilter = () => {
     let queryParam = `productId=${props.match.params.id}`;
@@ -58,26 +64,34 @@ function SubCategory(props) {
     }
   };
 
-  useEffect(() => {
+  useEffect(() => { 
     getProducts(`productId=${props.match.params.id}`)
       .then((response) => {
         const size = new Set();
         const color = new Set();
-        // const brand = new Set();
+        const cat = new Set();
+        const subCat = new Set();
         response.data.itemList.forEach((item) => {
           size.add(item.size);
           color.add(item.color);
-          // brand.add(item.brand);
+          cat.add(item.catName);
+          subCat.add(item.subCatName);
         });
 
         setItems(() => response.data.itemList);
         setColor([...color]);
         setSize([...size]);
+        setCat(...cat)
+        setSubCat(...subCat)
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
+
+  // console.log('catName', cat)
+  // console.log('subCAt', subcat)
+
 
   const handleSort = (ascending) => {
     setSort({
@@ -97,6 +111,9 @@ function SubCategory(props) {
   };
 
   return (
+    <>
+    <TopHeader/>
+    <NavbarMenu/>
     <div className='container-fluid'>
       <div className='subcategory'>
         <div className='row'>
@@ -104,9 +121,16 @@ function SubCategory(props) {
             <nav aria-label='breadcrumb' className='subCat-breadcrumb'>
               <ol className='breadcrumb bg-transparent'>
                 <li className='breadcrumb-item'>
-                  <a href='#'>Home</a>
+                  <Link to='/'>Home</Link>
                 </li>
-                <li className='breadcrumb-item'>
+                <li className='breadcrumb-item active' aria-current='page'>
+                  {cat}
+                </li>
+                <li className='breadcrumb-item active' aria-current='page'>
+                  {subcat}
+                </li>
+
+                {/* <li className='breadcrumb-item'>
                   <a href='#'>Men's &nbsp;</a>
                 </li>
                 <li className='breadcrumb-item'>
@@ -114,7 +138,7 @@ function SubCategory(props) {
                 </li>
                 <li className='breadcrumb-item active' aria-current='page'>
                   T-Shirts
-                </li>
+                </li> */}
               </ol>
             </nav>
           </div>
@@ -123,8 +147,8 @@ function SubCategory(props) {
           <div className="row">
             <div className="col-xs-12 col-sm-12 col-md-3 text-center mt-3">
               <div className="form-group">
-                <h3>Coats &amp; Blazers </h3>
-                <p className="mt-1 pl-1 text-secondary"> - 5 items</p>
+                <h3>{props.match.params.product}</h3>
+                  <p className="mt-1 pl-1 text-secondary">{`(${items.length} items)`}</p>
               </div>
             </div>
             <div className="col-xs-12 col-sm-12 col-md-2 offset-md-7">
@@ -265,10 +289,9 @@ function SubCategory(props) {
                         </div>
                       </article>
                     </div>
-
-                          <button className='highlight-button btn btn-medium button xs-margin-bottom-five' onClick={handleOnFilter} data-abc='true'>
-                            Apply Filter
-                        </button>
+                      <button className='highlight-button btn btn-medium button xs-margin-bottom-five' onClick={handleOnFilter} data-abc='true'>
+                          Apply Filter
+                      </button>
                   </div>
                 </div>
               </div>
@@ -285,14 +308,17 @@ function SubCategory(props) {
               </div>
             </div>
             <div className='col-xs-12 col-sm-12 col-md-12 col-xl-12'>
-              <p className='font-weight-bold'>Shop Coats &amp; Blazers Online</p>
+                <p className='font-weight-bold'>{props.match.params.product}</p>
               <p>You’re in the right place for Coats &amp; Blazers. By now you already know that, wha...</p>
             </div>
           </div>
         </div>
       </div>
     </div>
+    </>
   );
 }
 
-export default SubCategory;
+
+export default SubCategory
+
