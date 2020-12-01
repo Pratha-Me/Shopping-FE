@@ -1,6 +1,7 @@
 import Home from '../pages/Home';
 import Login from '../pages/Login/Login';
 import Register from '../pages/Login/Register';
+import SellerRegister from '../pages/Login/SellerRegister';
 import Seller from '../pages/Login/Seller';
 import ResetPassword from '../pages/Login/ResetPassword';
 import VerifyMail from '../pages/Login/VerifyMail';
@@ -29,6 +30,7 @@ const routes = [
     { path: '/checkout/', component:Checkout },
     { path: '/user/profile', component: Profile },
     { path: '/browser/:product/:id', component: SubCategory },
+    { path: '/seller-register', component: SellerRegister },
     // Authenticated Routes
     // { path: '/dashboard', component: Dashboard},
     // { path: '/unauthorized', component: Unauthorized},

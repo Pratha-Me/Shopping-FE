@@ -11,17 +11,19 @@ input[type='number'] {
   width: 100% !important;
   padding: 0 !important;
   margin: 0 !important;
-  background: #cde3f7;
+  background: #6c757d;
   box-sizing: border-box !important;
+  
 }
 
-.signup {
+
+.seller-register {
   width: 100% !important;
   margin: 0 auto !important;
   /* height: 100vh; */
 }
 
-.signup .form-container {
+.seller-register .form-container {
   width: 100%;
   margin-top: 8vh !important;
   background: #fff;

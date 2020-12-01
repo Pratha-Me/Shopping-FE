@@ -9,21 +9,37 @@ function Register() {
     const [cnPassword, setCNPassword] = useState("");
     const [fullname, setFullName] = useState("");
     const [phoneNo, setPhoneNo] = useState("");
+    const [isPasswordValid, setIsPasswordValid] = useState(false);
 
-    const { register, handleSubmit, errors } = useForm();
-    const validatePassword = () => {
-        console.log("hello");
+    const { register, errors } = useForm();
+    const validatePassword = (e) => {
+        if (password === cnPassword) {
+            setIsPasswordValid(true);   
+        } else {
+            setIsPasswordValid(false);
+        }
+    };
+
+    const handleSubmit = event => {
+        if (isPasswordValid) {
+            console.log(true);
+        } else {
+            console.log(false);
+        }
+
+        event.preventDefault();
+
     }
 
     return (
-        <div class="jumbotron">
+        <div className="jumbotron">
             <div className="row">
                 <div className="col-md-4 col-xl-4 signup">
                      <div className="row form-container">
                         <div className="col-md-12 col-xl-12 text-center">
                             <h4 className="mt-5 mb-5"> Signup with Shopping Store </h4>
                         </div>
-                        <form  method="POST" onSubmit={handleSubmit()} className="col-md-12 col-xl-12 mb-1">
+                        <form  method="POST" onSubmit={handleSubmit} className="col-md-12 col-xl-12 mb-1">
                         <div className="row mb-4">
                             <input
                                 type="text"
@@ -33,7 +49,7 @@ function Register() {
                                 className="form-control mb-4"
                                 tabIndex="1"
                                 onChange={e=>setFullName(e.target.value)}
-                                autofocus
+                                autoFocus
                                 ref={register({
                                     required:true, 
                                     minLength:10, 
@@ -95,7 +111,12 @@ function Register() {
                                 placeholder="Confirm Password"
                                 className="form-control mb-4"
                                 onChange={e=>setCNPassword(e.target.value)}
-                                onBlur={e=>validatePassword()}
+                   
+                                onBlur = {()=>{
+                                    (password === cnPassword) ? 
+                                        (setIsPasswordValid(true))
+                                        :
+                                        (setIsPasswordValid(false))}}
                                 tabIndex="4"
                                 ref={register({
                                     required:true,
@@ -126,7 +147,7 @@ function Register() {
                             />
 
                         </div>
-                        {errors.email && errors.password  && <div className="row mt-3 errors" > * Please fill all the fields! </div>}
+                        {errors.email && errors.password && errors.phoneNo  && <div className="row mt-3 errors" > * Please fill all the fields! </div>}
                         <div className="row">
                             <input 
                                 type="submit"  
