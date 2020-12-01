@@ -135,7 +135,7 @@ function Register() {
                                 name="phoneNo"
                                 value={phoneNo}
                                 placeholder="Phone Number"
-                                className="form-control"
+                                className="form-control register-phone-number"
                                 onChange={e=>setPhoneNo(e.target.value)}
                                 tabIndex="5"
                                 ref={register({

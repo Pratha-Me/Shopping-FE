@@ -5,10 +5,9 @@ import RelatedProducts from '../../component/RelatedProducts/RelatedProducts'
 import UserReview from '../../component/UserReview/UserReview'
 import '../../styles/css/ProductDetails.css'
 import ReactStars from "react-rating-stars-component";
+import ProductImageMobile from '../../component/Product-Image/ProductImageMobile'
 
-
-
-const ProductDetails = () => {
+const ProductDetails = (props) => {
     var i = 1;
     function minusClick() {
         i--;
@@ -18,12 +17,15 @@ const ProductDetails = () => {
         i++;
         document.getElementById('numb').value = i;
     }
+
+    const mobileResponsive = window.innerWidth >= 600
+    
     return (
         <>
         <div className="container mt-5">
             <div className="row">
                 <div className="col-sm-12 col-md-6">
-                    <ProductImage></ProductImage>
+                    {mobileResponsive ? <ProductImage></ProductImage> : <ProductImageMobile></ProductImageMobile>}
                 </div>
                 <div className="col-sm-12 col-md-6 product-details-content">
                     <h2>Branded Red Hats</h2>
@@ -44,9 +46,8 @@ const ProductDetails = () => {
                     </div>
                     <div className="mt-5 plus-minus-button">
                     <button type="button" class="btn mr-1" onClick={minusClick}><i class="fas fa-minus"></i></button>
-                    <input id='numb' value="1" class="mr-1"/>
+                    <input id='numb' value="4" class="mr-1"/>
                     <button type="button" class="btn mr-1" onClick={plusClick}><i class="fas fa-plus"></i></button>
-
                     </div>
                     <button type="button" className="btn mt-4 mr-3">Add To Cart</button>
                     <button type="button" className="btn mt-4 mr-3">Buy Now</button>

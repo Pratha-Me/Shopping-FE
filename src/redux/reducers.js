@@ -4,13 +4,18 @@ import { combineReducers  } from 'redux';
 import Account from './auth/register/reducer';
 import Login from './auth/login/reducer';
 import Forget from './auth/forgetpwd/reducer';
+import Shopping from './shopping/reducer'
 
 const rootReducer = combineReducers({
 
     // Authentication
     Account,
     Login,
-    Forget
+    Forget,
+
+    // Cart
+    Shopping
+
 
 });
 

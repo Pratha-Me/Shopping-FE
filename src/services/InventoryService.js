@@ -9,6 +9,7 @@ const getProducts = (query) => {
     return AxiosService.login.get('/inventory/itemsList?' + query);
 }
 
+
 export {
     getCatAndSubCat,
     getProducts,

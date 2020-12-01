@@ -6,7 +6,8 @@ export const addItem = (item, next) => {
         }
         cart.push({
             ...item,
-            count: 1
+            count: 1,
+            total: 0
         })
 
         // Remove Duplicates
@@ -46,7 +47,7 @@ export const getCart = () => {
 
 export const updateItem = (productId, count) => {
     let cart=[]
-    if(typeof window !== 'undefined'){
+    if(typeof window !== 'undefined'){ 
         if(localStorage.getItem('cart')){
             cart = JSON.parse(localStorage.getItem('cart'))
         }
@@ -57,4 +58,36 @@ export const updateItem = (productId, count) => {
         })
         localStorage.setItem('cart', JSON.stringify(cart))
     }
+}
+
+export const updateTotal = (productId, total) => {
+    let cart=[]
+    if(typeof window !== 'undefined'){ 
+        if(localStorage.getItem('cart')){
+            cart = JSON.parse(localStorage.getItem('cart'))
+        }
+        cart.map((product, i)=> {
+            if(product.id === productId){
+                cart[i].total = total
+            }
+        })
+        localStorage.setItem('cart', JSON.stringify(cart))
+    }
+}
+
+
+export const removeItem = (productId) => {
+    let cart=[]
+    if(typeof window !== 'undefined'){ 
+        if(localStorage.getItem('cart')){
+            cart = JSON.parse(localStorage.getItem('cart'))
+        }
+        cart.map((product, i)=> {
+            if(product.id === productId){
+                cart.splice(i, 1)
+            }
+        })
+        localStorage.setItem('cart', JSON.stringify(cart))
+    }
+    return cart
 }
