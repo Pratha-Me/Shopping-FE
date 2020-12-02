@@ -51,8 +51,8 @@ export const confirmError = (error) => {
 const postRegister = (data, history) => async (dispatch) => {
     try {
         console.log("Check", data);
-        console.log("Check", data.username, data.password);
-        dispatch(registerUser(data.username, data.password, history));
+        console.log("Check", data.name, data.password);
+        dispatch(registerUser(data.name, data.email, data.password, data.phone, history));
 
         // const responseData = await AuthService.postLogin(data);
 

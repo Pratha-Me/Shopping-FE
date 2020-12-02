@@ -1,9 +1,11 @@
 import React, {useState} from "react";
 import {useForm} from "react-hook-form";
 import '../../styles/css/Register.css';
+import { withRouter, Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { postRegister } from "../../redux/actions";
 
-
-function Register() {
+function Register(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [cnPassword, setCNPassword] = useState("");
@@ -11,7 +13,7 @@ function Register() {
     const [phoneNo, setPhoneNo] = useState("");
     const [isPasswordValid, setIsPasswordValid] = useState(false);
 
-    const { register, errors } = useForm();
+    const { register, handleSubmit, errors } = useForm();
     const validatePassword = (e) => {
         if (password === cnPassword) {
             setIsPasswordValid(true);   
@@ -20,16 +22,16 @@ function Register() {
         }
     };
 
-    const handleSubmit = event => {
-        if (isPasswordValid) {
-            console.log(true);
-        } else {
-            console.log(false);
-        }
+    const handleSubmitForm = async (formData) => {
+        // if (isPasswordValid) {
+        //     postRegister(formData, props.history);
+        // } else {
+        //     console.log(false);
+        // }
+        // formData.preventDefault();
+        await props.postRegister(formData, props.history);
 
-        event.preventDefault();
-
-    }
+    };
 
     return (
         <div className="jumbotron">
@@ -39,20 +41,20 @@ function Register() {
                         <div className="col-md-12 col-xl-12 text-center">
                             <h4 className="mt-5 mb-5"> Signup with Shopping Store </h4>
                         </div>
-                        <form  method="POST" onSubmit={handleSubmit} className="col-md-12 col-xl-12 mb-1">
+                        <form  method="POST" onSubmit={handleSubmit(handleSubmitForm)} className="col-md-12 col-xl-12 mb-1">
                         <div className="row mb-4">
                             <input
                                 type="text"
                                 value={fullname}
                                 placeholder="Full Name"
-                                name="fullname"
+                                name="name"
                                 className="form-control mb-4"
                                 tabIndex="1"
                                 onChange={e=>setFullName(e.target.value)}
                                 autoFocus
                                 ref={register({
                                     required:true, 
-                                    minLength:10, 
+                                    minLength:4, 
                                     maxlength:254,
                                     message:"Invalid Username!",
                                     pattern: /^[A-Za-z]+$/i
@@ -94,10 +96,12 @@ function Register() {
                                 tabIndex="3"
                                 ref={register({
                                     required:true,
-                                    minLength:8,
+                                    minLength:6,
                                     maxLength:20,
                                     message:"Invalid password",
-                                    pattern:/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8, 20}+$/,
+                                    // pattern:/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8, 20}+$/,
+                                    // pattern:/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8, 20}+$/,
+                                    pattern:/^[A-Za-z0-9]+$/i,
                                 })}
                                 
                             />
@@ -120,10 +124,11 @@ function Register() {
                                 tabIndex="4"
                                 ref={register({
                                     required:true,
-                                    minLength:8,
+                                    minLength:6,
                                     maxLength:20,
                                     message:"Invalid password",
-                                    pattern:/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8, 20}+$/,
+                                    // pattern:/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8, 20}+$/,
+                                    pattern:/^[A-Za-z0-9]+$/i,
                                 })}
                                 
                             />
@@ -132,7 +137,7 @@ function Register() {
                         <div className="row">
                             <input
                                 type="number"
-                                name="phoneNo"
+                                name="phone"
                                 value={phoneNo}
                                 placeholder="Phone Number"
                                 className="form-control register-phone-number"
@@ -172,4 +177,15 @@ function Register() {
     );
 }
 
-export default Register;
+const mapStateToProps = (state) => {
+    return {
+        data: state.Account
+    }
+}
+
+const mapActionsToProps = {
+    postRegister
+}
+
+
+export default withRouter(connect(mapStateToProps, mapActionsToProps)(Register));

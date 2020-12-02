@@ -14,6 +14,9 @@ function Login(props) {
         await props.postLogin(formData, props.history);
     };
 
+    console.log("Login Pros", props)
+
+
     return (
         <div className="jumbotron">
             <div className="row">
@@ -38,7 +41,6 @@ function Login(props) {
                                         pattern: /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/,
 
                                     })}
-
                                 />
                             </div>
 
