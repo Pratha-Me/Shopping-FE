@@ -8,19 +8,19 @@ import { postRegister } from "../../redux/actions";
 function Register(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [cnPassword, setCNPassword] = useState("");
+    // const [cnPassword, setCNPassword] = useState("");
     const [fullname, setFullName] = useState("");
     const [phoneNo, setPhoneNo] = useState("");
     const [isPasswordValid, setIsPasswordValid] = useState(false);
 
     const { register, handleSubmit, errors } = useForm();
-    const validatePassword = (e) => {
-        if (password === cnPassword) {
-            setIsPasswordValid(true);   
-        } else {
-            setIsPasswordValid(false);
-        }
-    };
+    // const validatePassword = (e) => {
+    //     if (password === cnPassword) {
+    //         setIsPasswordValid(true);   
+    //     } else {
+    //         setIsPasswordValid(false);
+    //     }
+    // };
 
     const handleSubmitForm = async (formData) => {
         // if (isPasswordValid) {
@@ -46,7 +46,7 @@ function Register(props) {
                             <input
                                 type="text"
                                 value={fullname}
-                                placeholder="Full Name"
+                                placeholder="Username"
                                 name="name"
                                 className="form-control mb-4"
                                 tabIndex="1"
@@ -107,7 +107,7 @@ function Register(props) {
                             />
                         </div>
                         
-                        <div className="row" >
+                        {/* <div className="row" >
                             <input
                                 type="password"
                                 name="cnpassword"
@@ -132,11 +132,11 @@ function Register(props) {
                                 })}
                                 
                             />
-                        </div>
+                        </div> */}
 
                         <div className="row">
                             <input
-                                type="number"
+                                type="text"
                                 name="phone"
                                 value={phoneNo}
                                 placeholder="Phone Number"
