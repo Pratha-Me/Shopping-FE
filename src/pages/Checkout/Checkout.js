@@ -3,7 +3,6 @@ import '../../styles/css/Checkout.css';
 
 function Checkout() {
     const [isUserDetailsVerified, setIsUserDetailsVerified] = useState(true);
-    const [diffShippingBilling, setDiffShippingBilling] = useState(false);
     const [isAddressVerified, setIsAddressVerified] = useState(false);
 
     return (
@@ -110,18 +109,7 @@ function Checkout() {
                             </label>
                             <input type="text" className="form-control mb-3" name="phone_no" id="phone_no" tabindex="5" required/>
                         </div>
-                        <div className="form-group d-flex mt-2" style={{"flexDirection":"row-reverse","alignItems":"center", "justifyContent":"flex-end"}}>
-                        <label htmlFor="diff_shipping_billing_address" className="mt-2">
-                                &nbsp;Check if Shipping and Billing address are different
-                            </label>
-                            <input 
-                                type="checkbox" 
-                                name="diff_shipping_billing_address"
-                                id="diff_shipping_billing_address" 
-                                onChange={()=>setDiffShippingBilling(!diffShippingBilling)} 
-                                tabindex="6" /> 
-                                
-                        </div>
+                       
                         <div className="form-group">
                             <input type="submit" className="btn btn-primary btn-sm" value="Ship To This Address" onClick={()=>setIsAddressVerified(!isAddressVerified)} />
                         </div>
@@ -129,38 +117,7 @@ function Checkout() {
                     </form>
                 </div>
                 }
-                { diffShippingBilling &&
-                <div className="col-xs-12 col-sm-12 col-md-5 col-xl-5 mt-4">
-                <h5 className="mb-3">Billing Address</h5>
-                    <form action="">
-                        <div className="form-group ">
-                            <label htmlFor="billing_name">
-                                Name
-                            </label>
-                            <input type="text" className="form-control mb-3" name="billing_name" id="billing_name" tabindex="1" autofocus required/>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="billing_address">
-                                Address
-                            </label>
-                            <input type="text" className="form-control mb-3" name="billing_address" id="billing_address" tabindex="2" required/>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="billing_city">
-                                City
-                            </label>
-                            <input type="text" className="form-control mb-3" name="billing_city" id="billing_city" tabindex="3" required/>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="phone_no">
-                                Phone No.
-                            </label>
-                            <input type="text" className="form-control mb-3" name="phone_no" id="phone_no" tabindex="4" required/>
-                        </div>
-
-                    </form>
-                </div>
-                }
+               
             </div>
             {isAddressVerified &&
             <div className="row">
@@ -181,11 +138,7 @@ function Checkout() {
                         </td>
                         <td className="text-right" title="Amount">
                             <div className="input-group mb-3 text-center">
-                                {/* <div className="input-group-prepend">
-                                    
-                                </div> */}
-                                1
-                                {/* <input type="number" className="form-control" /> */}
+                                
                             </div>
                         </td>
                         <td className="text-right" title="Price">Rs.1000</td>
@@ -212,7 +165,7 @@ function Checkout() {
                     </tr>
 
                 </table>
-                <div class="col-md-5">
+                <div class="col-md-6 mb-4">
                     <div className="payment-methods">
                         <form action="">
                             <div className="form-group">
@@ -231,18 +184,9 @@ function Checkout() {
                     </div>
                     
                 </div>
-                <div className="col-md-4">
-                        <form action="">
-                            <div className="form-group ">
-                                <p style={{"fontSize":"18px"}}>  Other Details </p>
-                                <label htmlFor="date">Select Delivery Date </label>
-                                <input type="date" class="form-control mb-5" name="delivery_date" id="date" />
-                            </div>
-                        </form>
-
-                </div>
-                <div className="col-md-3 text-right d-flex " style={{"flexDirection":"column","alignItems":"flex-end"}}>
-                    <a href="#" className="btn btn-primary pl-3 pr-3 text-white mt-5 ">
+               
+                <div className="col-md-6 text-right d-flex " style={{"flexDirection":"column","alignItems":"flex-end"}}>
+                    <a href="#" className="btn btn-primary mb-5 pl-3 pr-3 text-white mt-5 ">
                         Pay Now
                     </a>
                 </div>
