@@ -250,7 +250,6 @@ function Checkout() {
                     </div>
                     
                 </div>
-<<<<<<< HEAD
                 <div className="col-md-4">
                         <form action="">
                             <div className="form-group ">
@@ -273,11 +272,6 @@ function Checkout() {
                     <input value="http://localhost:3000/success" type="hidden" name="su"/>
                     <input value="http://localhost:3000/failed" type="hidden" name="fu"/>
                     <button value="submit" type="submit" className="btn btn-primary pl-3 pr-3 text-white mt-5 ">
-=======
-               
-                <div className="col-md-6 text-right d-flex " style={{"flexDirection":"column","alignItems":"flex-end"}}>
-                    <a href="#" className="btn btn-primary mb-5 pl-3 pr-3 text-white mt-5 ">
->>>>>>> 6e23e4d5d7e68147220936999cd2572bc7a0a0d9
                         Pay Now
                     </button>
                 </form>
