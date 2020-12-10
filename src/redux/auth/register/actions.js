@@ -1,4 +1,7 @@
 import { REGISTER_USER, REGISTER_USER_SUCCESSFUL, API_FAILED, EMPTY_ERROR,CONFIRM_MAIL,CONFIRM_SUCCESS,CONFIRM_ERROR } from './actionTypes';
+import * as AuthService from "../../../services/AuthService";
+import * as AuthHelpers from "../../../helpers/AuthHelpers";
+import jwt from 'jwt-decode';
 
 export const registerUser = (user) => {
     return {
@@ -51,22 +54,22 @@ export const confirmError = (error) => {
 const postRegister = (data, history) => async (dispatch) => {
     try {
         console.log("Check", data);
-        console.log("Check", data.username, data.password);
-        dispatch(registerUser(data.username, data.password, history));
+        console.log("Check", data.name, data.password);
+        dispatch(registerUser(data.name, data.email, data.password, data.phone, history));
 
-        // const responseData = await AuthService.postLogin(data);
+        const responseData = await AuthService.postRegister(data);
 
-        // let token = responseData.headers.authorization.replace("Bearer ","");
-        // let user = jwt(token)
-        // user.token = token;
+        let token = responseData.headers.authorization.replace("Bearer ","");
+        let user = jwt(token)
+        user.token = token;
         
-        // AuthHelpers.setLoggedInUser(user);
+        AuthHelpers.setLoggedInUser(user);
         
-        // console.log("Response after login", user);
+        console.log("Response after login", user);
 
-        // AuthHelpers.setLoggedInUser(user);
-        // dispatch(loginUserSuccessful(user));
-        // history.push('/');
+        AuthHelpers.setLoggedInUser(user);
+        dispatch(registerUserSuccessful(user));
+        history.push('/');
 
     } catch(message) {
         dispatch(apiError(message))

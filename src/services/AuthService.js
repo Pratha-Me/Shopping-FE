@@ -93,4 +93,4 @@ const postRegister = (data) => {
 // }
 
 
-export { postLogin, postForgetPwd }
+export { postLogin, postForgetPwd, postRegister }

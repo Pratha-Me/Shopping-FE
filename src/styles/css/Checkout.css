@@ -27,7 +27,7 @@
     color: #fff
 }
 #progressbar .step0:first-child::before {
-    content:"👤";
+    content:"✓";
     /* color:#fff !important; */
 }
 
