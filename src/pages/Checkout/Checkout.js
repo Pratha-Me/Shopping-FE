@@ -128,7 +128,7 @@ function Checkout() {
 
                         <div className="form-group">
                             <button className="btn btn-danger btn-sm mr-3" onClick={()=>setIsAddressVerified(!isAddressVerified)}>Use this Address</button>
-                            <a href="#" className="btn btn-danger btn-sm text-white">Delete</a> 
+                       
                         </div>
                    </div>
 
@@ -136,7 +136,6 @@ function Checkout() {
                 }
                 { !isAddressVerified &&
                 <div className="col-xs-12 col-sm-12 col-md-6 col-xl-6 mt-4">
-                    
                     <h5 className="mb-3">Shipping Address</h5>
                     <form action="">
                         <div className="form-group ">
@@ -250,17 +249,8 @@ function Checkout() {
                     </div>
                     
                 </div>
-                <div className="col-md-4">
-                        <form action="">
-                            <div className="form-group ">
-                                <p style={{"fontSize":"18px"}}>  Other Details </p>
-                                <label htmlFor="date">Select Delivery Date </label>
-                                <input type="date" class="form-control mb-5" name="delivery_date" id="date" />
-                            </div>
-                        </form>
-
-                </div>
-                <div className="col-md-3 text-right d-flex " style={{"flexDirection":"column","alignItems":"flex-end"}}>
+                
+                <div className="col-md-12 text-right d-flex " style={{"flexDirection":"column","alignItems":"flex-end"}}>
                 <form action="https://uat.esewa.com.np/epay/main" method="POST">
                     <input value={getTotal(getSubTotal(carts), getTax(getSubTotal(carts)), getServiceCharge(getSubTotal(carts)))} name="tAmt" type="hidden"/>
                     <input value={getSubTotal(carts)} name="amt" type="hidden"/>
@@ -271,7 +261,7 @@ function Checkout() {
                     <input value="HelloNepal123sssasa455" name="pid" type="hidden"/>
                     <input value="http://localhost:3000/success" type="hidden" name="su"/>
                     <input value="http://localhost:3000/failed" type="hidden" name="fu"/>
-                    <button value="submit" type="submit" className="btn btn-primary pl-3 pr-3 text-white mt-5 ">
+                    <button value="submit" type="submit" className="btn btn-primary pl-3 pr-3 text-white text-right mb-5 ">
                         Pay Now
                     </button>
                 </form>

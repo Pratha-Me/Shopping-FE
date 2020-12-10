@@ -20,9 +20,9 @@ function Profile() {
                 <div className="col-xs-12 col-sm-12 col-md-12 col-xl-12 pl-4 pt-4 pb-2" style={{margin:`0 !important`, padding:'0!important'}}>
                     <nav aria-label="breadcrumb"  className="profile-breadcrumb">
                         <ol className="breadcrumb bg-transparent">
-                            <li className="breadcrumb-item"><a href="#">Home &nbsp;</a></li> 
-                            <li className="breadcrumb-item"><a href="#">My Account &nbsp;</a></li> 
-                            <li className="breadcrumb-item active" aria-current="page">Profile Information</li>
+                            <li className="breadcrumb-item"><a href="/">Home &nbsp;</a></li> 
+                            <li className="breadcrumb-item active" aria-current="page">My Account</li> 
+                            
                         </ol>
                     </nav>  
                 </div>

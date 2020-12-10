@@ -1,6 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-function OrderHistory() {
+function OrderHistory(props) {
     const orders = [];
     const orderLength = orders.length;
 
@@ -13,7 +14,7 @@ function OrderHistory() {
                         <label className="text-secondary" >
                             EMAIL
                         </label>
-                        <span className="ml-4">johndoe@gmail.com</span>
+                        <span className="ml-4">{props.items.user.sub}</span>
                     </div>
                     <div className="form-group">    
                         <label className="text-secondary" >
@@ -38,7 +39,7 @@ function OrderHistory() {
                                 You have no orders!
                             </p>
                             <a 
-                                href="#"
+                                href="/"
                                 className="btn btn-primary btn-sm text-white pl-3 pr-3">
                                 Continue Shopping
                             </a>
@@ -87,4 +88,9 @@ function OrderHistory() {
     )
 }
 
-export default OrderHistory
+
+const mapStateToProps = state => ({
+    items: state.Login
+  });
+
+export default connect(mapStateToProps)(OrderHistory);

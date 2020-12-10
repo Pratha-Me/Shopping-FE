@@ -102,8 +102,8 @@ function PersonalInfo(props) {
                                         <input type="text" className="form-control" name="phone_number" id="phone_number" tabIndex="2" />
                                     </div>
 
-                                    <div className="form-group text-center mt-5">
-                                        <input type="submit" value="Save" className="btn btn-primary text-white pl-3 pr-3"/>
+                                    <div className="form-group text-center ">
+                                        <input type="submit" value="Save" className="btn btn-primary text-white pl-3 pr-3 mt-3 "/>
                                     </div>
                             </form>
                            
@@ -138,15 +138,15 @@ function PersonalInfo(props) {
                                         <label htmlFor="confirm_password">Confirm Password </label>
                                         <input type="password" className="form-control" id="confirm_password" name="confirm_password" tabIndex="3" />
                                     </div>
-                                    <div className="form-group text-center mt-5">
-                                        <input type="submit" value="Submit" className="btn btn-primary text-white pl-3 mr-3 pr-3"/>
+                                    <div className="form-group text-center">
+                                        <input type="submit" value="Submit" className="btn btn-primary btn-sm text-white pl-3 mt-4 mr-3 pr-3"/>
                                         <button 
                                             type="button" 
                                             onClick={()=>{
                                                     setChangePassword(false);
                                                     setEditInfo(false);
                                                     }} 
-                                            class="btn btn-danger  text-white">
+                                            class="btn btn-danger mt-4 btn-sm text-white">
                                                 Cancel
                                         </button>
                                     </div>

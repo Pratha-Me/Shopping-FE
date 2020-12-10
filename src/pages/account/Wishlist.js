@@ -1,8 +1,9 @@
-import React,{useState} from 'react'
+import React,{useState} from 'react';
+import { connect } from 'react-redux';
 
 
 
-function Wishlist() {
+function Wishlist(props) {
         
     const products = []
     const itemLength = products.length
@@ -16,7 +17,7 @@ function Wishlist() {
                         <label className="text-secondary" >
                             EMAIL
                         </label>
-                        <span className="ml-4">johndoe@gmail.com</span>
+                        <span className="ml-4">{props.items.user.sub}</span>
                     </div>
                     <div className="form-group">    
                         <label className="text-secondary" >
@@ -34,38 +35,14 @@ function Wishlist() {
 
             <div className="col-xs-12 col-sm-12 col-md-12 col-xl-12 pt-3">
                 <div style={{backgroundColor:`#fcfcfc`,padding:`17px`, border:`1px solid #888`, borderRadius:`2px`,fontSize:`16px`, marginBottom:`25vh`}}>
-                    {/* <div className="form-group ml-4 mt-4">
-                        <label className="text-secondary" >
-                            NAME 
-                        </label>
-                        <span className="ml-4">John Doe</span>
-                    </div>
-                    <div className="form-group ml-4">    
-                        <label className="text-secondary">
-                            CONTACT 
-                        </label>
-                        <span className="ml-4">+9779823564258</span>
-                    </div>
-
-                    <div className="form-group ml-4">    
-                        <label className="text-secondary" >
-                            ADDRESS 
-                        </label>
-                        <span className="ml-4">Gaushala, Kathmandu (Inside Ring Road), Bagmati, NP - 44600</span>
-                    </div>
-
-                    <div className="form-group ml-4 text-right">   
-                        <a href="#" className="btn btn-primary text-white btn-sm pl-4 pr-4 mr-4">Edit</a>
-                        <a href="#" className="btn btn-danger text-white btn-sm pl-3 pr-3">Delete</a>
-                    </div> */}
-
+                   
                     {itemLength == 0 && 
                         <div style={{display:`flex`,justifyContent:`center`, flexDirection:`column`, alignItems:`center`}}>
                             <p className="text-secondary">
                                 Your wishlist is empty!
                             </p>
                             <a 
-                                href="#"
+                                href="/"
                                 className="btn btn-primary btn-sm text-white pl-3 pr-3">
                                 Continue Shopping
                             </a>
@@ -120,4 +97,9 @@ function Wishlist() {
     )
 }
 
-export default Wishlist
+
+const mapStateToProps = state => ({
+    items: state.Login
+  });
+
+export default connect(mapStateToProps)(Wishlist);

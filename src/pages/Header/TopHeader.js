@@ -41,7 +41,7 @@ function TopHeader(props) {
       {isLoggedIn ? <div className="col-8 ml-auto">
                       <div className="row text-center top-header">
                         <div className="col-3"><Link to="/seller"> Sell on Shopping.com</Link></div>
-                        <div className="col-2"><Link to="/"> <i className="fas fa-user-alt mr-2"></i>
+                        <div className="col-2"><Link to="/user/profile"> <i className="fas fa-user-alt mr-2"></i>
                         My Account</Link></div>
                         <div className="col-2">Welcome <span>{user.name}</span></div>
                         <div className="col-1 ml-5"><Link to="/" onClick={handleLogout}> Logout</Link></div>
