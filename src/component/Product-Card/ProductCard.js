@@ -7,7 +7,7 @@ import {addItem, removeItem, updateItem} from '../../helpers/CartHelpers'
 
 const ProductCard = ({width, height, imgHeight, product, showButtons=true, showFooter=true, cartUpdate= false, showRemove = false  }) => {
     const [redirect, setRedirect] = useState(false)
-    const [count, setCount] = useState(product.count)
+    // const [count, setCount] = useState(product.count)
 
     const addToCart = () => {
         addItem(product, () => {
@@ -21,24 +21,23 @@ const ProductCard = ({width, height, imgHeight, product, showButtons=true, showF
         }
     }
     
-    const handleChange = productId => event => {
-        setCount(event.target.value < 1 ? 1 : event.target.value)
-        if(event.target.value >= 1){
-            updateItem(productId, event.target.value)
-        }
-        window.location.reload()
-    }
+    // const handleChange = productId => event => {
+    //     setCount(event.target.value < 1 ? 1 : event.target.value)
+    //     if(event.target.value >= 1){
+    //         updateItem(productId, event.target.value)
+    //     }
+    //     window.location.reload()
+    // }
 
-    const showCartUpdateOptions = cartUpdate => {
-        return cartUpdate && <div className="input-group mb-3">
-        <div className="input-group-prepend">
-            <span className="input-group-text">Adjust Quantity</span>
-        </div>
-        <input type="number" className="form-control" value={count} onChange={handleChange(product.id)}/>
-    </div>
-    }
+    // const showCartUpdateOptions = cartUpdate => {
+    //     return cartUpdate && <div className="input-group mb-3">
+    //     <div className="input-group-prepend">
+    //         <span className="input-group-text">Adjust Quantity</span>
+    //     </div>
+    //     <input type="number" className="form-control" value={count} onChange={handleChange(product.id)}/>
+    // </div>
+    // }
 
-    console.log('Id chaiyo :', product.id)
 
     return (
         // <div className="product-container" style={{width: `${width}`, height:`${height}`}}>
@@ -103,7 +102,7 @@ const ProductCard = ({width, height, imgHeight, product, showButtons=true, showF
                     </div> : '' }
                     </div> */}
                 </div> : '' }
-                {showCartUpdateOptions(cartUpdate)}
+                {/* {showCartUpdateOptions(cartUpdate)} */}
     </div>
     )
 }

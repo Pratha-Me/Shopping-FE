@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
+import { connect } from 'react-redux';
 
 
-function PersonalInfo() {
+function PersonalInfo(props) {
 
     const [editInfo, setEditInfo] = useState(false);
     const [changePassword, setChangePassword] =  useState(false);
+
+    console.log("Personal Info:", props.items.user.sub)
 
 
     if (!editInfo && !changePassword) {
@@ -46,13 +49,13 @@ function PersonalInfo() {
                                 <label className="text-secondary" htmlFor="name">
                                     NAME 
                                 </label>
-                                <span className="ml-4">John Doe</span>
+                                     <span className="ml-4">{props.items.user.name}</span>
                             </div>
                             <div className="form-group ml-4">    
                                 <label className="text-secondary" htmlFor="name">
                                     EMAIL 
                                 </label>
-                                <span className="ml-4">johndoe@gmail.com</span>
+                                <span className="ml-4">{props.items.user.sub}</span>
                             </div>
 
                             <div className="form-group ml-4">    
@@ -157,4 +160,8 @@ function PersonalInfo() {
     }
 }
 
-export default PersonalInfo
+const mapStateToProps = state => ({
+    items: state.Login
+  });
+
+export default connect(mapStateToProps)(PersonalInfo);

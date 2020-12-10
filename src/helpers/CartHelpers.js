@@ -91,3 +91,10 @@ export const removeItem = (productId) => {
     }
     return cart
 }
+
+// Get Subtotal
+export const getSubTotal = (items) => {
+    return items.reduce((currentValue, nextValue) => {
+      return currentValue + nextValue.count * nextValue.unitPrice;
+    }, 0);
+  };

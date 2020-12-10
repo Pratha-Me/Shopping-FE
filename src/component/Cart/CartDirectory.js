@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { addItem, getCart, removeItem, updateItem, updateTotal } from '../../helpers/CartHelpers';
+import { addItem, getCart, removeItem, updateItem, updateTotal, getSubTotal } from '../../helpers/CartHelpers';
 import NavbarMenu from '../../pages/Header/NavbarMenu';
 import TopHeader from '../../pages/Header/TopHeader';
 import '../../styles/css/CartDirectory.css';
@@ -10,10 +10,21 @@ import ProductCard from '../Product-Card/ProductCard';
 
 const CartDirectory = () => {
   const [items, setItems] = useState([]);
+  const [count, setCount] = useState(null)
+
 
   useEffect(() => {
     setItems(getCart());
   }, []);
+
+  const handleChange = productId => event => {
+    setCount(event.target.value < 1 ? 1 : event.target.value)
+    if(event.target.value >= 1){
+        updateItem(productId, event.target.value)
+    }
+    window.location.reload()
+}
+
 
   const getSingleTotal = (item) => {
     const total = item ? item.count * item.unitPrice : '';
@@ -23,11 +34,11 @@ const CartDirectory = () => {
     updateTotal(item.id, getSingleTotal(item));
   });
 
-  const getTotal = () => {
-    return items.reduce((currentValue, nextValue) => {
-      return currentValue + nextValue.count * nextValue.unitPrice;
-    }, 0);
-  };
+  // const getTotal = () => {
+  //   return items.reduce((currentValue, nextValue) => {
+  //     return currentValue + nextValue.count * nextValue.unitPrice;
+  //   }, 0);
+  // };
 
   const showItems = (items) => {
     return (
@@ -58,7 +69,7 @@ const CartDirectory = () => {
             <tr>
               <th></th>
               <th className='text-left'>Description</th>
-              <th className='text-left'>Amt</th>
+              <th className=''>Amt</th>
               <th className='text-right'>Remove</th>
               <th className='text-right'>Price</th>
               <th className='text-right'>Total</th>
@@ -66,15 +77,21 @@ const CartDirectory = () => {
             {items.map((product, i) => (
               <tr className='item-row'>
                 <td style={{ width: '100px', height: '100px' }}>
-                  <ProductCard product={product} showButtons={false} showFooter={false} cartUpdate={true} showRemove={true}></ProductCard>
+                  <ProductCard product={product} showButtons={false} showFooter={false} cartUpdate={true} showRemove={true} imgHeight='100px'></ProductCard>
                 </td>
                 <td>
                   <p className="mt-3">
                     {' '}
-                    <strong>{product.title}</strong>
+                    <strong>{product.itemName}</strong>
                   </p>
                 </td>
-                <td className='text-right mt-3' title='Qty'>
+                <td className='mt-3' title='Qty' >
+                <div className="input-group mb-3 mr-0" style={{width:'200px'}}>
+                  {/* <div className="input-group-prepend">
+                      <span className="input-group-text">Adjust Quantity</span>
+                  </div> */}
+                  <input type="number" className="form-control" value={product.count} onChange={handleChange(product.id)}/>
+              </div>
                 </td>
                 <td className='text-right mt-3' title='Remove'>
                   <i onClick = { () => { removeItem(product.id) && window.location.reload()}}  className="fas fa-trash-alt" style={{cursor:'pointer'}}></i>
@@ -87,12 +104,26 @@ const CartDirectory = () => {
                 </td>
               </tr>
             ))}
-            <tr className='total-row info'>
+            {/* <tr className='total-row info'>
               <td className='text-right' colSpan='5'>
                 Total
               </td>
-              <td className='text-right'>{getTotal()}</td>
-            </tr>
+              <td className='text-right'>{getSubTotal(items)}</td>
+            </tr> */}
+            <tr className="total-row info">                        
+              <td className="text-right font-weight-bold " colspan="5">
+                  <span className='res-text'>Sub-total </span> <br />
+              </td>
+              <td className="text-right">
+                  <span className="font-weight-bold res-text">
+                      Rs. {getSubTotal(items)}
+                  </span> <br/>
+              </td>
+          </tr>
+          <tr className="total-row info">
+            <td className="text-right font-weight-bold res-text" colspan="5">Total</td>
+            <td className="text-right font-weight-bold res-text">Rs. {getSubTotal(items)}</td>
+          </tr>
           </tbody>
         </table>
       </div>
@@ -130,9 +161,11 @@ const CartDirectory = () => {
                     Continue Shopping
                 </button>{' '}
                 </Link>
-              <button type='button' class='btn btn-success m-2'>
-                Place Order
-              </button>
+                <Link to='/checkout'>
+                  <button type='button' class='btn btn-success m-2'>
+                    Place Order
+                  </button>
+                </Link>
               </div>
             ) : (
               ''

@@ -9,6 +9,8 @@ import SubCategory from '../pages/Sub-Category/SubCategory';
 import CartDirectory from '../component/Cart/CartDirectory';
 import Profile from '../pages/account/Profile';
 import Checkout from '../pages/Checkout/Checkout';
+import Esewa from '../api/Esewa/Esewa';
+import Success from '../api/Esewa/Success';
 
 const routes = [
 
@@ -29,6 +31,8 @@ const routes = [
     { path: '/checkout/', component: Checkout },
     { path: '/user/profile', component: Profile },
     { path: '/browser/:product/:id', component: SubCategory },
+    { path: '/esewa', component: Esewa },
+    { path: '/success', component: Success },
     // Authenticated Routes
     // { path: '/dashboard', component: Dashboard},
     // { path: '/unauthorized', component: Unauthorized},

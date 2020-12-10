@@ -4,7 +4,6 @@ import React from 'react'
 export default function Esewa(){
     return(
         <>
-        {/* <Button></Button> */}
         <form action="https://uat.esewa.com.np/epay/main" method="POST">
         <input value="100" name="tAmt" type="hidden"/>
         <input value="90" name="amt" type="hidden"/>

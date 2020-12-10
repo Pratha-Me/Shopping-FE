@@ -2,7 +2,7 @@ const DATA = [
     {
         id: 1,
         itemName: 'No Plans for Summer Tshirt',
-        unitPrice: 900,
+        unitPrice: 100,
         pevPrice: 1000,
         offer: '10%',
         imageUrl:'https://images.pexels.com/photos/2306791/pexels-photo-2306791.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
@@ -10,7 +10,7 @@ const DATA = [
     {
         id: 2,
         itemName: 'Resist Tshirts',
-        unitPrice: 1800,
+        unitPrice: 200,
         pevPrice: 2000,
         offer: '10%',
         imageUrl : 'https://images.pexels.com/photos/5432532/pexels-photo-5432532.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
@@ -18,7 +18,7 @@ const DATA = [
     {
         id: 3,
         itemName: 'Plain Tshirts',
-        unitPrice: 900,
+        unitPrice: 100,
         imageUrl: 'https://images.pexels.com/photos/2562500/pexels-photo-2562500.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
     },
     {

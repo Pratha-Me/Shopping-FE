@@ -13,6 +13,7 @@ import { logoutUserSuccessful } from '../../redux/auth/login/actions';
 
 function TopHeader(props) {
   const [isLoggedIn, setlogin] = useState(false);
+  const [user, setUsers] = useState([])
 
   useEffect(() => {
     if (getAuthUser()) {
@@ -20,7 +21,12 @@ function TopHeader(props) {
     } else {
       setlogin(false);
     }
+    setUsers(
+      JSON.parse(localStorage.getItem('user'))
+    )
   }, [])
+
+  console.log("hamro user:", user)
 
   const handleLogout = (event) => {
     localStorage.removeItem('user');
@@ -37,7 +43,7 @@ function TopHeader(props) {
                         <div className="col-3"><Link to="/seller"> Sell on Shopping.com</Link></div>
                         <div className="col-2"><Link to="/"> <i className="fas fa-user-alt mr-2"></i>
                         My Account</Link></div>
-                        <div className="col-2">Welcome <span>John</span></div>
+                        <div className="col-2">Welcome <span>{user.name}</span></div>
                         <div className="col-1 ml-5"><Link to="/" onClick={handleLogout}> Logout</Link></div>
                       </div>
                     </div>
