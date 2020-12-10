@@ -32,12 +32,10 @@ const routes = [
     { path: '/checkout/', component: Checkout },
     { path: '/user/profile', component: Profile },
     { path: '/browser/:product/:id', component: SubCategory },
-<<<<<<< HEAD
     { path: '/esewa', component: Esewa },
     { path: '/success', component: Success },
-=======
+
     { path: '/seller-register', component: SellerRegister },
->>>>>>> 6e23e4d5d7e68147220936999cd2572bc7a0a0d9
     // Authenticated Routes
     // { path: '/dashboard', component: Dashboard},
     // { path: '/unauthorized', component: Unauthorized},
