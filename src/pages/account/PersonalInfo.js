@@ -7,9 +7,6 @@ function PersonalInfo(props) {
     const [editInfo, setEditInfo] = useState(false);
     const [changePassword, setChangePassword] =  useState(false);
 
-    console.log("Personal Info:", props.items.user.sub)
-
-
     if (!editInfo && !changePassword) {
         return (
             
@@ -97,8 +94,8 @@ function PersonalInfo(props) {
                                         <label htmlFor="full_name">Full Name</label>
                                         <input type="text" className="form-control"  name="full_name" id="full_name" tabIndex="1" autoFocus />
                                     </div>
-                                    <div className="form-group">
-                                        <label htmlFor="phone_number">Phone </label>
+                                    <div className="form-group ">
+                                        <label htmlFor="phone_number" className="mt-2">Phone </label>
                                         <input type="text" className="form-control" name="phone_number" id="phone_number" tabIndex="2" />
                                     </div>
 
@@ -131,11 +128,11 @@ function PersonalInfo(props) {
                                         <input type="password" className="form-control" id="current_password" name="current_password" tabIndex="1" autoFocus />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="password">New Password </label>
+                                        <label htmlFor="password" className="mt-2">New Password </label>
                                         <input type="password" className="form-control" id="password" name="password" tabIndex="2" />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="confirm_password">Confirm Password </label>
+                                        <label htmlFor="confirm_password" className="mt-2">Confirm Password </label>
                                         <input type="password" className="form-control" id="confirm_password" name="confirm_password" tabIndex="3" />
                                     </div>
                                     <div className="form-group text-center">
@@ -146,7 +143,7 @@ function PersonalInfo(props) {
                                                     setChangePassword(false);
                                                     setEditInfo(false);
                                                     }} 
-                                            class="btn btn-danger mt-4 btn-sm text-white">
+                                            className="btn btn-danger mt-4 btn-sm text-white">
                                                 Cancel
                                         </button>
                                     </div>

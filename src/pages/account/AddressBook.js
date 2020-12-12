@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { connect } from 'react-redux';
-
 
 function AddressBook(props) {
     const [editAddress, setEditAddress ] = useState(false);
     const [addAddress, setAddAddress] = useState(false);
-    
+ 
+      
     return (
         <div className="container">
         <div className="row">
@@ -55,7 +55,7 @@ function AddressBook(props) {
                         <label className="text-secondary" >
                             ADDRESS 
                         </label>
-                        <span className="ml-4">Gaushala, Kathmandu (Inside Ring Road), Bagmati, NP - 44600</span>
+                        <span className="ml-4">Bagmati-78</span>
                     </div>
 
                     <div className="form-group ml-4 text-right">   
@@ -81,31 +81,31 @@ function AddressBook(props) {
                             <label htmlFor="name">
                                 Full Name
                             </label>
-                            <input type="text" className="form-control mb-3" name="name" id="name" tabindex="1" autofocus />
+                            <input type="text" className="form-control mb-3" name="name" id="name" tabIndex="1" autoFocus />
                         </div>
                         <div className="form-group ml-4 " style={{"width":"50%"}}>
                             <label htmlFor="zone">
                                 Zone
                             </label>
-                            <input type="text" className="form-control mb-3" name="zone" id="zone" tabindex="2" />
+                            <input type="text" className="form-control mb-3" name="zone" id="zone" tabIndex="2" />
                         </div>
                         <div className="form-group ml-4" style={{"width":"50%"}}>
                             <label htmlFor="city">
                                 City
                             </label>
-                            <input type="text" className="form-control mb-3" name="city" id="zone" tabindex="3" required/>
+                            <input type="text" className="form-control mb-3" name="city" id="zone" tabIndex="3" required/>
                         </div>
                         <div className="form-group ml-4" style={{"width":"50%"}}>
                             <label htmlFor="address">
                                 Address
                             </label>
-                            <input type="text" className="form-control mb-3" name="address" id="address" tabindex="4" />
+                            <input type="text" className="form-control mb-3" name="address" id="address" tabIndex="4" />
                         </div>
                         <div className="form-group ml-4" style={{"width":"50%"}}>
                             <label htmlFor="phone_no">
                                 Phone No.
                             </label>
-                            <input type="text" className="form-control mb-3" name="phone_no" id="phone_no" tabindex="5" />
+                            <input type="text" className="form-control mb-3" name="phone_no" id="phone_no" tabIndex="5" />
                         </div>
                        
                         <div className="form-group ml-4 text-center" style={{"width":"50%"}}>
@@ -128,31 +128,31 @@ function AddressBook(props) {
                             <label htmlFor="name">
                                 Full Name
                             </label>
-                            <input type="text" className="form-control mb-3" name="name" id="name" tabindex="1" autofocus />
+                            <input type="text" className="form-control mb-3" name="name" id="name" tabIndex="1" autoFocus />
                         </div>
                         <div className="form-group ml-4 " style={{"width":"50%"}}>
                             <label htmlFor="zone">
                                 Zone
                             </label>
-                            <input type="text" className="form-control mb-3" name="zone" id="zone" tabindex="2" />
+                            <input type="text" className="form-control mb-3" name="zone" id="zone" tabIndex="2" />
                         </div>
                         <div className="form-group ml-4" style={{"width":"50%"}}>
                             <label htmlFor="city">
                                 City
                             </label>
-                            <input type="text" className="form-control mb-3" name="city" id="zone" tabindex="3" required/>
+                            <input type="text" className="form-control mb-3" name="city" id="zone" tabIndex="3" required/>
                         </div>
                         <div className="form-group ml-4" style={{"width":"50%"}}>
                             <label htmlFor="address">
                                 Address
                             </label>
-                            <input type="text" className="form-control mb-3" name="address" id="address" tabindex="4" />
+                            <input type="text" className="form-control mb-3" name="address" id="address" tabIndex="4" />
                         </div>
                         <div className="form-group ml-4" style={{"width":"50%"}}>
                             <label htmlFor="phone_no">
                                 Phone No.
                             </label>
-                            <input type="text" className="form-control mb-3" name="phone_no" id="phone_no" tabindex="5" />
+                            <input type="text" className="form-control mb-3" name="phone_no" id="phone_no" tabIndex="5" />
                         </div>
                        
                         <div className="form-group ml-4 text-center" style={{"width":"50%"}}>
