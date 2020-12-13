@@ -3,11 +3,9 @@ import { connect } from 'react-redux';
 
 
 function PersonalInfo(props) {
-
-    const [editInfo, setEditInfo] = useState(false);
     const [changePassword, setChangePassword] =  useState(false);
 
-    if (!editInfo && !changePassword) {
+    if (!changePassword) {
         return (
             
             <div className="container">
@@ -20,24 +18,13 @@ function PersonalInfo(props) {
                     <div className="col-xs-6 col-sm-6 col-md-6 col-xl-6 text-right mt-5">
                         <button 
                             onClick={()=>{
-                                setEditInfo(false);
                                 setChangePassword(true);
                             }}
                             className="btn btn-danger btn-sm mr-4 pr-3 pl-3 text-white" 
                             style={{fontSize:`16px`}}>
                                 Change Password
                         </button>
-                        <button
-                            type="button" 
-
-                            onClick={()=>{
-                                setEditInfo(true);
-                                setChangePassword(false);
-                            }} 
-                            className="btn btn-primary btn-sm pl-4 pr-4 text-white" 
-                            style={{fontSize:`16px`}}>
-                                Edit
-                        </button>
+                        
                     </div>
 
                     <div className="col-xs-12 col-sm-12 col-md-12 col-xl-12 pt-3">
@@ -66,52 +53,10 @@ function PersonalInfo(props) {
                 </div>
         </div>  
      )
-    } 
-    if(editInfo && !changePassword)
-    {
-        return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-xs-6 col-sm-6 col-md-6 col-xl-6 mt-5">
-                        <p style={{fontSize:`17px`, fontWeight:`500`}}>
-                            EDIT INFO
-                        </p>
-                    </div>
-                    <div className="col-xs-6 col-sm-6 col-md-6 col-xl-6 text-right mt-5">
-                        <button
-                            type="button" 
-                            onClick={()=>setEditInfo(false)}
-                            className="btn btn-danger btn-sm pl-4 pr-4 text-white" 
-                            style={{fontSize:`16px`}}>
-                                Close
-                        </button>
-                    </div>
-
-                    <div className="col-xs-12 col-sm-12 col-md-12 col-xl-12 pt-3">
-                        <div style={{backgroundColor:`#fcfcfc`,padding:`17px`,border:`1px solid #888`, borderRadius:`2px`,fontSize:`16px`, marginBottom:`25vh`}}>
-                            <form method="POST" className="pl-5 pt-3 pr-5 pb-3">
-                                    <div className="form-group">
-                                        <label htmlFor="full_name">Full Name</label>
-                                        <input type="text" className="form-control"  name="full_name" id="full_name" tabIndex="1" autoFocus />
-                                    </div>
-                                    <div className="form-group ">
-                                        <label htmlFor="phone_number" className="mt-2">Phone </label>
-                                        <input type="text" className="form-control" name="phone_number" id="phone_number" tabIndex="2" />
-                                    </div>
-
-                                    <div className="form-group text-center ">
-                                        <input type="submit" value="Save" className="btn btn-primary text-white pl-3 pr-3 mt-3 "/>
-                                    </div>
-                            </form>
-                           
-                        </div>
-                    </div>
-                </div>
-        </div>
-        )
     }
+    
 
-    if(changePassword && !editInfo) {
+    if(changePassword) {
         return (
             <div className="container">
                 <div className="row">
@@ -141,7 +86,6 @@ function PersonalInfo(props) {
                                             type="button" 
                                             onClick={()=>{
                                                     setChangePassword(false);
-                                                    setEditInfo(false);
                                                     }} 
                                             className="btn btn-danger mt-4 btn-sm text-white">
                                                 Cancel
