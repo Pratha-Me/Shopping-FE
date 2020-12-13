@@ -24,7 +24,7 @@ function ResetPassword(props) {
                         </div>
                         <form onSubmit={handleSubmit(handleSubmitForm)} className="col-md-12 col-xl-12 mb-3">
                             <div className="row mb-4">
-                                <p className="text-justify">
+                                <p >
                                     Please enter your email address to receive userverification code.
                                 </p>
                             </div>
