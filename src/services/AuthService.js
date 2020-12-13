@@ -40,10 +40,14 @@ const postRegister = (data) => {
 
 const postSendOtp = (data) => {
     return AxiosService.login.post('/auth/otp', data);
-}
+};
+
+const getAnUser = (data) => {
+    return AxiosService.app.get('auth/getAnUser?email=' + data); 
+};
 
 const postForgetPwd = (data) => {
     return AxiosService.login.post('/auth/change-password', data);
-}
+};
 
-export { postLogin, postSendOtp, postForgetPwd, postRegister }
+export { postLogin, postSendOtp, postForgetPwd, postRegister , getAnUser}

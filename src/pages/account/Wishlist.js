@@ -1,5 +1,6 @@
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import { connect } from 'react-redux';
+import { getAnUser } from "../../services/AuthService";
 
 
 
@@ -7,7 +8,15 @@ function Wishlist(props) {
         
     const products = []
     const itemLength = products.length
-
+    const [userData, setUserData] = useState([]);
+    
+    useEffect(() => {
+        getAnUser(props.items.user.sub).then((response) => {
+        setUserData(response.data);
+        }).catch(err => {
+        console.log(err);
+        });
+    }, [])
     
     return (
         <div className="container">
@@ -17,13 +26,13 @@ function Wishlist(props) {
                         <label className="text-secondary" >
                             EMAIL
                         </label>
-                        <span className="ml-4">{props.items.user.sub}</span>
+                        <span className="ml-4">{userData.email}</span>
                     </div>
                     <div className="form-group">    
                         <label className="text-secondary" >
                             CONTACT
                         </label>
-                        <span className="ml-4">+977982325462</span>
+                        <span className="ml-4">{userData.phone}</span>
                 </div>
             </div>
             <div className="col-xs-12 col-sm-12 col-md-12 col-xl-12 mt-3">

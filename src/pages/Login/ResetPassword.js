@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { forgetPwd } from "../../redux/actions";
+import { postSendOtp } from "../../services/AuthService";
 import '../../styles/css/ResetPassword.css';
 
 function ResetPassword(props) {
@@ -10,7 +10,7 @@ function ResetPassword(props) {
 
     const handleSubmitForm = async (formData) => {
         console.log("Form Comp", formData);
-        await props.forgetPwd(formData);
+        await props.postSendOtp(formData);
     };
 
 
@@ -74,7 +74,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapActionsToProps = {
-    forgetPwd
+    postSendOtp
 }
 
 export default withRouter(connect(mapStateToProps, mapActionsToProps)(ResetPassword));

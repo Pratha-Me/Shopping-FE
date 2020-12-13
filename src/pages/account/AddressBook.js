@@ -1,8 +1,18 @@
 import React, {useState, useEffect} from 'react';
 import { connect } from 'react-redux';
+import { getAnUser } from "../../services/AuthService";
 
 function AddressBook(props) {
     const [editAddress, setEditAddress ] = useState(false);
+    const [userData, setUserData] = useState([]);
+    
+    useEffect(() => {
+        getAnUser(props.items.user.sub).then((response) => {
+        setUserData(response.data);
+        }).catch(err => {
+        console.log(err);
+        });
+    }, [])
     
       
     return (
@@ -13,13 +23,13 @@ function AddressBook(props) {
                         <label className="text-secondary" >
                             EMAIL
                         </label>
-                        <span className="ml-4">{props.items.user.sub}</span>
+                        <span className="ml-4">{userData.email}</span>
                     </div>
                     <div className="form-group">    
                         <label className="text-secondary" >
                             CONTACT
                         </label>
-                        <span className="ml-4">+977982325462</span>
+                        <span className="ml-4">{userData.phone}</span>
                     </div>
                 </div>
 
@@ -30,13 +40,13 @@ function AddressBook(props) {
                         <label className="text-secondary" >
                             NAME 
                         </label>
-                        <span className="ml-4">{props.items.user.name}</span>
+                        <span className="ml-4">{userData.name}</span>
                     </div>
                     <div className="form-group ml-4">    
                         <label className="text-secondary">
                             CONTACT 
                         </label>
-                        <span className="ml-4">+9779823564258</span>
+                        <span className="ml-4">{userData.phone}</span>
                     </div>
 
                     <div className="form-group ml-4">    
