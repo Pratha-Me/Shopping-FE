@@ -42,8 +42,8 @@ const postSendOtp = (data) => {
     return AxiosService.login.post('/auth/otp', data);
 };
 
-const getAnUser = (data) => {
-    return AxiosService.app.get('auth/getAnUser?email=' + data); 
+const getAnUser = () => {
+    return AxiosService.app.get('auth/getAnUser'); 
 };
 
 const postForgetPwd = (data) => {

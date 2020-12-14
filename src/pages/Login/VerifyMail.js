@@ -2,15 +2,17 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import '../../styles/css/VerifyMail.css';
 import { postForgetPwd } from "../../services/AuthService";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 function VerifyMail(props) {
     const { register, handleSubmit, errors } = useForm();
+        console.log(props.location);
     const handleSubmitForm = async (formdata) => {
-        await(postForgetPwd(formdata)).then((result)=> console.log(result));
+        formdata.email = props.location.state.email;
+        await(postForgetPwd(formdata)).then((result)=> {
+            props.history.push('/');
+        });
     };
-
-    console.log("Email", props.location.state.email);
 
     return (
         <div className="jumbotron">
@@ -46,7 +48,7 @@ function VerifyMail(props) {
                             <div className="row ">
                                 <input
                                     type="password"
-                                    name="newpassword"
+                                    name="newPassword"
                                     placeholder="New Password"
                                     className="form-control mt-4"
                                     tabIndex="2"
@@ -97,4 +99,4 @@ function VerifyMail(props) {
 }
 
 
-export default VerifyMail;
+export default withRouter(VerifyMail);

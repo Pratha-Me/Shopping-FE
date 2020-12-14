@@ -16,13 +16,7 @@ function Login(props) {
 
     const handleSubmitForm = async (formData) => {
         await props.postLogin(formData, props.history);
-
-
     };
-
-
-    console.log("Login Pros", props)
-
 
     return (
         <div className="jumbotron">
