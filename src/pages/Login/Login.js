@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter, Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import '../../styles/css/Login.css';
@@ -10,9 +10,16 @@ import { postLogin } from "../../redux/actions";
 function Login(props) {
     const { register, handleSubmit, errors } = useForm();
 
+    if(localStorage.user) {
+        return <Redirect to="/" />
+    }
+
     const handleSubmitForm = async (formData) => {
         await props.postLogin(formData, props.history);
+
+
     };
+
 
     console.log("Login Pros", props)
 

@@ -9,7 +9,6 @@ function PersonalInfo(props) {
     useEffect(() => {
         getAnUser(props.items.user.sub).then((response) => {
         setUserData(response.data);
-        console.log(response.data);
         }).catch(err => {
         console.log(err);
         });

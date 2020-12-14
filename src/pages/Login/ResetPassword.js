@@ -1,18 +1,33 @@
-import React from "react";
+import React,{useState} from "react";
 import { useForm } from "react-hook-form";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 import { postSendOtp } from "../../services/AuthService";
 import '../../styles/css/ResetPassword.css';
 
 function ResetPassword(props) {
+    const [email, setEmail] = useState('');
+    const [redirect, setRedirect] = useState(null);
     const { register, handleSubmit, errors } = useForm();
 
+
     const handleSubmitForm = async (formData) => {
-        console.log("Form Comp", formData);
-        await props.postSendOtp(formData);
+        await postSendOtp(formData).then(()=> {
+            setEmail(formData.email);
+            setRedirect(() => true);
+        });
     };
 
+    console.log(redirect);
+    
+    if (redirect) {
+        return <Redirect 
+            to={{
+            pathname: '/verify-email/',
+            state: { 'email':email }
+        }} 
+            />
+    }
 
     return (
         <div className="jumbotron">
@@ -25,7 +40,7 @@ function ResetPassword(props) {
                         <form onSubmit={handleSubmit(handleSubmitForm)} className="col-md-12 col-xl-12 mb-3">
                             <div className="row mb-4">
                                 <p >
-                                    Please enter your email address to receive userverification code.
+                                    Please enter your email address to receive user verification code.
                                 </p>
                             </div>
                             <div className="row mb-4">
@@ -46,7 +61,9 @@ function ResetPassword(props) {
 
                                 />
                             </div>
-                            {errors.email && <div className="row mt-3 errors" > * Please fill required fields! </div>}
+                            {errors.email && <div className="row errors" > 
+                                <p className="text-danger mt-2"> * Please enter your email  </p>
+                             </div>}
 
                             <div className="row ">
                                 <button
