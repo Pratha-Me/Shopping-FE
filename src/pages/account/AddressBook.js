@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import { connect } from 'react-redux';
 import { getAnUser } from "../../services/AuthService";
+import { updateAddress } from "../../services/AuthService";
+
 
 function AddressBook(props) {
     const [editAddress, setEditAddress ] = useState(false);
@@ -14,6 +16,10 @@ function AddressBook(props) {
         });
     }, [])
     
+    const handleSubmit = async(formdata) => {
+        // await (updateAddress(formdata));
+        console.log(formdata);
+    }
       
     return (
         <div className="container">
@@ -73,7 +79,7 @@ function AddressBook(props) {
             { editAddress &&
                 <div className="col-xs-12 col-sm-12 col-md-12 col-xl-12 pt-3"  >
                  <div style={{backgroundColor:`#fcfcfc`,padding:`17px`, border:`1px solid #888`, borderRadius:`2px`,fontSize:`16px`, marginBottom:`25vh`}}>        
-                    <form method="POST" className="ml-5">
+                    <form method="POST" className="ml-5" onSubmit={handleSubmit}>
                         <h5 className="mb-4 mt-3">Update Address</h5>
                         
                         <div className="form-group ml-4 " style={{"width":"50%"}}>
@@ -83,22 +89,22 @@ function AddressBook(props) {
                             <input type="text" className="form-control mb-3" name="province" id="province" tabIndex="2" />
                         </div>
                         <div className="form-group ml-4" style={{"width":"50%"}}>
+                            <label htmlFor="district">
+                                District
+                            </label>
+                            <input type="text" className="form-control mb-3" name="district" id="district" tabIndex="3" required/>
+                        </div>
+                        <div className="form-group ml-4" style={{"width":"50%"}}>
                             <label htmlFor="city">
                                 City
                             </label>
-                            <input type="text" className="form-control mb-3" name="city" id="zone" tabIndex="3" required/>
+                            <input type="text" className="form-control mb-3" name="city" id="city" tabIndex="4" />
                         </div>
                         <div className="form-group ml-4" style={{"width":"50%"}}>
-                            <label htmlFor="address">
-                                Address
+                            <label htmlFor="street">
+                                Street
                             </label>
-                            <input type="text" className="form-control mb-3" name="address" id="address" tabIndex="4" />
-                        </div>
-                        <div className="form-group ml-4" style={{"width":"50%"}}>
-                            <label htmlFor="phone_no">
-                                Phone No.
-                            </label>
-                            <input type="text" className="form-control mb-3" name="phone_no" id="phone_no" tabIndex="5" />
+                            <input type="text" className="form-control mb-3" name="street" id="street" tabIndex="5" />
                         </div>
                        
                         <div className="form-group ml-4 text-center" style={{"width":"50%"}}>
