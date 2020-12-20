@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {useForm} from "react-hook-form";
 import '../../styles/css/Register.css';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter, Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { postRegister } from "../../redux/actions";
 
@@ -29,7 +29,9 @@ function Register(props) {
         //     console.log(false);
         // }
         // formData.preventDefault();
-        await props.postRegister(formData, props.history);
+        await props.postRegister(formData, props.history)
+
+
 
     };
 

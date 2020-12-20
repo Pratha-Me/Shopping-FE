@@ -11,7 +11,7 @@ function Wishlist(props) {
     const [userData, setUserData] = useState([]);
     
     useEffect(() => {
-        getAnUser(props.items.user.sub).then((response) => {
+        getAnUser().then((response) => {
         setUserData(response.data);
         }).catch(err => {
         console.log(err);

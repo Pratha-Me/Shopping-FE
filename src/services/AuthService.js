@@ -51,7 +51,7 @@ const postForgetPwd = (data) => {
 };
 
 const updateAddress = (data) => {
-    return AxiosService.app.put('/auth/regiter', data);
+    return AxiosService.app.put('/auth/register', data);
 };
 
 
