@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { connect } from 'react-redux';
 import { getAnUser } from "../../services/AuthService";
-
+import {  Redirect } from 'react-router-dom';
 
 function OrderHistory(props) {
     const orders = [];
@@ -15,6 +15,10 @@ function OrderHistory(props) {
         console.log(err);
         });
     }, [])
+
+    if(!localStorage.user) {
+        return <Redirect to="/login" />
+    } 
 
 
     return (

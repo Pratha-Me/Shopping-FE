@@ -4,6 +4,7 @@ import PersonalInfo from './PersonalInfo';
 import AddressBook from './AddressBook';
 import Wishlist from './Wishlist';
 import OrderHistory from './OrderHistory';
+import {  Redirect } from 'react-router-dom';
 
 
 function Profile() {
@@ -12,7 +13,9 @@ function Profile() {
     
     const borderStyle = { borderBottom:"1px solid grey" };
 
-    
+    if(!localStorage.user) {
+        return <Redirect to="/login" />
+    }
 
     return (
         <div className="container">

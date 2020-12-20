@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { connect } from 'react-redux';
 import { getAnUser, updateAddress } from "../../services/AuthService";
 import { useForm } from "react-hook-form";
-import { Redirect, withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 
 
 
@@ -32,6 +32,11 @@ function AddressBook(props) {
         console.log(err);
         });
     }, [])
+
+    if(!localStorage.user) {
+        return <Redirect to="/login" />
+    } 
+    
 
     const handleInputChange = (event) => {
         const name = event.target.name;

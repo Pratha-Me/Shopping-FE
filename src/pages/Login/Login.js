@@ -38,11 +38,21 @@ function Login(props) {
                                     ref={register({
                                         required: true,
                                         maxLength: 254,
-                                        message: "Invalid email address!",
                                         pattern: /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/,
 
                                     })}
                                 />
+
+                                {errors.username && errors.username.type === "required" && (
+                                    <p className="text-danger"> * Email is required!</p>
+                                )}
+                                {errors.username && errors.username.type === "pattern" && (
+                                    <p className="text-danger"> * Email is not valid!</p>
+                                )}
+                                
+                                {errors.username && errors.username.type === "maxLength" && (
+                                    <p className="text-danger"> * Invalid Email address!</p>
+                                )}
                             </div>
 
                             <div className="row ">
@@ -55,9 +65,19 @@ function Login(props) {
                                     ref={register({
                                         required: true,
                                         maxlength: 254,
-                                        message: "Invalid password!",
+                                      
                                     })}
                                 />
+
+                                {errors.password && errors.password.type === "required" && (
+                                    <p className="text-danger"> * Password is required!</p>
+                                )}
+                                
+                                
+                                {errors.password && errors.password.type === "maxLength" && (
+                                    <p className="text-danger"> * Password is not valid!</p>
+                                )}
+                                
 
                             </div>
 

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 import { getAnUser } from "../../services/AuthService";
 
 
@@ -13,8 +13,14 @@ function PersonalInfo(props) {
         }).catch(err => {
         console.log(err);
         });
-    }, [])
+    }, []);
 
+    if(!localStorage.user) {
+        return <Redirect to="/login" />
+    }
+
+
+    
         return (
             
             <div className="container">

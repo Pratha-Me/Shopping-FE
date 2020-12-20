@@ -1,36 +1,39 @@
 import React, {useState} from "react";
 import {useForm} from "react-hook-form";
 import '../../styles/css/Register.css';
-import { withRouter, Link, Redirect } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { postRegister } from "../../redux/actions";
 
 function Register(props) {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    // const [cnPassword, setCNPassword] = useState("");
-    const [fullname, setFullName] = useState("");
-    const [phoneNo, setPhoneNo] = useState("");
-    const [isPasswordValid, setIsPasswordValid] = useState(false);
+    const [userData, setUserData] = useState({
+        name:"",
+        email: "",
+        password:"",
+        phone:""
+    });
 
+ 
+
+    const [isPasswordValid, setIsPasswordValid] = useState(false);
     const { register, handleSubmit, errors } = useForm();
-    // const validatePassword = (e) => {
-    //     if (password === cnPassword) {
-    //         setIsPasswordValid(true);   
-    //     } else {
-    //         setIsPasswordValid(false);
-    //     }
-    // };
+
+    if(localStorage.user) {
+        return <Redirect to="/" />
+    } 
+    
+    const handleInputChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setUserData((userData) => ({
+          ...userData,
+          [name]: value
+        }));
+
+      };
 
     const handleSubmitForm = async (formData) => {
-        // if (isPasswordValid) {
-        //     postRegister(formData, props.history);
-        // } else {
-        //     console.log(false);
-        // }
-        // formData.preventDefault();
         await props.postRegister(formData, props.history)
-
 
 
     };
@@ -47,43 +50,66 @@ function Register(props) {
                         <div className="row mb-4">
                             <input
                                 type="text"
-                                value={fullname}
                                 placeholder="Username"
                                 name="name"
                                 className="form-control mb-4"
                                 tabIndex="1"
-                                onChange={e=>setFullName(e.target.value)}
+                                onChange={handleInputChange} 
                                 autoFocus
                                 ref={register({
                                     required:true, 
-                                    minLength:4, 
+                                    minLength:5, 
                                     maxlength:254,
-                                    message:"Invalid Username!",
-                                    pattern: /^[A-Za-z]+$/i
+                                    pattern: /^[a-zA-Z]+ ?[a-zA-Z]* ?[a-zA-Z]+$/i
 
                                  })}
                               
                             />
+
+                                {errors.name && errors.name.type === "required" && (
+                                    <p className="text-danger"> * Full Name is required.</p>
+                                )}
+                                {errors.name && errors.name.type === "pattern" && (
+                                    <p className="text-danger"> * Full Name can have maximum 2 spaces.</p>
+                                )}
+                                 {errors.name && errors.name.type === "minLength" && (
+                                    <p className="text-danger"> * Full Name must have at least 5 characters.</p>
+                                )}
+                                {errors.name && errors.name.type === "maxLength" && (
+                                    <p className="text-danger"> * Full Name cannot have more than 25 characters.</p>
+                                )}
                         </div>
 
                         <div className="row mb-4">
                             <input
-                                type="email"
+                                type="text"
                                 name="email"
-                                value={email}
                                 placeholder="Email"
                                 className="form-control mb-4"
-                                onChange={e=>setEmail(e.target.value)}
+                                onChange={handleInputChange} 
                                 tabIndex="2"
+                                
                                 ref={register({
                                     required:true, 
                                     minLength:8, 
-                                    maxLength:254,
-                                    message:"Invalid eamil address!",
+                                    maxLength:30,
                                     pattern:/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/ ,
                                     
                                  })}
                             />
+
+                                {errors.email && errors.email.type === "required" && (
+                                    <p className="text-danger"> * Email is required!</p>
+                                )}
+                                {errors.email && errors.email.type === "pattern" && (
+                                    <p className="text-danger"> * Email is not valid!</p>
+                                )}
+                                 {errors.email && errors.email.type === "minLength" && (
+                                    <p className="text-danger"> * Email must have at least 8 characters.</p>
+                                )}
+                                {errors.email && errors.email.type === "maxLength" && (
+                                    <p className="text-danger"> * Email cannot have more than 25 characters.</p>
+                                )}
 
                         </div>
 
@@ -91,71 +117,69 @@ function Register(props) {
                             <input
                                 type="password"
                                 name="password"
-                                value={password}
                                 placeholder="Password"
                                 className="form-control mb-4"
-                                onChange={e=>setPassword(e.target.value)}
+                                onChange={handleInputChange} 
                                 tabIndex="3"
                                 ref={register({
                                     required:true,
                                     minLength:6,
                                     maxLength:20,
-                                    message:"Invalid password",
-                                    // pattern:/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8, 20}+$/,
-                                    // pattern:/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8, 20}+$/,
                                     pattern:/^[A-Za-z0-9]+$/i,
                                 })}
                                 
                             />
+
+                                {errors.password && errors.password.type === "required" && (
+                                    <p className="text-danger"> * Password is required!</p>
+                                )}
+                                {errors.password && errors.password.type === "pattern" && (
+                                    <p className="text-danger"> * Password can have only numbers and alphabets!</p>
+                                )}
+                                 {errors.password && errors.password.type === "minLength" && (
+                                    <p className="text-danger"> * Password must have at least 6 characters.</p>
+                                )}
+                                {errors.password && errors.password.type === "maxLength" && (
+                                    <p className="text-danger"> * Password cannot have more than 20 characters.</p>
+                                )}
+
+
                         </div>
                         
-                        {/* <div className="row" >
-                            <input
-                                type="password"
-                                name="cnpassword"
-                                value={cnPassword}
-                                placeholder="Confirm Password"
-                                className="form-control mb-4"
-                                onChange={e=>setCNPassword(e.target.value)}
-                   
-                                onBlur = {()=>{
-                                    (password === cnPassword) ? 
-                                        (setIsPasswordValid(true))
-                                        :
-                                        (setIsPasswordValid(false))}}
-                                tabIndex="4"
-                                ref={register({
-                                    required:true,
-                                    minLength:6,
-                                    maxLength:20,
-                                    message:"Invalid password",
-                                    // pattern:/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8, 20}+$/,
-                                    pattern:/^[A-Za-z0-9]+$/i,
-                                })}
-                                
-                            />
-                        </div> */}
 
                         <div className="row">
                             <input
                                 type="text"
                                 name="phone"
-                                value={phoneNo}
                                 placeholder="Phone Number"
                                 className="form-control register-phone-number"
-                                onChange={e=>setPhoneNo(e.target.value)}
+                                onChange={handleInputChange} 
                                 tabIndex="5"
                                 ref={register({
                                     required:true, 
                                     minLength:10, 
-                                    maxLength:16,
-                                    message:"Invalid phone number!",                                    
+                                    maxLength:15,
+                                    pattern:/^[0-9]+$/,
+                                                                       
                                  })}
                             />
 
+                                {errors.phone && errors.phone.type === "required" && (
+                                    <p className="text-danger"> * Phone Number is required!</p>
+                                )}
+                                {errors.phone && errors.phone.type === "pattern" && (
+                                    <p className="text-danger"> * Phone Number can have only numbers!</p>
+                                )}
+                                 {errors.phone && errors.phone.type === "minLength" && (
+                                    <p className="text-danger"> * Phone Number must have at least 10 digits.</p>
+                                )}
+                                {errors.phone && errors.phone.type === "maxLength" && (
+                                    <p className="text-danger"> * Phone Number cannot have more than 15 digits.</p>
+                                )}
+
                         </div>
-                        {errors.email && errors.password && errors.phoneNo  && <div className="row mt-3 errors" > * Please fill all the fields! </div>}
-                        <div className="row">
+                      
+                       <div className="row">
                             <input 
                                 type="submit"  
                                 className="mt-5 mb-4 btn btn-primary form-control" 
