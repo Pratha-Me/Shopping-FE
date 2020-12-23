@@ -1,17 +1,20 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import '../../styles/css/Seller.css';
+import TopHeader from '../../pages/Header/TopHeader';
 
 function Seller() {
 
     const {register, handleSubmit, errors} = useForm();
     return (
+        <>
+        <TopHeader > </TopHeader>
         <div className="jumbotron">
             <div className="row">
                 <div className="col-md-4 col-xl-4 seller">
                     <div className="row form-container">
                         <div className="col-md-12 col-xl-12 text-center pt-">
-                             <h4 className="mt-5 mb-4 pb-4">
+                             <h4 className="mt-5 mb-5 pb-4">
                                  Login to Shopping Store
                             </h4>
                         </div>
@@ -22,7 +25,7 @@ function Seller() {
                                 
                             <input 
                                     type="email" 
-                                    className="form-control mb-4"
+                                    className="form-control mb-4 ml-4 mr-4"
                                     name="email"
                                     placeholder="Email"
                                     tabIndex="1"
@@ -44,7 +47,7 @@ function Seller() {
                                         type="password"
                                         name="password"
                                         placeholder="Password"
-                                        className="form-control"
+                                        className="form-control mt-2 ml-4 mr-4"
                                         tabIndex="2"
                                         ref={register({
                                             required:true, 
@@ -66,7 +69,7 @@ function Seller() {
                             <div className="row">
                                 <input 
                                     type="submit"  
-                                    className=" mt-5 mb-4 btn btn-primary form-control" 
+                                    className=" mt-5 mb-4 btn btn-primary form-control ml-4 mr-4" 
                                     value="Login" 
                                 />
                             </div>
@@ -85,50 +88,9 @@ function Seller() {
             </div>
         </div>
 
-        // <div className="seller">
-        //     <form onSubmit={handleSubmit}>
-        //     <div className="title-wrapper">
-        //         <h3 class="login-title">Login to Shopping Store</h3>
-        //     </div>
-        //         <FormGroup controlId="email" bsSize="large">
-        //             <FormControl
-        //                 autoFocus
-        //                 type="email"
-        //                 value={email}
-        //                 placeholder="Email"
-        //                 onChange={e=>setEmail(e.target.value)}
-        //             />
-
-        //         </FormGroup>
-        //         <FormGroup controlId="password" bsSize="large">
-        //             <FormControl
-        //                 value={password}
-        //                 onChange={e=>setPassword(e.target.value)}
-        //                 type="password"
-        //                 placeholder="Password"
-        //             /> 
-        //         </FormGroup>
-        //         <div className="forgot-pw-wrapper">
-        //             <a href="#">Forgot Password?</a>
-                   
-        //         </div>  
-
-        //         <FormGroup controlId="btn-login" bsSize="large">
-        //             <FormControl
-        //                 value="Login"
-        //                 type="submit"
-        //             />
-        //         </FormGroup>
-
-        //         <div className="register-wrapper">
-        //             <span> New Here ? </span> &nbsp; <a href="/register">Register Here</a>
-                   
-        //         </div>  
-
-        //     </form>
-            
-        // </div>
-    )
+        </>
+    
+        )
 }
 
 export default Seller

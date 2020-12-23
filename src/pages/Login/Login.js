@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { withRouter, Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import TopHeader from '../../pages/Header/TopHeader';
 
 import '../../styles/css/Login.css';
 import { postLogin } from "../../redux/actions";
@@ -9,7 +10,11 @@ import { postLogin } from "../../redux/actions";
 
 function Login(props) {
     const { register, handleSubmit, errors } = useForm();
-
+    let  currentURL = (window.location.href).split('/');
+    if(currentURL[currentURL.length-1] == 'login') {
+        console.log("Test");
+    }
+  
     if(localStorage.user) {
         return <Redirect to="/" />
     }
@@ -19,40 +24,40 @@ function Login(props) {
     };
 
     return (
-        <div className="jumbotron">
+        <>
+        <TopHeader></TopHeader>
+      
+        <div className="jumbotron " style={{"marginTop":"20px !important"}}>
             <div className="row">
                 <div className="col-md-4 col-xl-4 login">
                     <div className="row form-container">
                         <div className="col-md-12 col-xl-12 text-center pt-3">
-                            <h4 className="mt-5 mb-4 pb-4"> Login to Shopping Store </h4>
+                            <h4 className="mt-5 mb-5 pb-4"> Login to Shopping Store </h4>
                         </div>
-                        <form onSubmit={handleSubmit(handleSubmitForm)} className="col-md-12 col-xl-12 mb-3">
+                        <form onSubmit={handleSubmit(handleSubmitForm)} className="col-md-12 col-xl-12 mb-3 ">
                             <div className="row mb-4">
 
                                 <input
                                     type="email"
-                                    className="form-control"
+                                    className="form-control ml-3 mr-3 mb-3 "
                                     name="username"
                                     placeholder="Email"
                                     tabIndex="1"
                                     ref={register({
                                         required: true,
-                                        maxLength: 254,
                                         pattern: /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/,
 
                                     })}
                                 />
 
                                 {errors.username && errors.username.type === "required" && (
-                                    <p className="text-danger"> * Email is required!</p>
+                                    <p className="text-danger ml-3"> * Email is required!</p>
                                 )}
                                 {errors.username && errors.username.type === "pattern" && (
-                                    <p className="text-danger"> * Email is not valid!</p>
+                                    <p className="text-danger ml-3"> * Email is not valid!</p>
                                 )}
                                 
-                                {errors.username && errors.username.type === "maxLength" && (
-                                    <p className="text-danger"> * Invalid Email address!</p>
-                                )}
+                                
                             </div>
 
                             <div className="row ">
@@ -60,30 +65,26 @@ function Login(props) {
                                     type="password"
                                     name="password"
                                     placeholder="Password"
-                                    className="form-control mt-4"
+                                    className="form-control mt-3 ml-3 mr-3 mb-3"
                                     tabIndex="2"
                                     ref={register({
                                         required: true,
-                                        maxlength: 254,
                                       
                                     })}
                                 />
 
                                 {errors.password && errors.password.type === "required" && (
-                                    <p className="text-danger"> * Password is required!</p>
+                                    <p className="text-danger ml-3"> * Password is required!</p>
                                 )}
                                 
                                 
-                                {errors.password && errors.password.type === "maxLength" && (
-                                    <p className="text-danger"> * Password is not valid!</p>
-                                )}
-                                
+                               
 
                             </div>
 
-                            <div className="row mt-1 ">
+                            <div className="row  ">
                                 <div className="col-md-12 col-xl-12 text-right">
-                                    <Link to="/reset-password">Forgot Password ?</Link>
+                                    <Link to="/reset-password" className="mt-2">Forgot Password ?</Link>
                                 </div>
                             </div>
 
@@ -92,7 +93,7 @@ function Login(props) {
                             <div className="row ">
                                 <button
                                     type="submit"
-                                    className="btn btn-primary form-control mt-5"
+                                    className="btn btn-primary form-control ml-3 mr-3 mt-5"
                                 >Login</button>
                             </div>
 
@@ -105,7 +106,7 @@ function Login(props) {
 
             </div>
         </div>
-    );
+   </> );
 }
 
 const mapStateToProps = (state) => {

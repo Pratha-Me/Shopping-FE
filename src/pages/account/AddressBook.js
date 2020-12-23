@@ -31,7 +31,7 @@ function AddressBook(props) {
         }).catch(err => {
         console.log(err);
         });
-    }, [])
+    }, [address])
 
     if(!localStorage.user) {
         return <Redirect to="/login" />
@@ -112,8 +112,6 @@ function AddressBook(props) {
                         </label>
                         <span className="ml-4">
                             {userData.address && userData.address.street}, { userData.address && userData.address.city}, {userData.address && userData.address.district}, {userData.address && userData.address.province}
-             
-                          
                         </span>
                     </div>
 
@@ -145,7 +143,7 @@ function AddressBook(props) {
                                 type="text" 
                                 className="form-control mb-3" 
                                 name="province" 
-                                value={address.province}
+                                // value={address.province}
                                 onChange={handleInputChange} 
                                 id="province" 
                                 tabIndex="1" 
@@ -176,7 +174,7 @@ function AddressBook(props) {
                             <input 
                                 type="text" 
                                 className="form-control mb-3" 
-                                value={address.district}
+                                // value={address.district}
                                 onChange={handleInputChange} 
                                 name="district" 
                                 id="district" 
@@ -210,7 +208,7 @@ function AddressBook(props) {
                             <input 
                                 type="text" 
                                 className="form-control mb-3" 
-                                value={address.city}
+                                // value={address.city}
                                 onChange={handleInputChange} 
                                 name="city" 
                                 id="city" 
@@ -243,7 +241,7 @@ function AddressBook(props) {
                             <input 
                                 type="text" 
                                 className="form-control mb-3" 
-                                value={address.street}
+                                // value={address.street}
                                 onChange={handleInputChange} 
                                 name="street" 
                                 id="street" 

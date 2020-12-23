@@ -2,20 +2,17 @@
   width: 100% !important;
   padding: 0 !important;
   margin: 0 !important;
-  background: #6c757d;
   box-sizing: border-box !important;
+  background: white !important;
 }
 
-.jumbotron .row,
-.col {
-  margin: 0 !important;
-  padding: 0 !important;
-}
+
 
 .login {
   width: 100% !important;
-  margin: 0 auto !important;
-  height: 100vh;
+  margin: 40px auto !important;
+
+
 }
 
 .login .form-container {

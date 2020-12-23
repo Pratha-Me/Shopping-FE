@@ -4,6 +4,8 @@ import '../../styles/css/Register.css';
 import { withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { postRegister } from "../../redux/actions";
+import TopHeader from '../../pages/Header/TopHeader';
+
 
 function Register(props) {
     const [userData, setUserData] = useState({
@@ -39,6 +41,8 @@ function Register(props) {
     };
 
     return (
+        <>
+         <TopHeader></TopHeader>
         <div className="jumbotron">
             <div className="row">
                 <div className="col-md-4 col-xl-4 signup">
@@ -50,9 +54,9 @@ function Register(props) {
                         <div className="row mb-4">
                             <input
                                 type="text"
-                                placeholder="Username"
+                                placeholder="Full Name"
                                 name="name"
-                                className="form-control mb-4"
+                                className="form-control mb-3 ml-4 mr-4"
                                 tabIndex="1"
                                 onChange={handleInputChange} 
                                 autoFocus
@@ -67,16 +71,16 @@ function Register(props) {
                             />
 
                                 {errors.name && errors.name.type === "required" && (
-                                    <p className="text-danger"> * Full Name is required.</p>
+                                    <p className="text-danger ml-4 mb-4"> * Full Name is required.</p>
                                 )}
                                 {errors.name && errors.name.type === "pattern" && (
-                                    <p className="text-danger"> * Full Name can have maximum 2 spaces.</p>
+                                    <p className="text-danger ml-4 mb-4"> * Full Name can have maximum 2 spaces.</p>
                                 )}
                                  {errors.name && errors.name.type === "minLength" && (
-                                    <p className="text-danger"> * Full Name must have at least 5 characters.</p>
+                                    <p className="text-danger ml-4 mb-4"> * Full Name must have at least 5 characters.</p>
                                 )}
                                 {errors.name && errors.name.type === "maxLength" && (
-                                    <p className="text-danger"> * Full Name cannot have more than 25 characters.</p>
+                                    <p className="text-danger ml-4 mb-4"> * Full Name cannot have more than 25 characters.</p>
                                 )}
                         </div>
 
@@ -85,7 +89,7 @@ function Register(props) {
                                 type="text"
                                 name="email"
                                 placeholder="Email"
-                                className="form-control mb-4"
+                                className="form-control mb-3 ml-4 mr-4"
                                 onChange={handleInputChange} 
                                 tabIndex="2"
                                 
@@ -99,16 +103,16 @@ function Register(props) {
                             />
 
                                 {errors.email && errors.email.type === "required" && (
-                                    <p className="text-danger"> * Email is required!</p>
+                                    <p className="text-danger ml-4 mb-4"> * Email is required!</p>
                                 )}
                                 {errors.email && errors.email.type === "pattern" && (
-                                    <p className="text-danger"> * Email is not valid!</p>
+                                    <p className="text-danger ml-4 mb-4"> * Email is not valid!</p>
                                 )}
                                  {errors.email && errors.email.type === "minLength" && (
-                                    <p className="text-danger"> * Email must have at least 8 characters.</p>
+                                    <p className="text-danger ml-4 mb-4"> * Email must have at least 8 characters.</p>
                                 )}
                                 {errors.email && errors.email.type === "maxLength" && (
-                                    <p className="text-danger"> * Email cannot have more than 25 characters.</p>
+                                    <p className="text-danger ml-4 mb-4"> * Email cannot have more than 25 characters.</p>
                                 )}
 
                         </div>
@@ -118,7 +122,7 @@ function Register(props) {
                                 type="password"
                                 name="password"
                                 placeholder="Password"
-                                className="form-control mb-4"
+                                className="form-control mb-3 ml-4 mr-4"
                                 onChange={handleInputChange} 
                                 tabIndex="3"
                                 ref={register({
@@ -131,16 +135,16 @@ function Register(props) {
                             />
 
                                 {errors.password && errors.password.type === "required" && (
-                                    <p className="text-danger"> * Password is required!</p>
+                                    <p className="text-danger ml-4 mb-4"> * Password is required!</p>
                                 )}
                                 {errors.password && errors.password.type === "pattern" && (
-                                    <p className="text-danger"> * Password can have only numbers and alphabets!</p>
+                                    <p className="text-danger ml-4 mb-4"> * Password can have only numbers and alphabets!</p>
                                 )}
                                  {errors.password && errors.password.type === "minLength" && (
-                                    <p className="text-danger"> * Password must have at least 6 characters.</p>
+                                    <p className="text-danger ml-4 mb-4"> * Password must have at least 6 characters.</p>
                                 )}
                                 {errors.password && errors.password.type === "maxLength" && (
-                                    <p className="text-danger"> * Password cannot have more than 20 characters.</p>
+                                    <p className="text-danger ml-4 mb-4"> * Password cannot have more than 20 characters.</p>
                                 )}
 
 
@@ -152,7 +156,7 @@ function Register(props) {
                                 type="text"
                                 name="phone"
                                 placeholder="Phone Number"
-                                className="form-control register-phone-number"
+                                className="form-control register-phone-number ml-4 mr-4 mb-3"
                                 onChange={handleInputChange} 
                                 tabIndex="5"
                                 ref={register({
@@ -165,16 +169,16 @@ function Register(props) {
                             />
 
                                 {errors.phone && errors.phone.type === "required" && (
-                                    <p className="text-danger"> * Phone Number is required!</p>
+                                    <p className="text-danger ml-4 mb-4"  > * Phone Number is required!</p>
                                 )}
                                 {errors.phone && errors.phone.type === "pattern" && (
-                                    <p className="text-danger"> * Phone Number can have only numbers!</p>
+                                    <p className="text-danger ml-4 mb-4"> * Phone Number can have only numbers!</p>
                                 )}
                                  {errors.phone && errors.phone.type === "minLength" && (
-                                    <p className="text-danger"> * Phone Number must have at least 10 digits.</p>
+                                    <p className="text-danger ml-4 mb-4"> * Phone Number must have at least 10 digits.</p>
                                 )}
                                 {errors.phone && errors.phone.type === "maxLength" && (
-                                    <p className="text-danger"> * Phone Number cannot have more than 15 digits.</p>
+                                    <p className="text-danger ml-4 mb-4"> * Phone Number cannot have more than 15 digits.</p>
                                 )}
 
                         </div>
@@ -182,7 +186,7 @@ function Register(props) {
                        <div className="row">
                             <input 
                                 type="submit"  
-                                className="mt-5 mb-4 btn btn-primary form-control" 
+                                className="mt-5 mb-4 btn btn-primary form-control ml-4 mr-4" 
                                 value="Register" 
                             />
                         </div>
@@ -200,6 +204,7 @@ function Register(props) {
 
             </div>
         </div>
+        </>
     );
 }
 

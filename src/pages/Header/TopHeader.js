@@ -14,7 +14,8 @@ import { logoutUserSuccessful } from '../../redux/auth/login/actions';
 function TopHeader(props) {
   const [isLoggedIn, setlogin] = useState(false);
   const [user, setUsers] = useState([])
-
+  const [whichPage, setWhichPage] = useState(false);
+  
   useEffect(() => {
     if (getAuthUser()) {
       setlogin(true);
@@ -24,6 +25,10 @@ function TopHeader(props) {
     setUsers(
       JSON.parse(localStorage.getItem('user'))
     )
+    let  currentURL = (window.location.href).split('/');
+    if(currentURL[currentURL.length-1] === 'login' || currentURL[currentURL.length-1]==='register'  || currentURL[currentURL.length-1]==='seller-register') {
+      setWhichPage(true);
+    }
   }, [])
 
   console.log("hamro user:", user)
@@ -50,8 +55,13 @@ function TopHeader(props) {
                     : 
                     <div className="col-6 ml-auto">
                       <div className="row text-center top-header">
+                        {whichPage ? 
+                            <div className="col-2 "><Link to="/">Home</Link></div>
+                          : 
+                          " "
+                        }
                         <div className="col-3 "><Link to="/register">Register Now</Link></div>
-                        <div className="col-4"><Link to="/seller"> Sell on Shopping.com</Link></div>
+                        <div className="col-4"><Link to="/seller-register"> Sell on Shopping.com</Link></div>
                         <div className="col-2"><Link to="/login"> Login</Link></div>
                       </div>
                     </div>  }
