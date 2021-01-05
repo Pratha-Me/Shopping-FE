@@ -6,7 +6,7 @@ import { Link, withRouter } from "react-router-dom";
 
 function VerifyMail(props) {
     const { register, handleSubmit, errors } = useForm();
-        console.log(props.location);
+    console.log(props.location);
     const handleSubmitForm = async (formdata) => {
         formdata.email = props.location.state.email;
         await(postForgetPwd(formdata)).then((result)=> {

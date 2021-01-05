@@ -50,9 +50,13 @@ const postForgetPwd = (data) => {
     return AxiosService.login.post('/auth/change-password', data);
 };
 
+const verifyUserEmail = (data) => {
+    return AxiosService.login.post('/auth/register/verify', data);
+};
+
 const updateAddress = (data) => {
     return AxiosService.app.put('/auth/register', data);
 };
 
 
-export { postLogin, postSendOtp, postForgetPwd, postRegister , getAnUser, updateAddress}
+export { postLogin, postSendOtp, postForgetPwd, postRegister , getAnUser, updateAddress,verifyUserEmail}

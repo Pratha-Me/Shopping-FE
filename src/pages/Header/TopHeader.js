@@ -26,7 +26,7 @@ function TopHeader(props) {
       JSON.parse(localStorage.getItem('user'))
     )
     let  currentURL = (window.location.href).split('/');
-    if(currentURL[currentURL.length-1] === 'login' || currentURL[currentURL.length-1]==='register'  || currentURL[currentURL.length-1]==='seller-register') {
+    if(currentURL[currentURL.length-1] === 'login' || currentURL[currentURL.length-1]==='register'  || currentURL[currentURL.length-1]==='seller-register' || currentURL[currentURL.length-1]==='verify-otp') {
       setWhichPage(true);
     }
   }, [])

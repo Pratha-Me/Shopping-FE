@@ -12,6 +12,7 @@ import Profile from '../pages/account/Profile';
 import Checkout from '../pages/Checkout/Checkout';
 import Esewa from '../api/Esewa/Esewa';
 import Success from '../api/Esewa/Success';
+import VerifyOTP from '../pages/Login/VerifyOTP';
 
 const routes = [
 
@@ -26,6 +27,7 @@ const routes = [
     { path: '/seller', component: Seller },
     { path: '/reset-password', component: ResetPassword },
     { path: '/verify-email', component: VerifyMail },
+    { path: '/verify-otp', component:VerifyOTP },
     { path: '/product-details', component: ProductDetails },
     // { path: '/sub-category', component: SubCategory },
     { path: '/cart', component: CartDirectory },

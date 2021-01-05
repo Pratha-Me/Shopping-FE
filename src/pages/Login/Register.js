@@ -5,9 +5,10 @@ import { withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { postRegister } from "../../redux/actions";
 import TopHeader from '../../pages/Header/TopHeader';
-
+import { postSendOtp } from "../../services/AuthService";
 
 function Register(props) {
+    const [redirect, setRedirect] = useState(false);
     const [userData, setUserData] = useState({
         name:"",
         email: "",
@@ -36,9 +37,27 @@ function Register(props) {
 
     const handleSubmitForm = async (formData) => {
         await props.postRegister(formData, props.history)
+        .then((result) => {
+            postSendOtp({'email':userData.email}).then(()=> {
+                setRedirect(() => true);
+            })
+
+            .catch(()=> {
+                console.log('Unable to send OTP');
+            })
+        })
 
 
     };
+
+    if (redirect) {
+        return <Redirect 
+            to={{
+            pathname: '/verify-otp/',
+            state: { 'email':userData.email }
+        }} 
+            />
+    }
 
     return (
         <>
