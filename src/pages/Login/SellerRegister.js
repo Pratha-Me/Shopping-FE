@@ -12,16 +12,18 @@ function Register(props) {
         email: "",
         password:"",
         phone:"",
-        businessType:""
+        businessType:"",
+        
     });
 
 
     const { register, handleSubmit, errors } = useForm();
-
+    const [productToSell, setProductToSell] = useState([]);
 
     const handleInputChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
+
         setUserData((userData) => ({
           ...userData,
           [name]: value
@@ -29,8 +31,22 @@ function Register(props) {
 
       };
 
+    const handleProductToSell = (event) => {
+        const value = event.target.value;
+        productToSell.length = 0;
+        productToSell.push(value.split(','));
+;
+    }
+
     const handleSubmitForm = async (formData) => {
-        await props.postRegister(userData)
+        
+        await props.postRegister({"name":userData.name, "email":userData.email, "password":userData.password,"phone":userData.phone,"businessType":userData.businessType, "productToSell":productToSell})
+        .then((result) => {
+            window.location.href="/seller-register-success";
+        })
+        .catch((error) => {
+            console.log("Error");
+        })
     };
 
     return (
@@ -200,6 +216,33 @@ function Register(props) {
                                 )}
                                  {errors.businessType && errors.businessType.type === "minLength" && (
                                     <p className="text-danger ml-4 mb-4"> * Business Type  should have 6 characters.</p>
+                                )}
+                               
+                        </div>
+                        <div className="row mb-4">
+                            <input
+                                type="text"
+                                name="productToSell"
+                                placeholder="Products to Sell Ex: Clothing, Household"
+                                className="form-control mb-4 ml-4 mr-4"
+                                onChange={handleProductToSell}
+                                tabIndex="6"
+                                ref={register({
+                                    required:true,
+                                    minLength:4,
+                                    pattern: /^[a-zA-Z,]+ ?[a-zA-Z,]* ?[a-zA-Z,]+$/i
+                                })}
+                                
+                            />
+
+                                {errors.productToSell && errors.productToSell.type === "required" && (
+                                    <p className="text-danger ml-4 mb-4"> * Business Type is required!</p>
+                                )}
+                                {errors.productToSell && errors.productToSell.type === "pattern" && (
+                                    <p className="text-danger ml-4 mb-4"> * Business Type can have only alphabets and commas!</p>
+                                )}
+                                 {errors.productToSell && errors.productToSell.type === "minLength" && (
+                                    <p className="text-danger ml-4 mb-4"> * Business Type  should have 4 characters.</p>
                                 )}
                                
                         </div>
