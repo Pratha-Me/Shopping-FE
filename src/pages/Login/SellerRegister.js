@@ -19,6 +19,8 @@ function Register(props) {
 
     const { register, handleSubmit, errors } = useForm();
     const [productToSell, setProductToSell] = useState([]);
+    const [showSuccess, setShowSuccess] = useState(false);
+
 
     const handleInputChange = (event) => {
         const name = event.target.name;
@@ -42,7 +44,8 @@ function Register(props) {
         
         await props.postRegister({"name":userData.name, "email":userData.email, "password":userData.password,"phone":userData.phone,"businessType":userData.businessType, "productToSell":productToSell})
         .then((result) => {
-            window.location.href="/seller-register-success";
+            setShowSuccess(true);
+            // window.location.href="/seller-register-success";
         })
         .catch((error) => {
             console.log("Error");
@@ -55,7 +58,30 @@ function Register(props) {
         <div className="jumbotron mt-5 ">
             <div className="row">
                 <div className="col-md-4 col-xl-4 seller-register">
-                     <div className="row form-container">
+                    { showSuccess ? 
+                        <div className="row form-container">
+                            <div className="col-md-12 col-xl-12 text-center">
+                                <h4 className="mt-5 mb-5">Seller Registration Successful! </h4>
+                            </div>
+
+                            <div className="col-md-12 col-xl-12 mt-2">
+                                <p className="text-dark ml-4 mr-4 text-center mb-4">
+                                    You have been registered as seller for our store! <br />
+                                    Our team will contact you soon. <br/>
+                                    Thank You!
+                                </p>
+
+
+
+                            </div>
+                            <div className="col-md-12 col-xl-12 mt-5 text-center pl-5 pr-5 d-flex justify-content-around mb-5 pb-3">
+                                <a href="/" className="btn btn-primary mr-4 text-white"> Go To Home</a>
+                                <a href="/login" className="btn btn-outline-success ">Login</a>
+                            </div>
+                        </div>
+                        :
+                        
+                        <div className="row form-container">  
                         <div className="col-md-12 col-xl-12 text-center">
                             <h4 className="mt-5 mb-5"> Seller Registration </h4>
                         </div>
@@ -267,6 +293,8 @@ function Register(props) {
                         </form>
 
                      </div>
+                }
+                     
                 </div>
 
             </div>
