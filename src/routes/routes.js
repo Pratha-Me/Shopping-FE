@@ -13,7 +13,6 @@ import Checkout from '../pages/Checkout/Checkout';
 import Esewa from '../api/Esewa/Esewa';
 import Success from '../api/Esewa/Success';
 import VerifyOTP from '../pages/Login/VerifyOTP';
-import SellerRegisterSucess from '../pages/Login/SellerRegisterSucess';
 
 const routes = [
 
@@ -39,7 +38,7 @@ const routes = [
     { path: '/success', component: Success },
 
     { path: '/seller-register', component: SellerRegister },
-    { path: '/seller-register-sucess', component: SellerRegisterSucess },
+    
     // Authenticated Routes
     // { path: '/dashboard', component: Dashboard},
     // { path: '/unauthorized', component: Unauthorized},
