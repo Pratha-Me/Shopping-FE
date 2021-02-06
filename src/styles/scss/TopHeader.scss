@@ -1,25 +1,65 @@
 @import '../../index.scss';
 
 .top-header {
-  text-decoration: none !important;
-  > div {
-    border-left: 1px solid $base-color !important;
-    border-right: 1px solid $base-color !important;
-    padding: 0 !important;
-    color: $hover-color !important;
-    a {
-      text-decoration: none !important;
-      color: $base-font-color !important;
-      padding: 0 !important;
-      cursor: pointer !important;
-      &:hover {
-        color: $hover-color !important;
-      }
+  display: flex;
+  justify-content: center;
+
+  .user-Name {
+    color: $base-font-color !important;
+    padding: 0 10px !important;
+    font-weight: 600;
+
+    > span {
+      color: $base-color;
+      font-weight: 700;
+    }
+  }
+
+  a {
+    text-decoration: none !important;
+    color: $base-font-color !important;
+    padding: 0 10px !important;
+    font-weight: 600;
+    cursor: pointer !important;
+    &:hover {
+      color: $hover-color !important;
     }
   }
 }
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 991px) {
   .header-top {
     display: none;
+  }
+}
+
+@media only screen and (min-width: 991px) {
+  .mobile-top-header {
+    display: none;
+  }
+}
+
+.top-header-dropdown-menu {
+  .user-Name {
+    color: $base-font-color !important;
+    padding: 12px 12px !important;
+    font-weight: 600;
+    font-size: 13px !important;
+
+    > span {
+      color: $base-color;
+      font-weight: 700;
+      font-size: 13px !important;
+    }
+  }
+  a {
+    text-decoration: none !important;
+    color: $base-font-color !important;
+    font-size: 13px !important;
+    padding: 0 10px !important;
+    font-weight: 600;
+    cursor: pointer !important;
+    &:hover {
+      color: $hover-color !important;
+    }
   }
 }

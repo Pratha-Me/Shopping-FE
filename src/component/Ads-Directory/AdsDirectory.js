@@ -1,41 +1,21 @@
 import React, { Component } from 'react';
 import AdsCollection from '../Ads-Collection/AdsCollection';
 
-export default class AdsDirectory extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      sections: [
-        {
-          imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
-          id: 1,
-          linkUrl: '',
-        },
-        {
-          imageUrl: 'https://i.ibb.co/px2tCc3/jackets.png',
-          id: 2,
-          linkUrl: '',
-        },
-        {
-          imageUrl: 'https://i.ibb.co/0jqHpnp/sneakers.png',
-          id: 3,
-          linkUrl: '',
-        },
-      ],
-    };
-  }
-  render() {
-    return (
-      <div className='container-fluid'>
-          <div className="row">
-        {this.state.sections.map(({ id, ...otherSectionProps }) => (
-        <div key={id} className="col-sm-12 col-md-4">
-          <AdsCollection  {...otherSectionProps} />
-        </div>
-        ))}
-          </div>
+function AdsDirectory({ ads, maxSize, minSize }) {
+  const result = ads && ads.filter((carousel) => carousel.productName !== null && carousel.productId !== null);
+  const mainResult = result && result.filter((carousel, idx) => idx >= minSize && idx <= maxSize);
+  return (
+    <div className='container-fluid'>
+      <div className='row'>
+        {mainResult &&
+          mainResult.map((ad, idx) => (
+            <div key={idx} className='col-sm-12 col-md-4'>
+              <AdsCollection ad={ad} />
+            </div>
+          ))}
       </div>
-    );
-  }
+    </div>
+  );
 }
+
+export default AdsDirectory;

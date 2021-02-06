@@ -3,56 +3,72 @@ import AxiosService from '../api/AxiosService';
 
 // Login Method
 const postLogin = (data) => {
-    return AxiosService.login.post('/user/login', data).catch(err => {
-        let message;
-        if (err.response && err.response.status) {
-            switch (err.response.status) {
-                case 404: message = "Sorry! the page you are looking for could not be found"; break;
-                case 500: message = "Sorry! something went wrong, please contact our support team"; break;
-                case 401: message = "Username or Password is incorrect"; break;
-                default: message = err[1]; break;
-            }
-        }
-        throw message;
-    });
-}
+  return AxiosService.login.post('/user/login', data).catch((err) => {
+    let message;
+    if (err.response && err.response.status) {
+      switch (err.response.status) {
+        case 404:
+          message = 'Sorry! the page you are looking for could not be found';
+          break;
+        case 500:
+          message = 'Sorry! something went wrong, please contact our support team';
+          break;
+        case 401:
+          message = 'Username or Password is incorrect';
+          break;
+        default:
+          message = err[1];
+          break;
+      }
+    }
+    throw message;
+  });
+};
 
 // Register Method
 const postRegister = (data) => {
-    return AxiosService.login.post('/auth/register', data).then(response => {
-        if (response.status >= 200 || response.status <= 299)
-            return response.data;
-        throw response.data;
-    }).catch(err => {
-        let message;
-        if (err.response && err.response.status ) {
-            switch (err.response.status) {
-                case 404: message = "Sorry! the page you are looking for could not be found"; break;
-                case 500: message = "Sorry! something went wrong, please contact our support team"; break;
-                case 401: message = "Invalid credentials"; break;
-                default: message = err[1]; break;
-            }
+  return AxiosService.login
+    .post('/auth/register', data)
+    .then((response) => {
+      if (response.status >= 200 || response.status <= 299) return response.data;
+      throw response.data;
+    })
+    .catch((err) => {
+      let message;
+      if (err.response && err.response.status) {
+        switch (err.response.status) {
+          case 404:
+            message = 'Sorry! the page you are looking for could not be found';
+            break;
+          case 500:
+            message = 'Sorry! something went wrong, please contact our support team';
+            break;
+          case 401:
+            message = 'Invalid credentials';
+            break;
+          default:
+            message = err[1];
+            break;
         }
-        throw message;
+      }
+      throw message;
     });
-
-}
+};
 
 const postSendOtp = (data) => {
-    return AxiosService.login.post('/auth/otp', data);
+  return AxiosService.login.post('/auth/otp', data);
 };
 
 const getAnUser = () => {
-    return AxiosService.app.get('auth/getAnUser'); 
+  return AxiosService.app.get('auth/getAnUser');
 };
 
 const postForgetPwd = (data) => {
-    return AxiosService.login.post('/auth/change-password', data);
+  return AxiosService.login.post('/auth/change-password', data);
 };
 
 const updateAddress = (data) => {
-    return AxiosService.app.put('/auth/register', data);
+  return AxiosService.app.put('/auth/register', data);
 };
 
-
-export { postLogin, postSendOtp, postForgetPwd, postRegister , getAnUser, updateAddress}
+export { postLogin, postSendOtp, postForgetPwd, postRegister, getAnUser, updateAddress };

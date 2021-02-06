@@ -1,34 +1,15 @@
-import React from "react";
+import React from 'react';
 import SliderImage from 'react-zoom-slider';
-import '../../styles/css/ProductImage.css'
-const data = [
-    {
-      image: '/images/o.jpg',
-      text: 'img1'
-    },
-    {
-      image: '/images/tshirt1-main.jpg',
-      text: 'img2'
-    },
-    {
-      image: '/images/o.jpg',
-      text: 'img1'
-    },
-    {
-      image: '/images/tshirt-1.jpg',
-      text: 'img3'
-    },
-  ];
-  
-function ProductImage() {
-    return(
-        <SliderImage 
-         data={data} 
-        width="500px"
-        showDescription={true} 
-        direction="right" 
-        />
-    )
+import '../../styles/css/ProductImage.css';
+
+function ProductImage({ image }) {
+  const data = image.map((item) => {
+    return { image: item };
+  });
+
+  // console.log('DATA', typeof data);
+  console.log('DATA', image);
+  return <SliderImage data={data} width='500px' showDescription={true} direction='right' />;
 }
 
 export default ProductImage;
