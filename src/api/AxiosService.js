@@ -1,12 +1,12 @@
-import axios from "axios";
-import { getHeaders } from "../helpers/AuthHelpers";
+import axios from 'axios';
+import { getHeaders } from '../helpers/AuthHelpers';
 
 const AxiosService = {
   // The instance used to consume the Login API.
   login: axios.create({
     baseURL: process.env.REACT_APP_API_URL,
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   }),
 
@@ -14,7 +14,7 @@ const AxiosService = {
   app: axios.create({
     baseURL: process.env.REACT_APP_API_URL,
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   }),
 
@@ -26,7 +26,7 @@ const AxiosService = {
   // E-Sewa
   esewa: axios.create({
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   }),
 };
@@ -36,7 +36,7 @@ AxiosService.app.interceptors.request.use((config) => {
   //   if(config.url === "some url"){
   //     config.headers["Content-Type"] = "multipart/form-data";
   //   }
-  
+
   config.headers = getHeaders();
   return config;
 });

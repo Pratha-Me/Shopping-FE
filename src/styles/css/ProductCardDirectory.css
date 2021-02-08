@@ -6,7 +6,8 @@
 }
 .product-title {
   cursor: pointer;
-  font-size: 18px !important;
+  font-size: 24px !important;
+  font-weight: 700;
 }
 .carousel-arrow-both {
   padding: 5px 8px;

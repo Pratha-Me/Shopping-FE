@@ -1,7 +1,8 @@
 @import '../../index.css';
 .megamenu {
   position: static !important;
-  padding: 6px 20px !important;
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
   text-align: justify !important;
 }
 .nav-item.dropdown:hover .dropdown-menu {
@@ -11,9 +12,11 @@
   background-color: var(--base-color) !important;
   z-index: 99999;
   width: 100%;
+  position: relative;
+  /* overflow: hidden; */
 }
 .megamenu .dropdown-menu {
-  background-color: var(--base-color-second) !important;
+  background-color: var(--base-color) !important;
   border: none !important;
 }
 
@@ -29,6 +32,8 @@
 }
 .navbar .nav-item .nav-link {
   color: var(--font-color) !important;
+  font-size: 14px !important;
+  /* margin: 0px 8px; */
 }
 .navbar .nav-item .nav-link:hover {
   color: wheat !important;
@@ -37,7 +42,7 @@
 @media only screen and (min-width: 992px) {
   .megamenu .dropdown-menu {
     background-color: var(--base-color) !important;
-    width: 80% !important;
+    width: 88% !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     margin: 0 !important;
@@ -45,16 +50,48 @@
     border-top: none !important;
     text-align: center;
   }
+  #myAccount {
+    display: none !important;
+  }
+  .navbar-hr {
+    display: none !important;
+  }
+  .navbar-menu-icon-right {
+    display: none;
+  }
+  .navbar .nav-item .nav-link {
+    font-weight: 700;
+    font-size: 10px !important;
+  }
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 991px) {
   .navbar {
-    background-color: var(--base-color-second) !important;
+    background-color: var(--base-color) !important;
     z-index: 99999;
     width: 100%;
+    padding: 6px 10px !important;
   }
-  .navbar .nav-item .nav-link:hover {
-    color: rgba(0, 0, 0, 0.5) !important;
-    color: black !important;
+
+  .navbar .nav-item .nav-link {
+    font-weight: 800;
+    font-size: 14px !important;
+  }
+  .main-item {
+    font-weight: 500 !important;
+  }
+}
+
+@media only screen and (min-width: 1310px) {
+  .navbar .nav-item .nav-link {
+    color: var(--font-color) !important;
+    font-size: 14px !important;
+    margin: 0px 8px;
+  }
+}
+
+@media only screen and (min-width: 1170px) {
+  .navbar .nav-item .nav-link {
+    font-size: 14px !important;
   }
 }

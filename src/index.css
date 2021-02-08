@@ -6,3 +6,7 @@
   --font-color: #fff;
   --base-font-color: #090500;
 }
+
+i {
+  color: var(--base-color);
+}
