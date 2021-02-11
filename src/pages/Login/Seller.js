@@ -2,6 +2,7 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 import '../../styles/css/Seller.css';
 import TopHeader from '../../pages/Header/TopHeader';
+import NavbarMenu from '../Header/NavbarMenu';
 
 function Seller() {
 
@@ -9,6 +10,7 @@ function Seller() {
     return (
         <>
         <TopHeader > </TopHeader>
+        <NavbarMenu></NavbarMenu>
         <div className="jumbotron">
             <div className="row">
                 <div className="col-md-4 col-xl-4 seller">

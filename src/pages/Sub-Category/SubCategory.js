@@ -150,7 +150,7 @@ function SubCategory(props) {
               <div className='col-xs-12 col-sm-12 col-md-2 offset-md-7'>
                 <div className='dropdown text-center'>
                   <button
-                    className='btn btn-primary btn-md dropdown-toggle'
+                    className='btn sort-button btn-md dropdown-toggle'
                     type='button'
                     id='dropdownMenuButton'
                     data-toggle='dropdown'
@@ -298,7 +298,7 @@ function SubCategory(props) {
                           ''
                         )}
                       </div>
-                      <button className='highlight-button btn btn-medium button xs-margin-bottom-five' onClick={handleOnFilter} data-abc='true'>
+                      <button className=' btn btn-medium button xs-margin-bottom-five apply-filter-button' onClick={handleOnFilter} data-abc='true'>
                         Apply Filter
                       </button>
                     </div>
@@ -316,10 +316,10 @@ function SubCategory(props) {
                   ))}
                 </div>
               </div>
-              <div className='col-xs-12 col-sm-12 col-md-12 col-xl-12'>
+              {/* <div className='col-xs-12 col-sm-12 col-md-12 col-xl-12'>
                 <p className='font-weight-bold'>{props.match.params.product}</p>
                 <p>You’re in the right place for Coats &amp; Blazers. By now you already know that, wha...</p>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

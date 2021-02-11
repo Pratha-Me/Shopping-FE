@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getAnUser } from '../../services/AuthService';
 import { getWishlist, removeWishItem } from '../../services/InventoryService';
-
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 function Wishlist(props) {
   const [wishlist, setWishlist] = useState([]);
   const itemLength = wishlist && wishlist.length;
@@ -27,6 +28,21 @@ function Wishlist(props) {
       });
   }, []);
 
+  const removeSubmit = (id) => {
+    confirmAlert({
+      title: 'Confirm to delete',
+      message: 'Are you sure you want delete the item ?',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => removeWishItem(id) && window.location.reload()
+        },
+        {
+          label: 'No',
+        }
+      ]
+    });
+  };
   return (
     <div className='container'>
       <div className='row'>
@@ -57,20 +73,22 @@ function Wishlist(props) {
             {itemLength > 0 && (
               <div className='wishContainer'>
                 <div className='row'>
-                  <div className='col-md-2 col-xl-2'>Image</div>
-                  <div className='col-md-4 col-xl-4'>Product Name</div>
-                  <div className='col-md-2 col-xl-2'>Stock</div>
-                  <div className='col-md-2 col-xl-2'>Unit Price</div>
-                  <div className='col-md-2 col-xl-2'>Action</div>
+                  <div className='col-md-2 col-xl-2 font-weight-bold'>Image</div>
+                  <div className='col-md-4 col-xl-4 font-weight-bold'>Product Name</div>
+                  <div className='col-md-2 col-xl-2 font-weight-bold'>Stock</div>
+                  <div className='col-md-2 col-xl-2 font-weight-bold'>Unit Price</div>
+                  <div className='col-md-2 col-xl-2 font-weight-bold'>Action</div>
                 </div>
+                  <hr/>
 
                 {/* For of wishlist */}
                 {wishlist &&
                   wishlist.map((wish, idx) => {
                     return (
-                      <>
-                        <div className='row'>
-                          <div className='col-md-2'>Image</div>
+                        <div key={idx} className='row'>
+                          <div className='col-md-2'>
+                            <img src={wish.link[0]} alt='Avatar' className='image' style={{ height: '100px' }} />
+                            </div>
                           <div className='col-md-4'>{wish.itemName}</div>
                           <div className='col-md-2'>{wish.stock}</div>
                           <div className='col-md-2'>{wish.unitPrice}</div>
@@ -80,7 +98,7 @@ function Wishlist(props) {
                             </a> */}
                             <Link
                               to={{
-                                pathname: '/product-details',
+                                pathname: `/product-details/${wish.itemName}`,
                                 state: wish,
                               }}
                             >
@@ -89,15 +107,14 @@ function Wishlist(props) {
                             <button
                               className='btn btn-danger btn-sm text-white my-2'
                               onClick={() => {
-                                removeWishItem(wish.id) && window.location.reload();
+                                removeSubmit(wish.id)
                               }}
                             >
                               Delete
                             </button>
                           </div>
-                        </div>
                         <hr></hr>
-                      </>
+                        </div>
                     );
                   })}
               </div>

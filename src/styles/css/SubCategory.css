@@ -147,3 +147,21 @@ a {
 .dropdown-menu {
   width: 100% !important;
 }
+.sort-button{
+  color: #fff;
+  background: var(--base-color);
+}
+
+.sort-button:hover{
+  color: #fff;
+  background: var(--base-color);
+}
+
+.apply-filter-button{
+  color: #fff;
+  background: var(--base-color);
+}
+.apply-filter-button:hover{
+  color: #fff;
+  background: var(--base-color);
+}

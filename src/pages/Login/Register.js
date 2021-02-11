@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { postRegister } from "../../redux/actions";
 import TopHeader from '../../pages/Header/TopHeader';
 import { postSendOtp } from "../../services/AuthService";
+import NavbarMenu from "../Header/NavbarMenu";
 
 function Register(props) {
     const [redirect, setRedirect] = useState(false);
@@ -62,6 +63,7 @@ function Register(props) {
     return (
         <>
          <TopHeader></TopHeader>
+         <NavbarMenu></NavbarMenu>
         <div className="jumbotron">
             <div className="row">
                 <div className="col-md-4 col-xl-4 signup">

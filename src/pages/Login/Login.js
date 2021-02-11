@@ -6,6 +6,7 @@ import TopHeader from '../../pages/Header/TopHeader';
 
 import '../../styles/css/Login.css';
 import { postLogin } from "../../redux/actions";
+import NavbarMenu from "../Header/NavbarMenu";
 
 
 function Login(props) {
@@ -26,7 +27,7 @@ function Login(props) {
     return (
         <>
         <TopHeader></TopHeader>
-      
+        <NavbarMenu></NavbarMenu>
         <div className="jumbotron " style={{"marginTop":"20px !important"}}>
             <div className="row">
                 <div className="col-md-4 col-xl-4 login">

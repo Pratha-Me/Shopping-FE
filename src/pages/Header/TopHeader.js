@@ -31,7 +31,6 @@ function TopHeader(props) {
     }
   }, [])
 
-  console.log("hamro user:", user)
 
   const handleLogout = (event) => {
     localStorage.removeItem('user');
@@ -56,7 +55,7 @@ function TopHeader(props) {
                 </span>
                 <Link to='/' onClick={handleLogout}>
                   {' '}
-                  Logout <i class='fas fa-sign-out-alt'></i>
+                  Logout <i className='fas fa-sign-out-alt'></i>
                 </Link>
               </div>
             </div>
@@ -97,15 +96,15 @@ function TopHeader(props) {
             </Link>
           </div>
           <div className='col-8 p-0'>
-            <div class='dropdown m-2'>
-              <button class='btn btn-secondary bg-transparent d-block ml-auto' type='button' id='dropdownMenu2' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-                <i class='far fa-user'></i>
+            <div className='dropdown m-2'>
+              <button className='btn btn-secondary bg-transparent d-block ml-auto' type='button' id='dropdownMenu2' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                <i className='far fa-user'></i>
               </button>
-              <div class='dropdown-menu top-header-dropdown-menu' aria-labelledby='dropdownMenu2' style={{ zIndex: '1000000' }}>
+              <div className='dropdown-menu top-header-dropdown-menu' aria-labelledby='dropdownMenu2' style={{ zIndex: '1000000' }}>
                 {isLoggedIn && isLoggedIn ? (
                   <>
                     <span className='user-Name' style={{ cursor: 'text', display: 'block' }}>
-                      <i class='fas fa-smile-wink'></i> Welcome <span>{user.name}</span>
+                      <i className='fas fa-smile-wink'></i> Welcome <span>{user.name}</span>
                     </span>
                     <div className='dropdown-divider'></div>
                     <Link style={{ padding: '6px 12px' }} to='/seller'>
@@ -120,7 +119,7 @@ function TopHeader(props) {
                     <div className='dropdown-divider'></div>
                     <Link style={{ padding: '6px 12px' }} to='/' onClick={handleLogout}>
                       {' '}
-                      <i class='fas fa-sign-out-alt'></i> Logout
+                      <i className='fas fa-sign-out-alt'></i> Logout
                     </Link>
                   </>
                 ) : (

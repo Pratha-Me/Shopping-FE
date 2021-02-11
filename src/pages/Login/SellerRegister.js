@@ -5,6 +5,7 @@ import { postRegister } from "../../redux/actions";
 import { withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import TopHeader from '../../pages/Header/TopHeader';
+import NavbarMenu from "../Header/NavbarMenu";
 
 function Register(props) {
     const [userData, setUserData] = useState({
@@ -55,6 +56,7 @@ function Register(props) {
     return (
         <>
         <TopHeader></TopHeader>
+        <NavbarMenu></NavbarMenu>
         <div className="jumbotron mt-5 ">
             <div className="row">
                 <div className="col-md-4 col-xl-4 seller-register">

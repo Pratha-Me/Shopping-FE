@@ -106,7 +106,7 @@
 
 #progressbar li.active:before,
 #progressbar li.active:after {
-    background: #651FFF
+    background: var(--base-color)
 }
 
 #progressbar li.active:before {
@@ -123,4 +123,22 @@ label {
 .form-group {
     margin:0 !important;
     padding:0 !important;
+}
+
+.ship-button{
+    color: #fff;
+    background: var(--base-color);
+}
+.ship-button:hover{
+    color: #fff;
+    background: var(--base-color);
+}
+
+.pay-now-button{
+    color: #fff;
+    background: var(--base-color);  
+}
+.pay-now-button:hover{
+    color: #fff;
+    background: var(--base-color);  
 }

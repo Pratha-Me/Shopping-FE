@@ -5,6 +5,7 @@ import { withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import TopHeader from '../../pages/Header/TopHeader';
 import { verifyUserEmail } from "../../services/AuthService";
+import NavbarMenu from "../Header/NavbarMenu";
 
 function VerifyOTP(props) {
     const email =  props.location.state.email;
@@ -37,6 +38,7 @@ function VerifyOTP(props) {
     return (
         <>
          <TopHeader></TopHeader>
+         <NavbarMenu></NavbarMenu>
         <div className="jumbotron">
             <div className="row">
                 <div className="col-md-4 col-xl-4 signup">

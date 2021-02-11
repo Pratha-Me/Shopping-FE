@@ -7,7 +7,7 @@ import Cart from '../../component/Cart/Cart';
 function NavbarMenu() {
   // const [categoryData, setCategoryData] = useState(DATA);
   const [categoryData, setCategoryData] = useState(null);
-  const [routeList, setRouteList] = useState([]);
+  // const [routeList, setRouteList] = useState([]);
 
   useEffect(() => {
     getCatAndSubCat()
@@ -43,8 +43,7 @@ function NavbarMenu() {
           {categoryData &&
             categoryData.map((categoryItems, idx) => {
               return (
-                <>
-                  <li key={idx} className='nav-item dropdown megamenu'>
+                  <li key={idx}  className='nav-item dropdown megamenu'>
                     <Link
                       to='/'
                       id='megamneu'
@@ -92,7 +91,6 @@ function NavbarMenu() {
                       </div>
                     </div>
                   </li>
-                </>
               );
             })}
         </ul>

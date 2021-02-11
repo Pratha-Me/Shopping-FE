@@ -5,6 +5,8 @@ import AddressBook from './AddressBook';
 import Wishlist from './Wishlist';
 import OrderHistory from './OrderHistory';
 import {  Redirect } from 'react-router-dom';
+import TopHeader from '../Header/TopHeader';
+import NavbarMenu from '../Header/NavbarMenu';
 
 
 function Profile() {
@@ -18,6 +20,9 @@ function Profile() {
     }
 
     return (
+        <>
+        <TopHeader></TopHeader>
+        <NavbarMenu></NavbarMenu>
         <div className="container">
             <div className="row">
                 <div className="col-xs-12 col-sm-12 col-md-12 col-xl-12 pl-4 pt-4 pb-2" style={{margin:`0 !important`, padding:'0!important'}}>
@@ -56,7 +61,7 @@ function Profile() {
                 </div>
             </div>
     </div>
-    
+    </>
     )
 }
 

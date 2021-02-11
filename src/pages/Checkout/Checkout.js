@@ -7,6 +7,9 @@ import '../../styles/css/Checkout.css';
 import { useForm } from 'react-hook-form';
 import { clearCart, esewaVerification, postEsewa, saveOrder } from '../../services/InventoryService';
 import axios from 'axios';
+import NavbarMenu from '../Header/NavbarMenu';
+import TopHeader from '../Header/TopHeader';
+import { positions, useAlert } from 'react-alert'
 
 function Checkout(props) {
   const [isUserDetailsVerified, setIsUserDetailsVerified] = useState(true);
@@ -22,6 +25,8 @@ function Checkout(props) {
     city: '',
     street: '',
   });
+
+  const alert = useAlert()
 
   useEffect(() => {
     setCarts(getCart());
@@ -83,9 +88,17 @@ function Checkout(props) {
     if (paymentMethod === 'cod') {
       saveOrder(orderDetails)
         .then((response) => {
-          window.alert('Order Accepted');
-          console.log('orderDetails', orderDetails);
-          // clearCart();
+          alert.success('Order Confirmed (Cash on Delivery)', {
+            timeout: 2000, // custom timeout just for this one alert
+            type: 'success',
+            position: positions.TOP_CENTER,
+            onOpen: () =>{
+              clearCart();
+            },
+            onClose: () => {
+              props.history.push("/")
+            }
+          }) 
         })
         .catch((err) => {
           console.log(err);
@@ -111,11 +124,18 @@ function Checkout(props) {
       //   console.log('Esewa Data', res.data);
       // });
     } else {
-      window.alert('Please Select Payment Method');
+      // window.alert('Please Select Payment Method');
+      alert.error('Please Select the Payment Method To Confirm Your Order', {
+        timeout: 3000, // custom timeout just for this one alert
+        type: 'error',
+        position: positions.TOP_CENTER,
+      }) 
     }
   };
 
-  return (
+  return (<>
+  <TopHeader></TopHeader>
+  <NavbarMenu></NavbarMenu>
     <div className='container'>
       <div className='row'>
         <div className='col-xs-12 col-sm-12 col-md-12 col-xl-12 pl-4 pt-4 pb-2' style={{ margin: `0 !important`, padding: '0!important' }}>
@@ -185,7 +205,7 @@ function Checkout(props) {
               </div>
 
               <div className='form-group'>
-                <button className='btn btn-danger btn-sm mr-3' onClick={() => setIsAddressVerified(!isAddressVerified)}>
+                <button className='btn btn-success btn-sm mr-3' onClick={() => setIsAddressVerified(!isAddressVerified)}>
                   Use this Address
                 </button>
               </div>
@@ -265,7 +285,7 @@ function Checkout(props) {
               <div className='form-group'>
                 <input
                   type='submit'
-                  className='btn btn-primary btn-sm'
+                  className='btn ship-button btn-sm'
                   //  onClick={onClickOrder()}
                   value='Ship To This Address'
                 />
@@ -274,10 +294,11 @@ function Checkout(props) {
           </div>
         )}
       </div>
-      {isAddressVerified && (
+      {isAddressVerified && ( <>
         <div className='row'>
           <h3>Order Summary</h3>
           <table className='table table-xs '>
+            <tbody>
             <tr>
               <th></th>
               <th>Description</th>
@@ -285,12 +306,14 @@ function Checkout(props) {
               <th className='text-right'>Price</th>
               <th className='text-right'>Total</th>
             </tr>
+            </tbody>
             {carts.map((cart, idx) => (
-              <tr key={idx} className='item-row'>
+              <tbody key={idx}>
+              <tr className='item-row'>
                 <td>
                   {' '}
                   <img
-                    src='https://ae01.alicdn.com/kf/HTB1ta5XLpXXXXXcXXXXq6xXFXXXN/2018-Brand-New-Jacket-Men-Top-Design-Casual-Outwear-Spring-Autumn-Slim-Fit-Solid-Mens-Jackets.jpg'
+                    src={cart.link[0]}
                     style={{ width: '80px', height: '100px' }}
                   />
                 </td>
@@ -310,8 +333,9 @@ function Checkout(props) {
                   Rs. {cart.total}
                 </td>
               </tr>
+              </tbody>
             ))}
-
+            <tbody>
             <tr className='total-row info'>
               <td className='text-right font-weight-bold ' colSpan='4'>
                 <span>Sub-total </span> <br />
@@ -326,7 +350,8 @@ function Checkout(props) {
                 <span className='font-weight-bold'>Rs.100</span>
               </td>
             </tr>
-
+            </tbody>
+            <tbody>
             <tr className='total-row info'>
               <td className='text-right font-weight-bold' colSpan='4'>
                 Total
@@ -334,7 +359,9 @@ function Checkout(props) {
               {/* <td className="text-right ton-weight-bold">Rs.1050</td> */}
               <td className='text-right font-weight-bold'>Rs. {getTotal(getSubTotal(carts), getTax(getSubTotal(carts)), getServiceCharge(getSubTotal(carts)))}</td>
             </tr>
+            </tbody>
           </table>
+
           <div className='col-md-6 mb-4'>
             <div className='payment-methods'>
               <form action=''>
@@ -347,7 +374,7 @@ function Checkout(props) {
                     onChange={onValueChange}
                   >
                     <label htmlFor='cod' className='mt-2 pl-2'>
-                      COD
+                      COD (Cash On Delivery)
                     </label>
                     <input type='radio' name='payment' id='cod' value='cod' />
                   </div>
@@ -358,22 +385,15 @@ function Checkout(props) {
                     onChange={onValueChange}
                   >
                     <label htmlFor='esewa' className='mt-2 pl-2'>
-                      eSewa
+                      ESEWA
                     </label>
                     <input type='radio' name='payment' id='esewa' value='esewa' />
                   </div>
                 </div>
               </form>
             </div>
+
           </div>
-          <button
-            onClick={() => onClickOrderPost()}
-            type='button'
-            // onSubmit={onClickOrderPost()}
-            className='btn btn-primary pl-3 pr-3 text-white text-right mb-5 '
-          >
-            Pay Now
-          </button>
           {/* <button value='submit' type='submit' onClick={onClickOrder()} className='btn btn-primary pl-3 pr-3 text-white text-right mb-5 '>
             Pay Now
           </button> */}
@@ -410,8 +430,19 @@ function Checkout(props) {
             </form>
           </div> */}
         </div>
+
+        <button
+            onClick={() => onClickOrderPost()}
+            type='button'
+            // onSubmit={onClickOrderPost()}
+            className='btn ml-auto pay-now-button pl-3 pr-3 text-white text-right mb-5 '
+          >
+            Pay Now
+          </button>
+        </>
       )}
     </div>
+    </>
   );
 }
 

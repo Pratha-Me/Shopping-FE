@@ -6,7 +6,8 @@ import { getUserCart, removeCartItem } from '../../services/InventoryService';
 import '../../styles/css/CartDirectory.css';
 import '../../styles/scss/CartDirectory.scss';
 import ProductCard from '../Product-Card/ProductCard';
-
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 const CartDirectory = () => {
   const [items, setItems] = useState([]);
   const [authItems, setAuthItems] = useState([]);
@@ -32,6 +33,21 @@ const CartDirectory = () => {
         console.log(err);
       });
   }, []);
+  const removeSubmit = (id) => {
+    confirmAlert({
+      title: 'Confirm to delete',
+      message: 'Are you sure you want delete the item ?',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => removeCartItem(id) && window.location.reload()
+        },
+        {
+          label: 'No',
+        }
+      ]
+    });
+  };
 
   const getSingleTotal = (item) => {
     const total = item ? item.count * item.unitPrice : '';
@@ -117,9 +133,13 @@ const CartDirectory = () => {
                 </td>
                 <td className='text-right mt-3' title='Remove'>
                   <i
+                    // onClick={() => {
+                    //   removeCartItem(product.id) && window.location.reload();
+                    // }}
                     onClick={() => {
-                      removeCartItem(product.id) && window.location.reload();
+                      removeSubmit(product.id)
                     }}
+                    // onClick={removeSubmit(product.id)}
                     className='fas fa-trash-alt'
                     style={{ cursor: 'pointer' }}
                   ></i>
@@ -179,12 +199,12 @@ const CartDirectory = () => {
               <div>
                 <Link to='/'>
                   {' '}
-                  <button type='button' className='btn btn-info m-4'>
+                  <button type='button' className='btn btn-success m-4'>
                     Continue Shopping
                   </button>{' '}
                 </Link>
                 <Link to='/checkout'>
-                  <button type='button' onClick={onSubmitLocalStorage()} className='btn btn-success m-2'>
+                  <button type='button' onClick={onSubmitLocalStorage()} className='btn m-2 place-order-button'>
                     Place Order
                   </button>
                 </Link>

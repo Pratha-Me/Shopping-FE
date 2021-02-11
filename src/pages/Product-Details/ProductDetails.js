@@ -78,37 +78,15 @@ const ProductDetails = (props) => {
             <h2>{props.location.state.itemName}</h2>
             <h5 className='mt-2'>Rs. {props.location.state.unitPrice}</h5>
             <div>
-              {/* <ReactStars
-                count={5}
-                value={4}
-                size={30}
-                isHalf={false}
-                edit={false}
-                emptyIcon={<i className='far fa-star'></i>}
-                halfIcon={<i className='fa fa-star-half-alt'></i>}
-                fullIcon={<i className='fa fa-star'></i>}
-                activeColor='red'
-              /> */}
-              {/* <p>(5 Reviews)</p> */}
             </div>
-            {/* <div className='mt-5 plus-minus-button'>
-              <button type='button' class='btn mr-1' onClick={minusClick}>
-                <i class='fas fa-minus'></i>
-              </button>
-              <input id='numb' value='4' class='mr-1' />
-              <button type='button' class='btn mr-1' onClick={plusClick}>
-                <i class='fas fa-plus'></i>
-              </button>
-            </div> */}
+            {props.location.state.stock <=0 ? <h4 className="mt-4" style={{color:'#23395d', border:'1px solid #23395d', padding:'12px'}}>Sorry !! Out Of Stock For Now</h4> : <>            
             <button type='button' className='btn mt-4 mr-3' onClick={addToCart}>
               Add To Cart
             </button>
-            {/* <button type='button' className='btn mt-4 mr-3'>
-              Buy Now
-            </button> */}
             <button type='button' className='btn mt-4 mr-3' onClick={addToWishlist}>
               WishList
             </button>
+             </>}
             <h4 className='mt-4' style={{ color: 'black', textShadow: 'none', fontWeight: '400' }}>
               Product Details
             </h4>

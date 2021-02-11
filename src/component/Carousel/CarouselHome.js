@@ -9,13 +9,13 @@ function CarouselHome({ carouselList }) {
       {' '}
       <div id='carouselExampleIndicators' className='carousel slide' data-ride='carousel'>
         <ol className='carousel-indicators'>
-          {result.map((item, index) => {
+          {result && result.map((item, index) => {
             let activeClass = index === 0 ? 'active' : '';
             return <li key={index} data-target='#carouselExampleIndicators' data-slide-to={index} className={activeClass}></li>;
           })}
         </ol>
         <div className='carousel-inner'>
-          {result.map((item, index) => {
+          {result && result.map((item, index) => {
             let activeClass = index === 0 ? 'carousel-item active' : 'carousel-item';
             return (
               <div

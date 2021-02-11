@@ -78,3 +78,12 @@
     font-size: 16px;
   } /*1rem = 16px*/
 }
+
+.place-order-button{
+  color: #fff;
+  background: var(--base-color);
+}
+.place-order-button:hover{
+  color: #fff;
+  background: var(--base-color);
+}
