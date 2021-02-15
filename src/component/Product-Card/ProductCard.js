@@ -1,56 +1,81 @@
-import React, { useEffect, useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import '../../styles/scss/ProductCard.scss';
-import { addItem, removeItem, updateItem } from '../../helpers/CartHelpers';
-import { postCart, postWishlist } from '../../services/InventoryService';
-import { positions, useAlert } from 'react-alert'
+import React, { useEffect, useState } from "react";
+import { Link, Redirect, withRouter } from "react-router-dom";
+import "../../styles/scss/ProductCard.scss";
+import { addItem, removeItem, updateItem } from "../../helpers/CartHelpers";
+import { postCart, postWishlist } from "../../services/InventoryService";
+import { positions, useAlert } from "react-alert";
+import { getAuthUser } from "../../helpers/AuthHelpers";
 
-const ProductCard = ({ width, height, imgHeight, product, showButtons = true, showFooter = true, cartUpdate = false, showRemove = false }) => {
+const ProductCard = ({
+  width,
+  height,
+  imgHeight,
+  product,
+  showButtons = true,
+  showFooter = true,
+  cartUpdate = false,
+  showRemove = false,
+  ...props
+}) => {
   const [redirect, setRedirect] = useState(false);
   const [redirectWishlist, setRedirectWishlist] = useState(false);
   const [windowWidth, setWindowWidth] = useState();
-  const alert = useAlert()
+  const [logedIn, setLogedIn] = useState(false);
+  const alert = useAlert();
 
   useEffect(() => {
     setWindowWidth(() => window.innerWidth);
+    if (getAuthUser()) {
+      setLogedIn(true);
+    } else {
+      setLogedIn(false);
+    }
   }, [window.innerWidth]);
 
   const data = {
     id: product && product.id,
   };
   const addToCart = () => {
-    postCart(data && data)
-      .then((response) => {
-        // setRedirect(true);
-        alert.success('Product Added to Cart', {
-          timeout: 1000, // custom timeout just for this one alert
-          type: 'success',
-          position: positions.MIDDLE,
-          onClose: () => {
-            setRedirect(true)
-          } // callback that will be executed after this alert is removed
-        }) 
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (logedIn) {
+      return postCart(data && data)
+        .then((response) => {
+          // setRedirect(true);
+          alert.success("Product Added to Cart", {
+            timeout: 1000, // custom timeout just for this one alert
+            type: "success",
+            position: positions.MIDDLE,
+            onClose: () => {
+              setRedirect(true);
+            }, // callback that will be executed after this alert is removed
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      return props.history.push("/login");
+    }
   };
 
   const addToWishlist = () => {
-    postWishlist(data && data)
-      .then((response) => {
-        alert.success('Product Added to Wishlist', {
-          timeout: 1000, // custom timeout just for this one alert
-          type: 'success',
-          position: positions.MIDDLE,
-          onClose: () => {
-            setRedirectWishlist(true)
-          } // callback that will be executed after this alert is removed
-        }) 
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (logedIn) {
+      return postWishlist(data && data)
+        .then((response) => {
+          alert.success("Product Added to Wishlist", {
+            timeout: 1000, // custom timeout just for this one alert
+            type: "success",
+            position: positions.MIDDLE,
+            onClose: () => {
+              setRedirectWishlist(true);
+            }, // callback that will be executed after this alert is removed
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      return props.history.push("/login");
+    }
   };
 
   const shouldRedirect = (redirect) => {
@@ -78,23 +103,38 @@ const ProductCard = ({ width, height, imgHeight, product, showButtons = true, sh
       : 6;
 
   return (
-    <div className='product-container' style={{ width: `${width}`, height: `${height}` }}>
+    <div
+      className='product-container'
+      style={{ width: `${width}`, height: `${height}` }}
+    >
       {shouldRedirect(redirect)}
       {shouldRedirectWish(redirectWishlist)}
-      {product.stock <= 0 ? <div class="cr cr-top cr-right cr-sticky cr-blue"> No Stock</div> : '' }
+      {product.stock <= 0 ? (
+        <div class='cr cr-top cr-right cr-sticky cr-blue'> No Stock</div>
+      ) : (
+        ""
+      )}
       {/* <div class="cr cr-top cr-right cr-sticky cr-blue"> Out Stock</div> */}
-      <img src={product.link[0]} alt='Avatar' className='image' style={{ height: `${imgHeight}` }} />
+      <img
+        src={product.link[0]}
+        alt='Avatar'
+        className='image'
+        style={{ height: `${imgHeight}` }}
+      />
       {showButtons ? (
         <div className='card-middle'>
-      {product.stock > 0 ? <>          
-          <a onClick={addToCart} className='hover-fx'>
-            <i className='fas fa-shopping-cart'></i>{' '}
-          </a>
-          <a onClick={addToWishlist} className='hover-fx'>
-            <i className='fas fa-heart'></i>{' '}
-          </a>
-          </> : ''
-    }
+          {product.stock > 0 ? (
+            <>
+              <a onClick={addToCart} className='hover-fx'>
+                <i className='fas fa-shopping-cart'></i>{" "}
+              </a>
+              <a onClick={addToWishlist} className='hover-fx'>
+                <i className='fas fa-heart'></i>{" "}
+              </a>
+            </>
+          ) : (
+            ""
+          )}
           {/* <a onClick={addToCart} className='hover-fx'>
             <i className='fas fa-shopping-cart'></i>{' '}
           </a>
@@ -113,13 +153,16 @@ const ProductCard = ({ width, height, imgHeight, product, showButtons = true, sh
           </Link>
         </div>
       ) : (
-        ''
+        ""
       )}
 
       {showFooter ? (
         <div className='footer-card'>
           <h2>{product.itemName.substring(0, 20)}</h2>
-          <div className='row p-0 m-0' style={{ borderTop: '1px solid #e0e0e0' }}>
+          <div
+            className='row p-0 m-0'
+            style={{ borderTop: "1px solid #e0e0e0" }}
+          >
             <div className='col-sm-12 col-md-12'>
               <h3 className='m-1'>Rs. {product.unitPrice}</h3>
             </div>
@@ -135,11 +178,11 @@ const ProductCard = ({ width, height, imgHeight, product, showButtons = true, sh
                     </div> */}
         </div>
       ) : (
-        ''
+        ""
       )}
       {/* {showCartUpdateOptions(cartUpdate)} */}
     </div>
   );
 };
 
-export default ProductCard;
+export default withRouter(ProductCard);

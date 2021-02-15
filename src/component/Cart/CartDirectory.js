@@ -1,56 +1,59 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import NavbarMenu from '../../pages/Header/NavbarMenu';
-import TopHeader from '../../pages/Header/TopHeader';
-import { getUserCart, removeCartItem } from '../../services/InventoryService';
-import '../../styles/css/CartDirectory.css';
-import '../../styles/scss/CartDirectory.scss';
-import ProductCard from '../Product-Card/ProductCard';
-import { confirmAlert } from 'react-confirm-alert'; // Import
-import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import NavbarMenu from "../../pages/Header/NavbarMenu";
+import TopHeader from "../../pages/Header/TopHeader";
+import { getUserCart, removeCartItem } from "../../services/InventoryService";
+import "../../styles/css/CartDirectory.css";
+import "../../styles/scss/CartDirectory.scss";
+import ProductCard from "../Product-Card/ProductCard";
+import { confirmAlert } from "react-confirm-alert"; // Import
+import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
+import { getAuthUser } from "../../helpers/AuthHelpers";
 const CartDirectory = () => {
   const [items, setItems] = useState([]);
   const [authItems, setAuthItems] = useState([]);
   const [count, setCount] = useState(null);
 
   useEffect(() => {
-    getUserCart()
-      .then((response) => {
-        let cart = [];
-        response.data.items.map((item) => {
-          cart.push({
-            ...item,
-            count: 1,
-            total: item.unitPrice,
+    getAuthUser() &&
+      getUserCart()
+        .then((response) => {
+          let cart = [];
+          response.data.items.map((item) => {
+            cart.push({
+              ...item,
+              count: 1,
+              total: item.unitPrice,
+            });
           });
+          cart = Array.from(new Set(cart.map((p) => p.id))).map((id) => {
+            return cart.find((p) => p.id === id);
+          });
+          setItems(cart);
+        })
+        .catch((err) => {
+          console.log(err);
         });
-        cart = Array.from(new Set(cart.map((p) => p.id))).map((id) => {
-          return cart.find((p) => p.id === id);
-        });
-        setItems(cart);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   }, []);
+
   const removeSubmit = (id) => {
     confirmAlert({
-      title: 'Confirm to delete',
-      message: 'Are you sure you want delete the item ?',
+      title: "Confirm to delete",
+      message: "Are you sure you want delete the item ?",
       buttons: [
         {
-          label: 'Yes',
-          onClick: () => removeCartItem(id) && window.location.reload()
+          label: "Yes",
+          onClick: () => removeCartItem(id) && window.location.reload(),
         },
         {
-          label: 'No',
-        }
-      ]
+          label: "No",
+        },
+      ],
     });
   };
 
   const getSingleTotal = (item) => {
-    const total = item ? item.count * item.unitPrice : '';
+    const total = item ? item.count * item.unitPrice : "";
     return total;
   };
   const handleChange = (productId) => (event) => {
@@ -75,7 +78,7 @@ const CartDirectory = () => {
   };
 
   const onSubmitLocalStorage = () => {
-    return localStorage.setItem('cart', JSON.stringify(items));
+    return localStorage.setItem("cart", JSON.stringify(items));
   };
 
   const showItems = (items) => {
@@ -114,21 +117,36 @@ const CartDirectory = () => {
             </tr>
             {items.map((product, i) => (
               <tr key={i} className='item-row'>
-                <td style={{ width: '100px', height: '100px' }}>
-                  <ProductCard product={product} showButtons={false} showFooter={false} cartUpdate={true} showRemove={true} imgHeight='100px'></ProductCard>
+                <td style={{ width: "100px", height: "100px" }}>
+                  <ProductCard
+                    product={product}
+                    showButtons={false}
+                    showFooter={false}
+                    cartUpdate={true}
+                    showRemove={true}
+                    imgHeight='100px'
+                  ></ProductCard>
                 </td>
                 <td>
                   <p className='mt-3'>
-                    {' '}
+                    {" "}
                     <strong>{product.itemName}</strong>
                   </p>
                 </td>
                 <td className='mt-3' title='Qty'>
-                  <div className='input-group mb-3 mr-0' style={{ width: '200px' }}>
+                  <div
+                    className='input-group mb-3 mr-0'
+                    style={{ width: "200px" }}
+                  >
                     {/* <div className="input-group-prepend">
                       <span className="input-group-text">Adjust Quantity</span>
                   </div> */}
-                    <input type='number' className='form-control' value={product.count} onChange={handleChange(product.id)} />
+                    <input
+                      type='number'
+                      className='form-control'
+                      value={product.count}
+                      onChange={handleChange(product.id)}
+                    />
                   </div>
                 </td>
                 <td className='text-right mt-3' title='Remove'>
@@ -137,11 +155,11 @@ const CartDirectory = () => {
                     //   removeCartItem(product.id) && window.location.reload();
                     // }}
                     onClick={() => {
-                      removeSubmit(product.id)
+                      removeSubmit(product.id);
                     }}
                     // onClick={removeSubmit(product.id)}
                     className='fas fa-trash-alt'
-                    style={{ cursor: 'pointer' }}
+                    style={{ cursor: "pointer" }}
                   ></i>
                 </td>
                 <td className='text-right mt-3' title='Price'>
@@ -157,14 +175,19 @@ const CartDirectory = () => {
                 <span className='res-text'>Sub-total </span> <br />
               </td>
               <td className='text-right'>
-                <span className='font-weight-bold res-text'>Rs. {getSubTotal(items)}</span> <br />
+                <span className='font-weight-bold res-text'>
+                  Rs. {getSubTotal(items)}
+                </span>{" "}
+                <br />
               </td>
             </tr>
             <tr className='total-row info'>
               <td className='text-right font-weight-bold res-text' colSpan='5'>
                 Total
               </td>
-              <td className='text-right font-weight-bold res-text'>Rs. {getSubTotal(items)}</td>
+              <td className='text-right font-weight-bold res-text'>
+                Rs. {getSubTotal(items)}
+              </td>
             </tr>
           </tbody>
         </table>
@@ -178,10 +201,10 @@ const CartDirectory = () => {
         Your cart is empty. <br /> <Link to='/'></Link>
       </h2>
       <Link to='/'>
-        {' '}
+        {" "}
         <button type='button' className='btn btn-info m-4'>
           Continue Shopping
-        </button>{' '}
+        </button>{" "}
       </Link>
     </div>
   );
@@ -198,19 +221,23 @@ const CartDirectory = () => {
             {items.length > 0 ? (
               <div>
                 <Link to='/'>
-                  {' '}
+                  {" "}
                   <button type='button' className='btn btn-success m-4'>
                     Continue Shopping
-                  </button>{' '}
+                  </button>{" "}
                 </Link>
                 <Link to='/checkout'>
-                  <button type='button' onClick={onSubmitLocalStorage()} className='btn m-2 place-order-button'>
+                  <button
+                    type='button'
+                    onClick={onSubmitLocalStorage()}
+                    className='btn m-2 place-order-button'
+                  >
                     Place Order
                   </button>
                 </Link>
               </div>
             ) : (
-              ''
+              ""
             )}
           </div>
         </div>

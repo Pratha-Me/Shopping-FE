@@ -1,4 +1,4 @@
-@import '../../index.css';
+@import "../../index.css";
 .megamenu {
   position: static !important;
   padding-top: 6px !important;
@@ -60,7 +60,7 @@
     display: none;
   }
   .navbar .nav-item .nav-link {
-    font-weight: 700;
+    /* font-weight: 700; */
     font-size: 10px !important;
   }
 }
@@ -74,7 +74,7 @@
   }
 
   .navbar .nav-item .nav-link {
-    font-weight: 800;
+    /* font-weight: 800; */
     font-size: 14px !important;
   }
   .main-item {

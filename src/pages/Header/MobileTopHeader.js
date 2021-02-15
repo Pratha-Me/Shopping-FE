@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import Cart from '../../component/Cart/Cart';
-import SearchBar from '../../component/Search-Bar/SearchBar';
-import '../../styles/scss/TopHeader.scss';
-import { getAuthUser } from '../../helpers/AuthHelpers';
-import { connect } from 'react-redux';
-import { logoutUserSuccessful } from '../../redux/auth/login/actions';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import Cart from "../../component/Cart/Cart";
+import SearchBar from "../../component/Search-Bar/SearchBar";
+import "../../styles/scss/TopHeader.scss";
+import { getAuthUser } from "../../helpers/AuthHelpers";
+import { connect } from "react-redux";
+import { logoutUserSuccessful } from "../../redux/auth/login/actions";
 
 // import { Link } from 'react-router-dom';
 // import './Navbar.css';
@@ -21,11 +21,11 @@ function MobileTopHeader(props) {
     } else {
       setlogin(false);
     }
-    setUsers(JSON.parse(localStorage.getItem('user')));
+    setUsers(JSON.parse(localStorage.getItem("user")));
   }, []);
 
   const handleLogout = (event) => {
-    localStorage.removeItem('user');
+    localStorage.removeItem("user");
     props.logoutUserSuccessful();
     setlogin(false);
   };
