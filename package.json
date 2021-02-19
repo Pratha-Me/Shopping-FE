@@ -33,6 +33,7 @@
     "react-responsive-carousel": "^3.2.10",
     "react-router-dom": "^5.0.1",
     "react-scripts": "^3.4.4",
+    "react-spinners": "^0.10.6",
     "react-zoom-slider": "^0.1.0",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
