@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { useForm } from "react-hook-form";
 import { withRouter, Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -12,16 +12,22 @@ import NavbarMenu from "../Header/NavbarMenu";
 function Login(props) {
     const { register, handleSubmit, errors } = useForm();
     let  currentURL = (window.location.href).split('/');
-    if(currentURL[currentURL.length-1] == 'login') {
-        console.log("Test");
-    }
+    
+    const [loginError, setLoginError] = useState(false)
+    // if(currentURL[currentURL.length-1] == 'login') {
+    //     console.log("Test");
+    // }
   
     if(localStorage.user) {
         return <Redirect to="/" />
     }
 
     const handleSubmitForm = async (formData) => {
-        await props.postLogin(formData, props.history);
+        await props.postLogin(formData, props.history)
+        setLoginError(true)
+       
+        
+
     };
 
     return (
@@ -90,11 +96,11 @@ function Login(props) {
                             </div>
 
                             {errors.email && errors.password && <div className="row mt-3 errors" > * Please fill all the fields! </div>}
-
+                            {loginError && <div className="row errors"> <p className="ml-4 mt-4">* Invalid email or password!</p></div>}
                             <div className="row ">
                                 <button
                                     type="submit"
-                                    className="btn btn-primary form-control ml-3 mr-3 mt-5"
+                                    className="btn btn-primary form-control ml-3 mr-3 mt-4"
                                 >Login</button>
                             </div>
 

@@ -162,7 +162,7 @@ function Register(props) {
                                     required:true,
                                     minLength:6,
                                     maxLength:20,
-                                    pattern:/^[A-Za-z0-9]+$/i,
+                                    pattern:/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+=]).*$/
                                 })}
                                 
                             />
@@ -171,7 +171,7 @@ function Register(props) {
                                     <p className="text-danger mb-4 ml-4"> * Password is required!</p>
                                 )}
                                 {errors.password && errors.password.type === "pattern" && (
-                                    <p className="text-danger mb-4 ml-4"> * Password can have only numbers and alphabets!</p>
+                                    <p className="text-danger mb-4 ml-4"> * Password should at least have a digit, a uppercase and a lowercase letter and a special character from (@#$%^&+=)</p>
                                 )}
                                  {errors.password && errors.password.type === "minLength" && (
                                     <p className="text-danger mb-4 ml-4"> * Password must have at least 6 characters.</p>

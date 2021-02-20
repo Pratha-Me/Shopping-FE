@@ -44,7 +44,8 @@ const postLogin = (data, history) => async (dispatch) => {
         history.push('/');
 
     } catch(message) {
-        dispatch(apiError(message))
+        // dispatch(apiError(message))
+        return message
     };
 }
 
