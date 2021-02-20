@@ -29,10 +29,12 @@ const Home = (props) => {
   const [productList, setProductList] = useState([]);
   useEffect(() => {
     getCarousel().then((response) => {
+      setLoading(true);
       setCarousel(response.data.items);
       setLoading(false);
     });
     getProductList().then((response) => {
+      setLoading(true);
       setProductList(response.data.productList);
       setLoading(false);
     });
