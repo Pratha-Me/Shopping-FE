@@ -132,7 +132,6 @@ function Register(props) {
                                 ref={register({
                                     required:true, 
                                     minLength:8, 
-                                    maxLength:30,
                                     pattern:/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/ ,
                                     
                                  })}
@@ -147,9 +146,7 @@ function Register(props) {
                                  {errors.email && errors.email.type === "minLength" && (
                                     <p className="text-danger ml-4 mb-4"> * Email must have at least 8 characters.</p>
                                 )}
-                                {errors.email && errors.email.type === "maxLength" && (
-                                    <p className="text-danger ml-4 mb-4"> * Email cannot have more than 25 characters.</p>
-                                )}
+
 
                         </div>
 
