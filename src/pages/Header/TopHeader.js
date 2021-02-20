@@ -48,7 +48,7 @@ function TopHeader(props) {
           {isLoggedIn ? (
             <div className='col-12 ml-auto'>
               <div className='row text-center top-header'>
-                <Link to='/seller'> Sell on Shopping.com |</Link>
+                <Link to='/seller-register'> Sell on Shopping.com |</Link>
                 <Link to='/user/profile'>
                   {" "}
                   <i className='fas fa-user-alt mr-2'></i> My Account |
@@ -65,7 +65,7 @@ function TopHeader(props) {
           ) : (
             <div className='col-12 ml-auto'>
               <div className='row text-center top-header'>
-                <Link to='/seller'> Sell on Shopping.com | </Link>
+                <Link to='/seller-register'> Sell on Shopping.com | </Link>
                 <Link to='/register'>
                   <i className='fas fa-user-plus'></i> Register Now |
                 </Link>
@@ -134,12 +134,12 @@ function TopHeader(props) {
                       <span>{user.name}</span>
                     </span>
                     <div className='dropdown-divider'></div>
-                    <Link style={{ padding: "6px 12px" }} to='/seller'>
+                    <Link style={{ padding: "6px 12px" }} to='/user/profile'>
                       {" "}
                       <i className='fas fa-user-circle'></i> My Account
                     </Link>
                     <div className='dropdown-divider'></div>
-                    <Link style={{ padding: "6px 12px" }} to='/seller'>
+                    <Link style={{ padding: "6px 12px" }} to='/seller-register'>
                       {" "}
                       <i className='fas fa-check-double'></i> Sell on
                       Shopping.com
@@ -167,7 +167,7 @@ function TopHeader(props) {
                       <i className='fas fa-sign-in-alt'></i> Login
                     </Link>
                     <div className='dropdown-divider'></div>
-                    <Link style={{ padding: "6px 12px" }} to='/seller'>
+                    <Link style={{ padding: "6px 12px" }} to='/seller-register'>
                       {" "}
                       <i className='fas fa-check-double'></i> Sell on
                       Shopping.com

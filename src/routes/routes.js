@@ -2,7 +2,6 @@ import Home from '../pages/Home';
 import Login from '../pages/Login/Login';
 import Register from '../pages/Login/Register';
 import SellerRegister from '../pages/Login/SellerRegister';
-import Seller from '../pages/Login/Seller';
 import ResetPassword from '../pages/Login/ResetPassword';
 import VerifyMail from '../pages/Login/VerifyMail';
 import ProductDetails from '../pages/Product-Details/ProductDetails';
@@ -25,7 +24,7 @@ const routes = [
   { path: '/', component: Home },
   { path: '/login', component: Login },
   { path: '/register', component: Register },
-  { path: '/seller', component: Seller },
+
   { path: '/reset-password', component: ResetPassword },
   { path: '/verify-email', component: VerifyMail },
   { path: '/verify-otp', component: VerifyOTP },
