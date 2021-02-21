@@ -66,13 +66,13 @@ const Home = (props) => {
             listProduct={lastData && lastData[0]}
           ></ProductCardDirectory>
           <AdsDirectory ads={carousel} maxSize={5} minSize={3}></AdsDirectory>
-          {/* <ProductCardDirectory
-        listProduct={lastData && lastData[1]}
-      ></ProductCardDirectory> */}
+          <ProductCardDirectory
+            listProduct={lastData && lastData[1]}
+          ></ProductCardDirectory>
           <AdsDirectory ads={carousel} maxSize={7} minSize={6}></AdsDirectory>
-          {/* <ProductCardDirectory
-        listProduct={lastData && lastData[2]}
-      ></ProductCardDirectory> */}
+          <ProductCardDirectory
+            listProduct={lastData && lastData[2]}
+          ></ProductCardDirectory>
 
           <AdsDirectory ads={carousel} maxSize={9} minSize={7}></AdsDirectory>
 
