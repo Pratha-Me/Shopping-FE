@@ -1,11 +1,11 @@
-@import '../../index.scss';
+@import "../../index.scss";
 .wrap {
   width: 100%;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1000000000;
+  z-index: 1001;
 
   .search {
     width: 100%;
