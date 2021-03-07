@@ -48,7 +48,13 @@ function TopHeader(props) {
           {isLoggedIn ? (
             <div className='col-12 ml-auto'>
               <div className='row text-center top-header'>
-                <Link to='/seller-register'> Sell on Shopping.com |</Link>
+                <a
+                  target='_blank'
+                  href='https://docs.google.com/forms/d/e/1FAIpQLSeQ_C9EN0WVRVvxuQmBVlt0iHyclNuAnBpLEl8AwS7va9o1vg/viewform?usp=sf_link'
+                >
+                  {" "}
+                  Sell on Shopping.com |
+                </a>
                 <Link to='/user/profile'>
                   {" "}
                   <i className='fas fa-user-alt mr-2'></i> My Account |
@@ -65,7 +71,14 @@ function TopHeader(props) {
           ) : (
             <div className='col-12 ml-auto'>
               <div className='row text-center top-header'>
-                <Link to='/seller-register'> Sell on Shopping.com | </Link>
+                {/* <Link to='/seller-register'> Sell on Shopping.com | </Link> */}
+                <a
+                  target='_blank'
+                  href='https://docs.google.com/forms/d/e/1FAIpQLSeQ_C9EN0WVRVvxuQmBVlt0iHyclNuAnBpLEl8AwS7va9o1vg/viewform?usp=sf_link'
+                >
+                  {" "}
+                  Sell on Shopping.com |
+                </a>
                 <Link to='/register'>
                   <i className='fas fa-user-plus'></i> Register Now |
                 </Link>
@@ -139,11 +152,15 @@ function TopHeader(props) {
                       <i className='fas fa-user-circle'></i> My Account
                     </Link>
                     <div className='dropdown-divider'></div>
-                    <Link style={{ padding: "6px 12px" }} to='/seller-register'>
+                    <a
+                      target='_blank'
+                      style={{ padding: "6px 12px" }}
+                      to='https://docs.google.com/forms/d/e/1FAIpQLSeQ_C9EN0WVRVvxuQmBVlt0iHyclNuAnBpLEl8AwS7va9o1vg/viewform?usp=sf_link'
+                    >
                       {" "}
                       <i className='fas fa-check-double'></i> Sell on
                       Shopping.com
-                    </Link>
+                    </a>
                     <div className='dropdown-divider'></div>
                     <Link
                       style={{ padding: "6px 12px" }}
@@ -167,11 +184,20 @@ function TopHeader(props) {
                       <i className='fas fa-sign-in-alt'></i> Login
                     </Link>
                     <div className='dropdown-divider'></div>
-                    <Link style={{ padding: "6px 12px" }} to='/seller-register'>
+                    {/* <Link style={{ padding: "6px 12px" }} to='/seller-register'>
                       {" "}
                       <i className='fas fa-check-double'></i> Sell on
                       Shopping.com
-                    </Link>
+                    </Link> */}
+                    <a
+                      target='_blank'
+                      style={{ padding: "6px 12px" }}
+                      to='https://docs.google.com/forms/d/e/1FAIpQLSeQ_C9EN0WVRVvxuQmBVlt0iHyclNuAnBpLEl8AwS7va9o1vg/viewform?usp=sf_link'
+                    >
+                      {" "}
+                      <i className='fas fa-check-double'></i> Sell on
+                      Shopping.com
+                    </a>
                     <div className='dropdown-divider'></div>
                   </>
                 )}

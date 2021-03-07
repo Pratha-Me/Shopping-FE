@@ -30,7 +30,7 @@ const Home = (props) => {
   useEffect(() => {
     getCarousel().then((response) => {
       setCarousel(response.data.items);
-      setLoading(false);
+      // setLoading(false);
     });
     getProductList().then((response) => {
       setProductList(response.data.productList);
