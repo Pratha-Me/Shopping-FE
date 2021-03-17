@@ -146,8 +146,8 @@ function Checkout(props) {
         ),
         pid: idProduct && idProduct,
         scd: "EPAYTEST",
-        su: `http://localhost:3000/success?q=su`,
-        fu: `http://localhost:3000/failed?q=fu`,
+        su: `https://supply-inn.com/success?q=su`,
+        fu: `https://supply-inn.com/failed?q=fu`,
       };
       // let path1 = "https://uat.esewa.com.np/epay/transrec";
       // let params1 = {
