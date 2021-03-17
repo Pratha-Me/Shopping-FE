@@ -21,6 +21,7 @@ function Success(props) {
   // if (esewaVerification(path, params)) {
   //   window.location.href = '/';
   // }
+  esewaVerification(path, params);
   // if (esewaVerification(path, params)) {
   //   console.log("Verifiresd");
   // }
@@ -42,14 +43,14 @@ function Success(props) {
         <input value={esewaRefId} name='rid' type='hidden' />
         <input value='Submit' type='submit'></input>
       </form> */}
-      <h1> Success</h1>
+      {/* <h1> Success</h1>
       <form action='https://uat.esewa.com.np/epay/transrec' method='POST'>
-        <input value={Number(amount)} name='amt' type='hidden' />
+        <input value={Number(testAmt)} name='amt' type='hidden' />
         <input value='EPAYTEST' name='scd' type='hidden' />
-        <input value={productId} name='pid' type='hidden' />
+        <input value={testID} name='pid' type='hidden' />
         <input value={esewaRefId} name='rid' type='hidden' />
         <input value='Submit' type='submit'></input>
-      </form>
+      </form> */}
     </>
   );
 }
