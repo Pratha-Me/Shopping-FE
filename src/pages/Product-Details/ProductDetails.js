@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProductCardDirectory from "../../component/Product-Card-Directory/ProductCardDirectory";
 import ProductImage from "../../component/Product-Image/ProductImage";
 import RelatedProducts from "../../component/RelatedProducts/RelatedProducts";
@@ -10,10 +10,20 @@ import TopHeader from "../Header/TopHeader";
 import NavbarMenu from "../Header/NavbarMenu";
 import { postCart, postWishlist } from "../../services/InventoryService";
 import { Redirect } from "react-router-dom";
+import { getAuthUser } from "../../helpers/AuthHelpers";
 
 const ProductDetails = (props) => {
   const [redirectWishlist, setRedirectWishlist] = useState(false);
   const [redirect, setRedirect] = useState(false);
+  const [logedIn, setLogedIn] = useState(false);
+
+  useEffect(() => {
+    if (getAuthUser()) {
+      setLogedIn(true);
+    } else {
+      setLogedIn(false);
+    }
+  }, [window.innerWidth]);
 
   var i = 1;
   function minusClick() {
@@ -32,24 +42,32 @@ const ProductDetails = (props) => {
     id: props.location.state.id && props.location.state.id,
   };
   const addToCart = () => {
-    postCart(data && data)
-      .then((response) => {
-        setRedirect(true);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (logedIn) {
+      postCart(data && data)
+        .then((response) => {
+          setRedirect(true);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      return props.history.push("/login");
+    }
   };
 
   const addToWishlist = () => {
-    postWishlist(data)
-      .then((response) => {
-        setRedirectWishlist(true);
-        window.alert("Added to wish list");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (logedIn) {
+      postWishlist(data)
+        .then((response) => {
+          setRedirectWishlist(true);
+          window.alert("Added to wish list");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      return props.history.push("/login");
+    }
   };
 
   const shouldRedirect = (redirect) => {

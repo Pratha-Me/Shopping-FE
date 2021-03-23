@@ -42,6 +42,7 @@ const Home = (props) => {
 
   // const mainNumber2 = number1 && number1 !== number2 && number2 ? number2 : 0;
 
+  // Last 3 Data from the Product List
   const lastData = productList.slice(Math.max(productList.length - 3, 0));
 
   return (
