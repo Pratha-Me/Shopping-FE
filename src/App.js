@@ -70,7 +70,7 @@ const App = (props) => {
             )
           )}
         </Switch>
-        <Footer></Footer>
+        {/* <Footer></Footer> */}
       </Router>
     </React.Fragment>
   );
