@@ -30,7 +30,7 @@ const Home = (props) => {
   useEffect(() => {
     getCarousel().then((response) => {
       setCarousel(response.data.items);
-      setLoading(false);
+      // setLoading(false);
     });
     getProductList().then((response) => {
       setProductList(response.data.productList);
@@ -42,6 +42,7 @@ const Home = (props) => {
 
   // const mainNumber2 = number1 && number1 !== number2 && number2 ? number2 : 0;
 
+  // Last 3 Data from the Product List
   const lastData = productList.slice(Math.max(productList.length - 3, 0));
 
   return (
@@ -66,13 +67,13 @@ const Home = (props) => {
             listProduct={lastData && lastData[0]}
           ></ProductCardDirectory>
           <AdsDirectory ads={carousel} maxSize={5} minSize={3}></AdsDirectory>
-          {/* <ProductCardDirectory
-        listProduct={lastData && lastData[1]}
-      ></ProductCardDirectory> */}
+          <ProductCardDirectory
+            listProduct={lastData && lastData[1]}
+          ></ProductCardDirectory>
           <AdsDirectory ads={carousel} maxSize={7} minSize={6}></AdsDirectory>
-          {/* <ProductCardDirectory
-        listProduct={lastData && lastData[2]}
-      ></ProductCardDirectory> */}
+          <ProductCardDirectory
+            listProduct={lastData && lastData[2]}
+          ></ProductCardDirectory>
 
           <AdsDirectory ads={carousel} maxSize={9} minSize={7}></AdsDirectory>
 

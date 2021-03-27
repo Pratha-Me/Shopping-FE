@@ -15,6 +15,7 @@ import axios from "axios";
 import NavbarMenu from "../Header/NavbarMenu";
 import TopHeader from "../Header/TopHeader";
 import { positions, useAlert } from "react-alert";
+import Success from "../../api/Esewa/Success";
 
 function Checkout(props) {
   const [isUserDetailsVerified, setIsUserDetailsVerified] = useState(true);
@@ -24,12 +25,20 @@ function Checkout(props) {
   const [paymentMethod, setPaymentMethod] = useState();
   const [userData, setUserData] = useState([]);
   const { register, handleSubmit, errors } = useForm();
+  const [verOid, setVerOid] = useState();
+  const [verAmt, setVerAmt] = useState();
+  const [verRefId, setVerRefId] = useState();
   const [deliveryAddress, setDeliveryAddress] = useState({
     zone: "",
     phone: "",
     city: "",
     street: "",
   });
+
+  const query = new URLSearchParams(props.location.search);
+  // const productId = query.get("oid");
+  // const amount = query.get("amt");
+  // const esewaRefId = query.get("refId");
 
   const alert = useAlert();
 
@@ -78,6 +87,13 @@ function Checkout(props) {
       Math.random().toString(36).substring(2, 8);
     let pId = r && r.match(/.{1,4}/g);
     let idProduct = pId && pId.join(" ");
+    localStorage.setItem("PID", idProduct);
+    const amount = getTotal(
+      getSubTotal(carts),
+      getTax(getSubTotal(carts)),
+      getServiceCharge(getSubTotal(carts))
+    );
+    localStorage.setItem("AMT", amount);
     let orderDetails = {
       orderedItems: [],
       total: getTotal(
@@ -130,12 +146,35 @@ function Checkout(props) {
         ),
         pid: idProduct && idProduct,
         scd: "EPAYTEST",
-        su: "http://localhost:3000/success?q=su",
-        fu: "http://localhost:3000/failed?q=fu",
+        su: `https://supply-inn.com/success?q=su`,
+        fu: `https://supply-inn.com/failed?q=fu`,
       };
-
+      //       su: `https://supply-inn.com/success?q=su`,
+      // fu: `https://supply-inn.com/failed?q=fu`,
+      //       su: `http://localhost:3000/success?q=su`,
+      // fu: `http://localhost:3000/failed?q=fu`,
+      // let path1 = "https://uat.esewa.com.np/epay/transrec";
+      // let params1 = {
+      //   amt: getSubTotal(carts),
+      //   // rid:
+      // };
       postEsewa(path, params);
-      // esewaVerification(path1, params1);
+
+      // if (postEsewa(path, params)) {
+      //   // esewaVerification(path1, params1);
+      //   const amount = getTotal(
+      //     getSubTotal(carts),
+      //     getTax(getSubTotal(carts)),
+      //     getServiceCharge(getSubTotal(carts))
+      //   );
+      //   return (
+      //     <Success
+      //       pid={idProduct && idProduct}
+      //       amt={amount && amount}
+      //     ></Success>
+      //   );
+      // }
+
       // axios.post(path, params).then((res) => {
       //   console.log('Esewa', res);
       //   console.log('Esewa Data', res.data);

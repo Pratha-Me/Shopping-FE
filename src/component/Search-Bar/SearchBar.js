@@ -29,6 +29,10 @@ function SearchBar() {
     return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   }
 
+  const handleClick = () => {
+    setInput("");
+  };
+
   // Search Logic
   if (input && input.length > 0) {
     data =
@@ -81,6 +85,7 @@ function SearchBar() {
                         pathname: `/product-details/${datas.itemName}`,
                         state: datas,
                       }}
+                      onClick={handleClick}
                     >
                       <div className='search-card'>
                         <div className='container'>

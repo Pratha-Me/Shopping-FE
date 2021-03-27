@@ -270,7 +270,7 @@ function SubCategory(props) {
                                   <label>Min</label>{" "}
                                   <input
                                     className='form-control'
-                                    placeholder='$0'
+                                    placeholder='Rs. 0'
                                     type='number'
                                     onChange={handleMinPrice}
                                   />{" "}
@@ -280,7 +280,7 @@ function SubCategory(props) {
                                   <label>Max</label>{" "}
                                   <input
                                     className='form-control'
-                                    placeholder='$1,0000'
+                                    placeholder='Rs. 5,000,00'
                                     type='number'
                                     onChange={handleMaxPrice}
                                   />{" "}

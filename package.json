@@ -28,6 +28,7 @@
     "react-image-magnify": "^2.7.4",
     "react-items-carousel": "^2.8.0",
     "react-mega-menu": "^1.0.1",
+    "react-modal": "^3.12.1",
     "react-rating-stars-component": "^2.2.0",
     "react-redux": "^7.2.1",
     "react-responsive-carousel": "^3.2.10",
@@ -35,6 +36,7 @@
     "react-scripts": "^3.4.4",
     "react-spinners": "^0.10.6",
     "react-zoom-slider": "^0.1.0",
+    "reactstrap": "^8.9.0",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
     "slick-carousel": "^1.8.1"
